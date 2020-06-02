@@ -3,9 +3,10 @@ package com.example.recognition.model;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.recognition.model.remoutdata.ColorResponse;
-import com.example.recognition.model.remoutdata.DemographicsResponse;
-import com.example.recognition.types.GeneralResponse;
+import com.example.recognition.model.remoutdata.ColorResponsePojo;
+import com.example.recognition.model.remoutdata.DemographicsResponsePojo;
+import com.example.recognition.model.remoutdata.GeneralResponsePojo;
+import com.example.recognition.types.response.GeneralResponseType;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Repository {
         localDataSource.setModels(remoteDataSource.getModels());
         return localDataSource.getModels();
     }
-    public LiveData<GeneralResponse> getModelResponse(final String uri, final String model) {
+    public LiveData<GeneralResponseType> getModelResponse(final String uri, final String model) {
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
@@ -35,21 +36,21 @@ public class Repository {
                         case GENERAL:
                             localDataSource.addResponse(
                                 ResponseConverter.getResponse(
-                                        remoteDataSource.<com.example.recognition.model.remoutdata.GeneralResponse>fetchData(uri, model),
+                                        remoteDataSource.<GeneralResponsePojo>fetchData(uri, model),
                                         model
                                 ));
                             break;
                         case DEMOGRAPHICS:
                             localDataSource.addResponse(
                                     ResponseConverter.getResponse(
-                                            remoteDataSource.<DemographicsResponse>fetchData(uri, model),
+                                            remoteDataSource.<DemographicsResponsePojo>fetchData(uri, model),
                                             model
                                     ));
                             break;
                         case COLOR:
                             localDataSource.addResponse(
                                     ResponseConverter.getResponse(
-                                            remoteDataSource.<ColorResponse>fetchData(uri, model),
+                                            remoteDataSource.<ColorResponsePojo>fetchData(uri, model),
                                             model
                                     ));
                             break;
@@ -62,7 +63,7 @@ public class Repository {
         });
         return localDataSource.getLastResponse();
     }
-    public LiveData<List<GeneralResponse>> getFavorites() {
+    public LiveData<List<GeneralResponseType>> getFavorites() {
         return localDataSource.getFavorites();
     }
     public void makeLastResponseFavorite() {

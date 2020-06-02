@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class ColorResponse {
+public class ColorResponseEntity {
     @PrimaryKey
     private String image;
     private String data;

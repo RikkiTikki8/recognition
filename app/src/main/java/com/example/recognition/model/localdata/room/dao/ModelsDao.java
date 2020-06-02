@@ -9,19 +9,17 @@ import androidx.room.Query;
 import androidx.room.TypeConverters;
 
 import com.example.recognition.model.localdata.room.ModelConverter;
-import com.example.recognition.model.localdata.room.entity.Model;
-
 import java.util.List;
 
 @Dao
 @TypeConverters({ModelConverter.class})
 public interface ModelsDao {
-    @Query("SELECT model FROM model")
+    @Query("SELECT * FROM ModelEntity")
     LiveData<List<String>> getModels();
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void addModel(Model model);
+    void addModel(String model);
     @Insert
     void addModels(List<String> models);
     @Delete
-    void removeModel(Model model);
+    void removeModel(String model);
 }

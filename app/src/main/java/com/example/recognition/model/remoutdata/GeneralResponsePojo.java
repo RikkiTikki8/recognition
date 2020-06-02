@@ -2,7 +2,7 @@ package com.example.recognition.model.remoutdata;
 
 import java.util.List;
 
-public class GeneralResponse {
+public class GeneralResponsePojo {
     public static class Status {
         private int code;
         private String description;
