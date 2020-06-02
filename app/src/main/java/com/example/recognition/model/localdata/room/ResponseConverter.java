@@ -2,71 +2,79 @@ package com.example.recognition.model.localdata.room;
 
 import androidx.room.TypeConverter;
 
-import com.example.recognition.model.localdata.room.entity.ColorResponseEntity;
-import com.example.recognition.model.localdata.room.entity.DemographicsResponseEntity;
-import com.example.recognition.model.localdata.room.entity.GeneralResponseEntity;
-import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.data.DemographicsDataType;
-import com.example.recognition.types.data.GeneralDataType;
-import com.example.recognition.types.response.ColorResponseType;
-import com.example.recognition.types.response.DemographicsResponseType;
-import com.example.recognition.types.response.GeneralResponseType;
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
+import com.example.recognition.model.localdata.room.entity.DemographicsResponse;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
+<<<<<<< HEAD
+=======
+import com.example.recognition.types.data.DemographicData;
+import com.example.recognition.types.data.GeneralData;
+>>>>>>> 71d1eea35b61b0fd5a5c1c21c92c58fbec7baef8
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class ResponseConverter {
     @TypeConverter
-    ColorResponseEntity getColorResponseEntity (ColorResponseType colorResponse) {
+    ColorResponse getColorResponseEntity
+            (com.example.recognition.types.response.ColorResponse colorResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        ColorResponseEntity responseEntity = new ColorResponseEntity();
+        ColorResponse responseEntity = new ColorResponse();
         responseEntity.setImage(colorResponse.getImage());
-        responseEntity.setData(gson.toJson(colorResponse.getData()));
+        responseEntity.getData(gson.toJson(colorResponse.getData()));
         return responseEntity;
     }
     @TypeConverter
-    DemographicsResponseEntity getColorResponseEntity (DemographicsResponseType demographicsResponse) {
+    DemographicsResponse getColorResponseEntity
+            (com.example.recognition.types.response.DemographicsResponse demographicsResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        DemographicsResponseEntity responseEntity = new DemographicsResponseEntity();
+        DemographicsResponse responseEntity = new DemographicsResponse();
         responseEntity.setImage(demographicsResponse.getImage());
-        responseEntity.setData(gson.toJson(demographicsResponse.getData()));
+        responseEntity.getData(gson.toJson(demographicsResponse.getData()));
         return responseEntity;
     }
     @TypeConverter
-    GeneralResponseEntity getColorResponseEntity (GeneralResponseType generalResponse) {
+    GeneralResponse getColorResponseEntity
+            (com.example.recognition.types.response.GeneralResponse generalResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        GeneralResponseEntity responseEntity = new GeneralResponseEntity();
+        GeneralResponse responseEntity = new GeneralResponse();
         responseEntity.setImage(generalResponse.getImage());
-        responseEntity.setData(gson.toJson(generalResponse.getData()));
+        responseEntity.getData(gson.toJson(generalResponse.getData()));
         return responseEntity;
     }
     @TypeConverter
-    ColorResponseType getColorResponseEntity (ColorResponseEntity colorResponse) {
+    com.example.recognition.types.response.ColorResponse getColorResponseEntity
+            (ColorResponse colorResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        ColorResponseType response = new ColorResponseType();
+        com.example.recognition.types.response.ColorResponse response =
+                new com.example.recognition.types.response.ColorResponse();
         response.setImage(colorResponse.getImage());
-        response.setData(gson.fromJson(colorResponse.getData(), ColorDataType.class));
+        response.getData(gson.fromJson(colorResponse.getData(), ColorData.class));
         return response;
     }
     @TypeConverter
-    DemographicsResponseType getColorResponseEntity (DemographicsResponseEntity demographicsResponse) {
+    com.example.recognition.types.response.DemographicsResponse getColorResponseEntity
+            (DemographicsResponse demographicsResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        DemographicsResponseType response = new DemographicsResponseType();
+        com.example.recognition.types.response.DemographicsResponse response =
+                new com.example.recognition.types.response.DemographicsResponse();
         response.setImage(demographicsResponse.getImage());
-        response.setData(gson.fromJson(demographicsResponse.getData(), DemographicsDataType.class));
+        response.getData(gson.fromJson(demographicsResponse.getData(), DemographicData.class));
         return response;
     }
     @TypeConverter
-    GeneralResponseType getColorResponseEntity (GeneralResponseEntity generalResponse) {
+    com.example.recognition.types.response.GeneralResponse getColorResponseEntity
+            (GeneralResponse generalResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        GeneralResponseType response = new GeneralResponseType();
+        com.example.recognition.types.response.GeneralResponse response =
+                new com.example.recognition.types.response.GeneralResponse();
         response.setImage(generalResponse.getImage());
-        response.setData(gson.fromJson(generalResponse.getData(), GeneralDataType.class));
+        response.getData(gson.fromJson(generalResponse.getData(), GeneralData.class));
         return response;
     }
 }
