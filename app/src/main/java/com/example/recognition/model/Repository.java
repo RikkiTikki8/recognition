@@ -5,12 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.recognition.model.remoutdata.ColorResponse;
 import com.example.recognition.model.remoutdata.DemographicsResponse;
-<<<<<<< HEAD
-import com.example.recognition.model.remoutdata.GeneralResponse;
-import com.example.recognition.types.response.Response;
-=======
 import com.example.recognition.types.GeneralResponse;
->>>>>>> 71d1eea35b61b0fd5a5c1c21c92c58fbec7baef8
 
 import java.io.IOException;
 import java.util.List;
