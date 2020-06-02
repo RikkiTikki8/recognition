@@ -26,7 +26,7 @@ public class Repository {
         localDataSource.setModels(remoteDataSource.getModels());
         return localDataSource.getModels();
     }
-    public LiveData<GeneralResponseType> getModelResponse(final String uri, final String model) {
+    /*public LiveData<GeneralResponseType> getModelResponse(final String uri, final String model) {
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
@@ -74,7 +74,7 @@ public class Repository {
             }
         });
     }
-
+*/
     public LiveData<Boolean> getLoadStatus() {
         return loadStatus;
     }
