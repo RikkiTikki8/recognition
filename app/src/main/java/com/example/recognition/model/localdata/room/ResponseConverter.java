@@ -7,7 +7,7 @@ import com.example.recognition.model.localdata.room.entity.DemographicsResponse;
 import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 <<<<<<< HEAD
 =======
-import com.example.recognition.types.data.DemographicData;
+import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralData;
 >>>>>>> 71d1eea35b61b0fd5a5c1c21c92c58fbec7baef8
 import com.google.gson.Gson;
@@ -63,7 +63,7 @@ public class ResponseConverter {
         com.example.recognition.types.response.DemographicsResponse response =
                 new com.example.recognition.types.response.DemographicsResponse();
         response.setImage(demographicsResponse.getImage());
-        response.getData(gson.fromJson(demographicsResponse.getData(), DemographicData.class));
+        response.getData(gson.fromJson(demographicsResponse.getData(), DemographicDataType.class));
         return response;
     }
     @TypeConverter

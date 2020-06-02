@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.recognition.types.OptionsType;
 import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.data.DemographicsDataType;
+import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralDataType;
 import com.example.recognition.types.response.ColorResponseType;
 import com.example.recognition.types.response.DemographicsResponseType;
@@ -21,7 +21,7 @@ public class SharedPreferencesHelper {
     public static final String LAST_RESPONSE_KEY = "LAST_RESPONSE_KEY";
     private MutableLiveData<OptionsType> optionsData = new MutableLiveData<>();
     private MutableLiveData<GeneralDataType> generalResponse = new MutableLiveData<>();
-    private MutableLiveData<DemographicsDataType> demographicsResponse = new MutableLiveData<>();
+    private MutableLiveData<DemographicDataType> demographicsResponse = new MutableLiveData<>();
     private MutableLiveData<ColorDataType> colorResponse = new MutableLiveData<>();
     private SharedPreferences sharedPreferences;
     private Gson gson;
@@ -71,7 +71,7 @@ public class SharedPreferencesHelper {
         );
         return gson.fromJson(json, DemographicsResponseType.class);
     }
-    public LiveData<DemographicsDataType> getLastDemographicsData() {
+    public LiveData<DemographicDataType> getLastDemographicsData() {
         String json = sharedPreferences.getString(
                 LAST_RESPONSE_KEY+DemographicsResponseType.class.getName(),
                 gson.toJson(new DemographicsResponseType())

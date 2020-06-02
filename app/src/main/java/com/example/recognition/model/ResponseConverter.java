@@ -4,7 +4,7 @@ import com.example.recognition.model.remoutdata.ColorResponsePojo;
 import com.example.recognition.model.remoutdata.DemographicsResponsePojo;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo;
 import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.data.DemographicsDataType;
+import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralDataType;
 import com.example.recognition.types.response.ColorResponseType;
 import com.example.recognition.types.response.DemographicsResponseType;
@@ -22,7 +22,7 @@ public class ResponseConverter {
     public static DemographicsResponseType convert (String image, DemographicsResponsePojo response) {
         DemographicsResponseType responseType = new DemographicsResponseType();
         responseType.setImage(image);
-        DemographicsDataType dataType = new DemographicsDataType();
+        DemographicDataType dataType = new DemographicDataType();
         // TO_DO
         responseType.setData(dataType);
         return responseType;

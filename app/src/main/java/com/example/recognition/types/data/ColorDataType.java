@@ -1,7 +1,6 @@
 package com.example.recognition.types.data;
 
 public class ColorDataType {
-
     public static class Color {
 
         private String color;
@@ -38,10 +37,11 @@ public class ColorDataType {
             this.value = value;
         }
     }
-
-    protected ColorDataType.Color[] Colors;
-
-    public ColorDataType.Color[] getColors() {
+    protected Color[] Colors;
+    public Color[] getColors() {
         return Colors;
+    }
+    public void setColors(Color[] colors) {
+        Colors = colors;
     }
 }

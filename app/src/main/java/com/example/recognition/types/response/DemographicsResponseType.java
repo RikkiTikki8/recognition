@@ -1,20 +1,20 @@
 package com.example.recognition.types.response;
 
-import com.example.recognition.types.data.DemographicsDataType;
+import com.example.recognition.types.data.DemographicDataType;
 
 public class DemographicsResponseType {
     protected String imageUri;
-    protected DemographicsDataType data;
+    protected DemographicDataType data;
     public String getImage() {
         return imageUri;
     }
     public void setImage(String image) {
         imageUri = image;
     }
-    public DemographicsDataType getData() {
+    public DemographicDataType getData() {
         return data;
     }
-    public void setData(DemographicsDataType data) {
+    public void setData(DemographicDataType data) {
         this.data = data;
     }
 }

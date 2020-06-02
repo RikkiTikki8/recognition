@@ -1,7 +1,6 @@
 package com.example.recognition.types.data;
 
-public class DemographicData {
-
+public class DemographicDataType {
     public static class AgeAppearance {
         private String name;
         private double value;
@@ -31,7 +30,9 @@ public class DemographicData {
     public AgeAppearance[] getAgesAppearance() {
         return agesAppearance;
     }
-
+    public void setAgesAppearance(AgeAppearance[] agesAppearance) {
+        this.agesAppearance = agesAppearance;
+    }
     public static class GenderAppearance {
         private String name;
         private double value;
@@ -61,7 +62,9 @@ public class DemographicData {
     public GenderAppearance[] getGendersAppearance() {
         return GendersAppearance;
     }
-
+    public void setGendersAppearance(GenderAppearance[] gendersAppearance) {
+        GendersAppearance = gendersAppearance;
+    }
     public static class MulticulturalAppearance {
         private String name;
         private double value;
@@ -87,11 +90,13 @@ public class DemographicData {
             this.value = value;
         }
     }
-    protected MulticulturalAppearance[] MulticulturalesAppearance;
-    public MulticulturalAppearance[] getMulticulturalesAppearance() {
-        return MulticulturalesAppearance;
+    protected MulticulturalAppearance[] MulticulturalAppearances;
+    public MulticulturalAppearance[] getMulticulturalAppearances() {
+        return MulticulturalAppearances;
     }
-
+    public void setMulticulturalAppearances(MulticulturalAppearance[] multiculturalAppearances) {
+        MulticulturalAppearances = multiculturalAppearances;
+    }
     public static class Frame {
         private double top;
         private double left;
@@ -129,12 +134,11 @@ public class DemographicData {
             this.right = right;
         }
     }
-    private Frame frame;
+    protected Frame frame;
     public Frame getFrame() {
         return frame;
     }
     public void setFrame(Frame frame) {
         this.frame = frame;
     }
-
 }
