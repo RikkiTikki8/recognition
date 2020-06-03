@@ -3,7 +3,6 @@ package com.example.recognition.model.localdata.room;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
-
 import com.example.recognition.model.localdata.room.dao.ColorResponseDao;
 import com.example.recognition.model.localdata.room.dao.DemographicResponseDao;
 import com.example.recognition.model.localdata.room.dao.GeneralResponseDao;

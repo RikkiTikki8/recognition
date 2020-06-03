@@ -41,7 +41,7 @@ public class LocalDataSource {
     public LiveData<ColorDataType> getLastColorData() {
         return helper.getLastColorData();
     }
-    public void setLastGeneraResponse(GeneralResponseType response) {
+    public void setLastGeneralResponse(GeneralResponseType response) {
         helper.setLastGeneralResponse(response);
     }
     public void setLastDemographicResponse(DemographicResponseType response) {

@@ -7,7 +7,6 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.TypeConverters;
-
 import com.example.recognition.model.localdata.room.ModelConverter;
 import java.util.List;
 
