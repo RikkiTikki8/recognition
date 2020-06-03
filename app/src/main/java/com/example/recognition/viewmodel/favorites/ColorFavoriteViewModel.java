@@ -25,5 +25,7 @@ public class ColorFavoriteViewModel extends ViewModel {
         }
         return response;
     }
-
+    public void removeFromFavorite(String image) {
+        repository.removeColorFavorite(image);
+    }
 }

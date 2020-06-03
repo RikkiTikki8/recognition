@@ -25,4 +25,7 @@ public class DemographicFavoriteViewModel extends ViewModel {
         }
         return response;
     }
+    public void removeFromFavorite(String image) {
+        repository.removeDemographicFavorite(image);
+    }
 }

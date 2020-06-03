@@ -25,4 +25,7 @@ public class GeneralFavoriteViewModel extends ViewModel {
         }
         return response;
     }
+    public void removeFromFavorite(String image) {
+        repository.removeGeneralFavorite(image);
+    }
 }
