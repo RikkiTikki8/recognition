@@ -18,6 +18,6 @@ public interface GeneralResponseDao {
     LiveData<GeneralResponseType> getFavorite(String image);
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addResponse(GeneralResponseType response);
-    @Delete
-    void removeResponse(GeneralResponseType response);
+    @Query("DELETE FROM ColorResponseEntity WHERE image = :image")
+    void removeResponse(String image);
 }

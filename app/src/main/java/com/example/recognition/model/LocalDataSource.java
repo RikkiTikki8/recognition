@@ -5,11 +5,15 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
-import com.clarifai.grpc.auth.scope.S;
 import com.example.recognition.model.localdata.SharedPreferencesHelper;
 import com.example.recognition.model.localdata.room.DataBase;
-import com.example.recognition.types.response.GeneralResponseType;
+import com.example.recognition.types.data.ColorDataType;
+import com.example.recognition.types.data.DemographicDataType;
+import com.example.recognition.types.data.GeneralDataType;
 import com.example.recognition.types.OptionsType;
+import com.example.recognition.types.response.ColorResponseType;
+import com.example.recognition.types.response.DemographicResponseType;
+import com.example.recognition.types.response.GeneralResponseType;
 
 import java.util.List;
 
@@ -28,21 +32,60 @@ public class LocalDataSource {
     public void setModels(List<String> models) {
         dataBase.modelsDao().addModels(models);
     }
-//    public void addResponse(GeneralResponseType generalResponse) {
-//        dataBase.responseDao().addResponse(generalResponse);
-//    }
-//    public LiveData<GeneralResponseType> getLastResponse() {
-//        return dataBase.responseDao().getLastResponse();
-//    }
-//    public LiveData<GeneralResponseType> getFavorite(String image, String model) {
-//        return dataBase.responseDao().getFavorite(image, model);
-//    }
-//    public LiveData<List<GeneralResponseType>> getFavorites() {
-//        return dataBase.responseDao().getFavorites();
-//    }
-//    public void addLastToFavorite() {
-//        dataBase.responseDao().addLastToFavorite();
-//    }
+    public LiveData<GeneralDataType> getLastGeneralData() {
+        return helper.getLastGeneralData();
+    }
+    public LiveData<DemographicDataType> getLastDemographicData() {
+        return helper.getLastDemographicData();
+    }
+    public LiveData<ColorDataType> getLastColorData() {
+        return helper.getLastColorData();
+    }
+    public void setLastGeneraResponse(GeneralResponseType response) {
+        helper.setLastGeneralResponse(response);
+    }
+    public void setLastDemographicResponse(DemographicResponseType response) {
+        helper.setLastDemographicsResponse(response);
+    }
+    public void setLastColorResponse(ColorResponseType response) {
+        helper.setLastColorResponse(response);
+    }
+    public void addLastGeneralResponseToFavorite() {
+        dataBase.generalResponseDao()
+                .addResponse(
+                        helper.getLastGeneralResponse()
+                );
+    }
+    public void addLastDemographicResponseToFavorite() {
+        dataBase.demographicsResponseDao()
+                .addResponse(
+                        helper.getLastDemographicsResponse()
+                );
+    }
+    public void addLastColorResponseToFavorite() {
+        dataBase.colorResponseDao()
+                .addResponse(
+                        helper.getLastColorResponse()
+                );
+    }
+    public LiveData<List<GeneralResponseType>> getGeneralFavorites() {
+        return dataBase.generalResponseDao().getFavorites();
+    }
+    public LiveData<List<DemographicResponseType>> getDemographicFavorites() {
+        return dataBase.demographicsResponseDao().getFavorites();
+    }
+    public LiveData<List<ColorResponseType>> getColorFavorites() {
+        return dataBase.colorResponseDao().getFavorites();
+    }
+    public void removeGeneralFavoriteResponse(String image) {
+        dataBase.generalResponseDao().removeResponse(image);
+    }
+    public void removeDemographicFavoriteResponse(String image) {
+        dataBase.demographicsResponseDao().removeResponse(image);
+    }
+    public void removeColorFavoriteResponse(String image) {
+        dataBase.colorResponseDao().removeResponse(image);
+    }
     public LiveData<OptionsType> getOptions() {
         return helper.getOptions();
     }

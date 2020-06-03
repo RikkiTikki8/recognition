@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ColorResponsePojo {
+public class DemographicResponsePojo {
     public static class Status {
         private Integer code;
         private String description;
@@ -42,6 +42,7 @@ public class ColorResponsePojo {
             public static class OutputInfo {
                 private String message;
                 private String type;
+                private String typeExt;
                 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
                 public String getMessage() {
@@ -56,6 +57,12 @@ public class ColorResponsePojo {
                 public void setType(String type) {
                     this.type = type;
                 }
+                public String getTypeExt() {
+                    return typeExt;
+                }
+                public void setTypeExt(String typeExt) {
+                    this.typeExt = typeExt;
+                }
                 public Map<String, Object> getAdditionalProperties() {
                     return this.additionalProperties;
                 }
@@ -65,6 +72,7 @@ public class ColorResponsePojo {
             }
             private OutputInfo outputInfo;
             public static class ModelVersion {
+
                 private String id;
                 private String createdAt;
                 private Status status;
@@ -202,24 +210,54 @@ public class ColorResponsePojo {
         }
         private Input input;
         public static class Data {
-            public static class Color {
-                private String rawHex;
-                public static class W3c {
-                    private String hex;
-                    private String name;
+            public static class Region {
+                public static class RegionInfo {
+                    public static class BoundingBox {
+                        private Double topRow;
+                        private Double leftCol;
+                        private Double bottomRow;
+                        private Double rightCol;
+                        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+                        public Double getTopRow() {
+                            return topRow;
+                        }
+                        public void setTopRow(Double topRow) {
+                            this.topRow = topRow;
+                        }
+                        public Double getLeftCol() {
+                            return leftCol;
+                        }
+                        public void setLeftCol(Double leftCol) {
+                            this.leftCol = leftCol;
+                        }
+                        public Double getBottomRow() {
+                            return bottomRow;
+                        }
+                        public void setBottomRow(Double bottomRow) {
+                            this.bottomRow = bottomRow;
+                        }
+                        public Double getRightCol() {
+                            return rightCol;
+                        }
+                        public void setRightCol(Double rightCol) {
+                            this.rightCol = rightCol;
+                        }
+                        public Map<String, Object> getAdditionalProperties() {
+                            return this.additionalProperties;
+                        }
+                        public void setAdditionalProperty(String name, Object value) {
+                            this.additionalProperties.put(name, value);
+                        }
+                    }
+                    private BoundingBox boundingBox;
                     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-                    public String getHex() {
-                        return hex;
+                    public BoundingBox getBoundingBox() {
+                        return boundingBox;
                     }
-                    public void setHex(String hex) {
-                        this.hex = hex;
-                    }
-                    public String getName() {
-                        return name;
-                    }
-                    public void setName(String name) {
-                        this.name = name;
+                    public void setBoundingBox(BoundingBox boundingBox) {
+                        this.boundingBox = boundingBox;
                     }
                     public Map<String, Object> getAdditionalProperties() {
                         return this.additionalProperties;
@@ -228,27 +266,158 @@ public class ColorResponsePojo {
                         this.additionalProperties.put(name, value);
                     }
                 }
-                private W3c w3c;
-                private Double value;
+                private RegionInfo regionInfo;
+                public static class RegionData {
+                    public static class Face {
+                        public static class Concept {
+                            private String id;
+                            private String name;
+                            private Object appId;
+                            private Double value;
+                            private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+                            public String getId() {
+                                return id;
+                            }
+                            public void setId(String id) {
+                                this.id = id;
+                            }
+                            public String getName() {
+                                return name;
+                            }
+                            public void setName(String name) {
+                                this.name = name;
+                            }
+                            public Object getAppId() {
+                                return appId;
+                            }
+                            public void setAppId(Object appId) {
+                                this.appId = appId;
+                            }
+                            public Double getValue() {
+                                return value;
+                            }
+                            public void setValue(Double value) {
+                                this.value = value;
+                            }
+                            public Map<String, Object> getAdditionalProperties() {
+                                return this.additionalProperties;
+                            }
+                            public void setAdditionalProperty(String name, Object value) {
+                                this.additionalProperties.put(name, value);
+                            }
+                        }
+                        public static class AgeAppearance {
+                            private List<Concept> concepts = null;
+                            private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+                            public List<Concept> getConcepts() {
+                                return concepts;
+                            }
+                            public void setConcepts(List<Concept> concepts) {
+                                this.concepts = concepts;
+                            }
+                            public Map<String, Object> getAdditionalProperties() {
+                                return this.additionalProperties;
+                            }
+                            public void setAdditionalProperty(String name, Object value) {
+                                this.additionalProperties.put(name, value);
+                            }
+                        }
+                        private AgeAppearance ageAppearance;
+                        public static class GenderAppearance {
+                            private List<Concept> concepts = null;
+                            private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+                            public List<Concept> getConcepts() {
+                                return concepts;
+                            }
+                            public void setConcepts(List<Concept> concepts) {
+                                this.concepts = concepts;
+                            }
+                            public Map<String, Object> getAdditionalProperties() {
+                                return this.additionalProperties;
+                            }
+                            public void setAdditionalProperty(String name, Object value) {
+                                this.additionalProperties.put(name, value);
+                            }
+                        }
+                        private GenderAppearance genderAppearance;
+                        public static class MulticulturalAppearance {
+                            private List<Concept> concepts = null;
+                            private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+                            public List<Concept> getConcepts() {
+                                return concepts;
+                            }
+                            public void setConcepts(List<Concept> concepts) {
+                                this.concepts = concepts;
+                            }
+                            public Map<String, Object> getAdditionalProperties() {
+                                return this.additionalProperties;
+                            }
+                            public void setAdditionalProperty(String name, Object value) {
+                                this.additionalProperties.put(name, value);
+                            }
+                        }
+                        private MulticulturalAppearance multiculturalAppearance;
+                        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+                        public AgeAppearance getAgeAppearance() {
+                            return ageAppearance;
+                        }
+                        public void setAgeAppearance(AgeAppearance ageAppearance) {
+                            this.ageAppearance = ageAppearance;
+                        }
+                        public GenderAppearance getGenderAppearance() {
+                            return genderAppearance;
+                        }
+                        public void setGenderAppearance(GenderAppearance genderAppearance) {
+                            this.genderAppearance = genderAppearance;
+                        }
+                        public MulticulturalAppearance getMulticulturalAppearance() {
+                            return multiculturalAppearance;
+                        }
+                        public void setMulticulturalAppearance(MulticulturalAppearance multiculturalAppearance) {
+                            this.multiculturalAppearance = multiculturalAppearance;
+                        }
+                        public Map<String, Object> getAdditionalProperties() {
+                            return this.additionalProperties;
+                        }
+                        public void setAdditionalProperty(String name, Object value) {
+                            this.additionalProperties.put(name, value);
+                        }
+                    }
+                    private Face face;
+                    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+                    public Face getFace() {
+                        return face;
+                    }
+                    public void setFace(Face face) {
+                        this.face = face;
+                    }
+                    public Map<String, Object> getAdditionalProperties() {
+                        return this.additionalProperties;
+                    }
+                    public void setAdditionalProperty(String name, Object value) {
+                        this.additionalProperties.put(name, value);
+                    }
+                }
+                private RegionData Data;
                 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-                public String getRawHex() {
-                    return rawHex;
+                public RegionInfo getRegionInfo() {
+                    return regionInfo;
                 }
-                public void setRawHex(String rawHex) {
-                    this.rawHex = rawHex;
+                public void setRegionInfo(RegionInfo regionInfo) {
+                    this.regionInfo = regionInfo;
                 }
-                public W3c getW3c() {
-                    return w3c;
+                public RegionData getData() {
+                    return Data;
                 }
-                public void setW3c(W3c w3c) {
-                    this.w3c = w3c;
-                }
-                public Double getValue() {
-                    return value;
-                }
-                public void setValue(Double value) {
-                    this.value = value;
+                public void setData(RegionData data) {
+                    this.Data = data;
                 }
                 public Map<String, Object> getAdditionalProperties() {
                     return this.additionalProperties;
@@ -256,16 +425,15 @@ public class ColorResponsePojo {
                 public void setAdditionalProperty(String name, Object value) {
                     this.additionalProperties.put(name, value);
                 }
-
             }
-            private List<Color> colors = null;
+            private List<Region> regions = null;
             private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-            public List<Color> getColors() {
-                return colors;
+            public List<Region> getRegions() {
+                return regions;
             }
-            public void setColors(List<Color> colors) {
-                this.colors = colors;
+            public void setRegions(List<Region> regions) {
+                this.regions = regions;
             }
             public Map<String, Object> getAdditionalProperties() {
                 return this.additionalProperties;

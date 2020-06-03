@@ -16,28 +16,23 @@ public class ColorDataType {
         public String getColor() {
             return color;
         }
-
         public void setColor(String color) {
             this.color = color;
         }
-
         public String getName_color() {
             return name_color;
         }
-
         public void setName_color(String name_color) {
             this.name_color = name_color;
         }
-
         public double getValue() {
             return value;
         }
-
         public void setValue(double value) {
             this.value = value;
         }
     }
-    protected Color[] Colors;
+    private Color[] Colors;
     public Color[] getColors() {
         return Colors;
     }

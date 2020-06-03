@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class DemographicsResponseEntity {
+public class DemographicResponseEntity {
     @PrimaryKey
     private String image;
     private String data;

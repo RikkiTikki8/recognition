@@ -3,12 +3,6 @@ package com.example.recognition.model;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.recognition.model.remoutdata.ColorResponsePojo;
-import com.example.recognition.model.remoutdata.DemographicsResponsePojo;
-import com.example.recognition.model.remoutdata.GeneralResponsePojo;
-import com.example.recognition.types.response.GeneralResponseType;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

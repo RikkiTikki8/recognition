@@ -17,7 +17,7 @@ public class GeneralDataType{
             this.value = value;
         }
     }
-    protected Property[] properties;
+    private Property[] properties;
     public Property[] getProperties() {
         return properties;
     }

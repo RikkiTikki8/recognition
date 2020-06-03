@@ -6,7 +6,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
-public interface ClarifyService {
+public interface ClarifaiService {
     public static final String BASE_URL = "https://api.clarifai.com/";
     @Headers({"authorization: Key {apyKey}",
             "content-type: application/json"

@@ -7,7 +7,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;;
 import androidx.annotation.NonNull;
 
-import com.example.recognition.model.remoutdata.ClarifyService;
+import com.example.recognition.model.remoutdata.ClarifaiService;
 import com.example.recognition.model.remoutdata.Request;
 
 import java.io.IOException;
@@ -37,18 +37,18 @@ public class RemoteDataSource {
     private final String prefix = "$(base64 ";
     private final String postfix = ")";
     private String apiKey;
-    private ClarifyService service;
+    private ClarifaiService service;
     private Context context;
     public RemoteDataSource(Context context, String apiKey) {
         this.context = context;
         this.apiKey = apiKey;
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ClarifyService.BASE_URL)
+                .baseUrl(ClarifaiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        service = retrofit.create(ClarifyService.class);
+        service = retrofit.create(ClarifaiService.class);
     }
-    public <T> Response<T> fetchData(String uri, String model) throws IOException {
+    public <T> Response<T> fetchData(String uri, Model model) throws IOException {
         String path = getRealPathFromURI(context, Uri.parse(uri));
         Request request = new Request(
                 new ArrayList<Request.Inputs>(
@@ -63,7 +63,7 @@ public class RemoteDataSource {
                         )
                 )
         );
-        Call<T> call = service.sendRequest(apiKey, model, request);
+        Call<T> call = service.sendRequest(apiKey, model.toString(), request);
         return call.execute();
     }
     public List<String> getModels() {

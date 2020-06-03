@@ -2,7 +2,7 @@ package com.example.recognition.types.response;
 
 import com.example.recognition.types.data.DemographicDataType;
 
-public class DemographicsResponseType {
+public class DemographicResponseType {
     protected String imageUri;
     protected DemographicDataType data;
     public String getImage() {

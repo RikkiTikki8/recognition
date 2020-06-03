@@ -3,13 +3,13 @@ package com.example.recognition.model.localdata.room;
 import androidx.room.TypeConverter;
 
 import com.example.recognition.model.localdata.room.entity.ColorResponseEntity;
-import com.example.recognition.model.localdata.room.entity.DemographicsResponseEntity;
+import com.example.recognition.model.localdata.room.entity.DemographicResponseEntity;
 import com.example.recognition.model.localdata.room.entity.GeneralResponseEntity;
 import com.example.recognition.types.data.ColorDataType;
 import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralDataType;
 import com.example.recognition.types.response.ColorResponseType;
-import com.example.recognition.types.response.DemographicsResponseType;
+import com.example.recognition.types.response.DemographicResponseType;
 import com.example.recognition.types.response.GeneralResponseType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,10 +25,10 @@ public class ResponseConverter {
         return responseEntity;
     }
     @TypeConverter
-    DemographicsResponseEntity getColorResponseEntity (DemographicsResponseType demographicsResponse) {
+    DemographicResponseEntity getColorResponseEntity (DemographicResponseType demographicsResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        DemographicsResponseEntity responseEntity = new DemographicsResponseEntity();
+        DemographicResponseEntity responseEntity = new DemographicResponseEntity();
         responseEntity.setImage(demographicsResponse.getImage());
         responseEntity.setData(gson.toJson(demographicsResponse.getData()));
         return responseEntity;
@@ -52,10 +52,10 @@ public class ResponseConverter {
         return response;
     }
     @TypeConverter
-    DemographicsResponseType getColorResponseType (DemographicsResponseEntity demographicsResponse) {
+    DemographicResponseType getColorResponseType (DemographicResponseEntity demographicsResponse) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        DemographicsResponseType response = new DemographicsResponseType();
+        DemographicResponseType response = new DemographicResponseType();
         response.setImage(demographicsResponse.getImage());
         response.setData(gson.fromJson(demographicsResponse.getData(), DemographicDataType.class));
         return response;
