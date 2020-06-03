@@ -80,10 +80,10 @@ public class LocalDataSource {
     public void removeColorFavoriteResponse(String image) {
         dataBase.colorResponseDao().removeResponse(image);
     }
-    public LiveData<SettingsType> getOptions() {
-        return helper.getOptions();
+    public LiveData<SettingsType> getSettings() {
+        return helper.getSetting();
     }
-    public void setOptions(SettingsType options) {
-        helper.setOptions(options);
+    public void setThreshold(int threshold) {
+        helper.setThreshold(threshold);
     }
 }

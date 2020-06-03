@@ -10,8 +10,8 @@ import com.example.recognition.model.Repository;
 import com.example.recognition.types.data.GeneralDataType;
 
 public class GeneralViewModel extends ViewModel {
-    private MutableLiveData<String> image;
-    private MediatorLiveData<GeneralDataType> data;
+    private MutableLiveData<String> image = new MutableLiveData<>();
+    private MediatorLiveData<GeneralDataType> data = new MediatorLiveData<>();
     private Repository repository;
     public GeneralViewModel(Repository repository) {
         this.repository = repository;

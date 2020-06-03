@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.recognition.model.remoutdata.ColorResponsePojo;
 import com.example.recognition.model.remoutdata.DemographicResponsePojo;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo;
+import com.example.recognition.types.SettingsType;
 import com.example.recognition.types.data.ColorDataType;
 import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralDataType;
@@ -26,6 +27,12 @@ public class Repository {
     public Repository(LocalDataSource localDataSource, RemoteDataSource remoteDataSource) {
         this.localDataSource = localDataSource;
         this.remoteDataSource = remoteDataSource;
+    }
+    public LiveData<SettingsType> getSettings() {
+        return localDataSource.getSettings();
+    }
+    public void setThreshold(int threshold) {
+        localDataSource.setThreshold(threshold);
     }
     public LiveData<GeneralDataType> getGeneralData(final String image) {
         executorIO.execute(new Runnable() {

@@ -9,7 +9,7 @@ import com.example.recognition.types.response.DemographicResponseType;
 import com.example.recognition.types.response.GeneralResponseType;
 
 public class DataMapper {
-    public static SettingsType getOptionsMap() {
+    public static SettingsType getSettingMap() {
         return new SettingsType(0);
     }
     public static GeneralResponseType getGeneralResponseMap() {

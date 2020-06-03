@@ -10,8 +10,8 @@ import com.example.recognition.model.Repository;
 import com.example.recognition.types.data.ColorDataType;
 
 public class ColorViewModel extends ViewModel {
-    private MutableLiveData<String> image;
-    private MediatorLiveData<ColorDataType> data;
+    private MutableLiveData<String> image = new MutableLiveData<>();
+    private MediatorLiveData<ColorDataType> data = new MediatorLiveData<>();
     private Repository repository;
     public ColorViewModel(Repository repository) {
         this.repository = repository;

@@ -8,10 +8,10 @@ public class SettingsType {
     public SettingsType(){
 
     }
-    int getThreshold() {
+    public int getThreshold() {
         return threshold;
     }
-    void setThreshold(int threshold) {
+    public void setThreshold(int threshold) {
         this.threshold = threshold;
     }
 }

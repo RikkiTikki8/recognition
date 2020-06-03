@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class SharedPreferencesHelper {
-    private final static String OPTIONS_KEY = "OPTIONS_KEY";
+    private final static String SETTINGS_KEY = "SETTINGS_KEY";
     public static final String LAST_RESPONSE_KEY = "LAST_RESPONSE_KEY";
     private MutableLiveData<SettingsType> optionsData = new MutableLiveData<>();
     private MutableLiveData<GeneralDataType> generalResponse = new MutableLiveData<>();
@@ -32,15 +32,18 @@ public class SharedPreferencesHelper {
         GsonBuilder builder = new GsonBuilder();
         gson = builder.create();
     }
-    public LiveData<SettingsType> getOptions() {
-        String json = sharedPreferences.getString(OPTIONS_KEY, gson.toJson(DataMapper.getOptionsMap()));
+    public LiveData<SettingsType> getSetting() {
+        String json = sharedPreferences.getString(SETTINGS_KEY, gson.toJson(DataMapper.getSettingMap()));
         optionsData.setValue(gson.fromJson(json, SettingsType.class));
         return optionsData;
     }
-    public void setOptions(SettingsType options) {
-        String json = gson.toJson(options);
-        sharedPreferences.edit().putString(OPTIONS_KEY, json).apply();
-        optionsData.setValue(options);
+    public void setThreshold(int threshold) {
+        String loadedSettings = sharedPreferences.getString(SETTINGS_KEY, gson.toJson(DataMapper.getSettingMap()));
+        SettingsType settings = gson.fromJson(loadedSettings, SettingsType.class);
+        settings.setThreshold(threshold);
+        String uploadedSettings = gson.toJson(settings);
+        sharedPreferences.edit().putString(SETTINGS_KEY, uploadedSettings).apply();
+        optionsData.setValue(settings);
     }
     public GeneralResponseType getLastGeneralResponse() {
         String json = sharedPreferences.getString(

@@ -10,8 +10,8 @@ import com.example.recognition.model.Repository;
 import com.example.recognition.types.data.DemographicDataType;
 
 public class DemographicViewModel extends ViewModel {
-    private MutableLiveData<String> image;
-    private MediatorLiveData<DemographicDataType> data;
+    private MutableLiveData<String> image = new MutableLiveData<>();
+    private MediatorLiveData<DemographicDataType> data = new MediatorLiveData<>();
     private Repository repository;
     public DemographicViewModel(Repository repository) {
         this.repository = repository;
