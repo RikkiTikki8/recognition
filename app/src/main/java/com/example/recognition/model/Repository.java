@@ -27,10 +27,6 @@ public class Repository {
         this.localDataSource = localDataSource;
         this.remoteDataSource = remoteDataSource;
     }
-    public LiveData<List<String>> getModelList() {
-        localDataSource.setModels(remoteDataSource.getModels());
-        return localDataSource.getModels();
-    }
     public LiveData<GeneralDataType> getGeneralData(final String image) {
         executorIO.execute(new Runnable() {
             @Override
@@ -39,7 +35,7 @@ public class Repository {
                 try {
                     localDataSource.setLastGeneralResponse(
                             ResponseConverter.convertGeneral(
-                                image, remoteDataSource.<GeneralResponsePojo>fetchData(image, RemoteDataSource.Model.GENERAL)
+                                image, remoteDataSource.fetchGeneralData(image)
                             )
                     );
                 } catch (IOException e) {
@@ -67,7 +63,7 @@ public class Repository {
                 try {
                     localDataSource.setLastDemographicResponse(
                             ResponseConverter.convertDemographic(
-                                    image, remoteDataSource.<DemographicResponsePojo>fetchData(image, RemoteDataSource.Model.DEMOGRAPHICS)
+                                    image, remoteDataSource.fetchDemographicData(image)
                             )
                     );
                 } catch (IOException e) {
@@ -95,7 +91,7 @@ public class Repository {
                 try {
                     localDataSource.setLastColorResponse(
                             ResponseConverter.convertColor(
-                                    image, remoteDataSource.<ColorResponsePojo>fetchData(image, RemoteDataSource.Model.COLOR)
+                                    image, remoteDataSource.fetchColorData(image)
                             )
                     );
                 } catch (IOException e) {

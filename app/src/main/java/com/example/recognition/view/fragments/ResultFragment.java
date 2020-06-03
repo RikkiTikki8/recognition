@@ -9,11 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.recognition.R;
-import com.example.recognition.model.types.Data;
 
-import java.util.List;
-
-public class ResultFragment extends BaseFragment {
+public class ResultFragment {
     private int mDataIndex;
     public static ResultFragment newInstance() {
         return new ResultFragment();

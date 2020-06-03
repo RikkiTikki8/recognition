@@ -8,6 +8,9 @@ import android.provider.MediaStore;;
 import androidx.annotation.NonNull;
 
 import com.example.recognition.model.remoutdata.ClarifaiService;
+import com.example.recognition.model.remoutdata.ColorResponsePojo;
+import com.example.recognition.model.remoutdata.DemographicResponsePojo;
+import com.example.recognition.model.remoutdata.GeneralResponsePojo;
 import com.example.recognition.model.remoutdata.Request;
 
 import java.io.IOException;
@@ -21,21 +24,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RemoteDataSource {
-
-    public enum Model {
-        GENERAL,
-        DEMOGRAPHICS,
-        COLOR;
-
-        @NonNull
-        @Override
-        public String toString() {
-            return this.name().substring(0, 1) + this.name().substring(1).toLowerCase();
-        }
-    }
-
-    private final String prefix = "$(base64 ";
-    private final String postfix = ")";
     private String apiKey;
     private ClarifaiService service;
     private Context context;
@@ -48,31 +36,35 @@ public class RemoteDataSource {
                 .build();
         service = retrofit.create(ClarifaiService.class);
     }
-    public <T> Response<T> fetchData(String uri, Model model) throws IOException {
+    public Response<GeneralResponsePojo> fetchGeneralData(String uri) throws IOException {
         String path = getRealPathFromURI(context, Uri.parse(uri));
-        Request request = new Request(
+        Call<GeneralResponsePojo> call = service.generalRequest(apiKey, makeRequest(path));
+        return call.execute();
+    }
+    public Response<DemographicResponsePojo> fetchDemographicData(String uri) throws IOException {
+        String path = getRealPathFromURI(context, Uri.parse(uri));
+        Call<DemographicResponsePojo> call = service.demographicRequest(apiKey, makeRequest(path));
+        return call.execute();
+    }
+    public Response<ColorResponsePojo> fetchColorData(String uri) throws IOException {
+        String path = getRealPathFromURI(context, Uri.parse(uri));
+        Call<ColorResponsePojo> call = service.colorRequest(apiKey, makeRequest(path));
+        return call.execute();
+    }
+    private Request makeRequest(String path) {
+        return new Request(
                 new ArrayList<Request.Inputs>(
                         Arrays.asList(
                                 new Request.Inputs(
                                         new Request.Inputs.Data(
                                                 new Request.Inputs.Data.Image(
-                                                        prefix  + path + postfix
+                                                        "$(base64 "  + path + ")"
                                                 )
                                         )
                                 )
                         )
                 )
         );
-        Call<T> call = service.sendRequest(apiKey, model.toString(), request);
-        return call.execute();
-    }
-    public List<String> getModels() {
-        List<String> listModels = new ArrayList<>();
-        Model[] models = Model.values();
-        for (Model model : models) {
-            listModels.add(model.toString());
-        }
-        return listModels;
     }
     private String getRealPathFromURI(Context context, Uri uri) {
         String filePath = "";
