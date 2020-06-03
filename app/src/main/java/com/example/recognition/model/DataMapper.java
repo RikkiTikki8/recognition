@@ -1,6 +1,6 @@
 package com.example.recognition.model;
 
-import com.example.recognition.types.OptionsType;
+import com.example.recognition.types.SettingsType;
 import com.example.recognition.types.data.ColorDataType;
 import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralDataType;
@@ -9,8 +9,8 @@ import com.example.recognition.types.response.DemographicResponseType;
 import com.example.recognition.types.response.GeneralResponseType;
 
 public class DataMapper {
-    public static OptionsType getOptionsMap() {
-        return new OptionsType(0);
+    public static SettingsType getOptionsMap() {
+        return new SettingsType(0);
     }
     public static GeneralResponseType getGeneralResponseMap() {
         GeneralResponseType mapData = new GeneralResponseType();

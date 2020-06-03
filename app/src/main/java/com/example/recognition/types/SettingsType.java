@@ -1,11 +1,11 @@
 package com.example.recognition.types;
 
-public class OptionsType {
+public class SettingsType {
     protected int threshold;
-    public OptionsType(int threshold) {
+    public SettingsType(int threshold) {
         this.threshold = threshold;
     }
-    public OptionsType(){
+    public SettingsType(){
 
     }
     int getThreshold() {

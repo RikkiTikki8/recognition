@@ -19,7 +19,7 @@ public class App extends Application {
         repository = new Repository(new LocalDataSource(this), new RemoteDataSource(this, getString(R.string.API_KEY)));
         factory = new ViewModelFactory(repository);
     }
-    public ViewModelProvider.Factory getViewModeFactory(){
+    public ViewModelProvider.Factory getViewModelFactory() {
         return factory;
     }
 }

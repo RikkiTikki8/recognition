@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.recognition.model.DataMapper;
-import com.example.recognition.types.OptionsType;
+import com.example.recognition.types.SettingsType;
 import com.example.recognition.types.data.ColorDataType;
 import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralDataType;
@@ -20,7 +20,7 @@ import com.google.gson.GsonBuilder;
 public class SharedPreferencesHelper {
     private final static String OPTIONS_KEY = "OPTIONS_KEY";
     public static final String LAST_RESPONSE_KEY = "LAST_RESPONSE_KEY";
-    private MutableLiveData<OptionsType> optionsData = new MutableLiveData<>();
+    private MutableLiveData<SettingsType> optionsData = new MutableLiveData<>();
     private MutableLiveData<GeneralDataType> generalResponse = new MutableLiveData<>();
     private MutableLiveData<DemographicDataType> demographicsResponse = new MutableLiveData<>();
     private MutableLiveData<ColorDataType> colorResponse = new MutableLiveData<>();
@@ -32,12 +32,12 @@ public class SharedPreferencesHelper {
         GsonBuilder builder = new GsonBuilder();
         gson = builder.create();
     }
-    public LiveData<OptionsType> getOptions() {
+    public LiveData<SettingsType> getOptions() {
         String json = sharedPreferences.getString(OPTIONS_KEY, gson.toJson(DataMapper.getOptionsMap()));
-        optionsData.setValue(gson.fromJson(json, OptionsType.class));
+        optionsData.setValue(gson.fromJson(json, SettingsType.class));
         return optionsData;
     }
-    public void setOptions(OptionsType options) {
+    public void setOptions(SettingsType options) {
         String json = gson.toJson(options);
         sharedPreferences.edit().putString(OPTIONS_KEY, json).apply();
         optionsData.setValue(options);

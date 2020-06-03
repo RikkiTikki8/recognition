@@ -10,7 +10,7 @@ import com.example.recognition.model.localdata.room.DataBase;
 import com.example.recognition.types.data.ColorDataType;
 import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.data.GeneralDataType;
-import com.example.recognition.types.OptionsType;
+import com.example.recognition.types.SettingsType;
 import com.example.recognition.types.response.ColorResponseType;
 import com.example.recognition.types.response.DemographicResponseType;
 import com.example.recognition.types.response.GeneralResponseType;
@@ -80,10 +80,10 @@ public class LocalDataSource {
     public void removeColorFavoriteResponse(String image) {
         dataBase.colorResponseDao().removeResponse(image);
     }
-    public LiveData<OptionsType> getOptions() {
+    public LiveData<SettingsType> getOptions() {
         return helper.getOptions();
     }
-    public void setOptions(OptionsType options) {
+    public void setOptions(SettingsType options) {
         helper.setOptions(options);
     }
 }
