@@ -9,14 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.recognition.R;
-import com.example.recognition.model.types.Data;
 
-import java.util.List;
-
-public class ResponseFragment extends BaseFragment {
+public class ResultFragment {
     private int mDataIndex;
-    public static ResponseFragment newInstance() {
-        return new ResponseFragment();
+    public static ResultFragment newInstance() {
+        return new ResultFragment();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

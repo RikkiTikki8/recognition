@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.example.recognition.R;
 
 public class MainFragment extends Fragment {
+    private View view;
     public static final String MODEL_INDEX = "MODEL_INDEX";
     public static final String MODEL_NAME = "MODEL_NAME";
 
@@ -19,11 +20,11 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         view = inflater.inflate(R.layout.fragment_main, container, false);
-        Button button;
+
         final String[] models = mAdapter.getModels();
-        LinearLayout layout = mView.findViewById(R.id.main_fragment_layout);
+        LinearLayout layout = view.findViewById(R.id.main_fragment_layout);
         for (int i = 0; i < models.length; i++) {
-            button = new Button(mView.getContext());
+            Button button = new Button(view.getContext());
             button.setLayoutParams(
                     new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -35,13 +36,8 @@ public class MainFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(MODEL_INDEX, modelIndex);
-                    bundle.putString(MODEL_NAME, models[modelIndex]);
-                    Fragment fragment = RequestFragment.newInstance();
-                    fragment.setArguments(bundle);
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, fragment)
+                            .replace(R.id.fragment_container, RequestFragment.newInstance())
                             .addToBackStack(RequestFragment.class.getName())
                             .commit();
                 }

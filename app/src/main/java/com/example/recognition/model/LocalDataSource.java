@@ -26,12 +26,6 @@ public class LocalDataSource {
         dataBase = Room.databaseBuilder(context, DataBase.class, DATA_BASE_FILE).build();
         helper = new SharedPreferencesHelper(context, SHARED_PREFERENCES_FILE);
     }
-    public LiveData<List<String>> getModels() {
-        return dataBase.modelsDao().getModels();
-    }
-    public void setModels(List<String> models) {
-        dataBase.modelsDao().addModels(models);
-    }
     public LiveData<GeneralDataType> getLastGeneralData() {
         return helper.getLastGeneralData();
     }

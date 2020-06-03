@@ -7,10 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.recognition.model.Repository;
-<<<<<<< HEAD
-=======
 import com.example.recognition.types.response.GeneralResponseType;
->>>>>>> 71d1eea35b61b0fd5a5c1c21c92c58fbec7baef8
 
 import java.util.List;
 
