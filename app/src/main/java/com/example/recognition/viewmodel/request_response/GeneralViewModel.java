@@ -27,6 +27,9 @@ public class GeneralViewModel extends ViewModel {
         }
         return data;
     }
+    public void addToFavorite() {
+        repository.addLastGeneralToFavorites();
+    }
     public void setImage(String image) {
         if (this.image.getValue() != image) {
             data.setValue(null);

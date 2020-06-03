@@ -71,6 +71,15 @@ public class LocalDataSource {
     public LiveData<List<ColorResponseType>> getColorFavorites() {
         return dataBase.colorResponseDao().getFavorites();
     }
+    public LiveData<GeneralResponseType> getGeneralFavorite(String image) {
+        return dataBase.generalResponseDao().getFavorite(image);
+    }
+    public LiveData<DemographicResponseType> getDemographicFavorite(String image) {
+        return dataBase.demographicsResponseDao().getFavorite(image);
+    }
+    public LiveData<ColorResponseType> getColorFavorite(String image) {
+        return dataBase.colorResponseDao().getFavorite(image);
+    }
     public void removeGeneralFavoriteResponse(String image) {
         dataBase.generalResponseDao().removeResponse(image);
     }

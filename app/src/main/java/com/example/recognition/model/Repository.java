@@ -59,6 +59,9 @@ public class Repository {
     public void addLastGeneralToFavorites() {
         localDataSource.addLastGeneralResponseToFavorite();
     }
+    public LiveData<GeneralResponseType> getGeneralFavorite(String image) {
+        return localDataSource.getGeneralFavorite(image);
+    }
     public void removeGeneralFavorite(String image) {
         localDataSource.removeGeneralFavoriteResponse(image);
     }
@@ -87,6 +90,9 @@ public class Repository {
     public void addLastDemographicToFavorites() {
         localDataSource.addLastDemographicResponseToFavorite();
     }
+    public LiveData<DemographicResponseType> getDemographicFavorite (String image) {
+        return localDataSource.getDemographicFavorite(image);
+    }
     public void removeDemographicFavorite(String image) {
         localDataSource.removeDemographicFavoriteResponse(image);
     }
@@ -114,6 +120,9 @@ public class Repository {
     }
     public void addLastColorToFavorites() {
         localDataSource.addLastColorResponseToFavorite();
+    }
+    public LiveData<ColorResponseType> getColorFavorite(String image) {
+        return localDataSource.getColorFavorite(image);
     }
     public void removeColorFavorite(String image) {
         localDataSource.removeColorFavoriteResponse(image);

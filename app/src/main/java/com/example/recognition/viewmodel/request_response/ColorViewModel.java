@@ -27,6 +27,9 @@ public class ColorViewModel extends ViewModel {
         }
         return data;
     }
+    public void addToFavorite() {
+        repository.addLastColorToFavorites();
+    }
     public void setImage(String image) {
         if (this.image.getValue() != image) {
             data.setValue(null);

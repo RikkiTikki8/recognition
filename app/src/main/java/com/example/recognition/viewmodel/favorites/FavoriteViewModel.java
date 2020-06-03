@@ -1,4 +1,4 @@
-package com.example.recognition.viewmodel;
+package com.example.recognition.viewmodel.favorites;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;

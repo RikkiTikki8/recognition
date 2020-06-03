@@ -5,6 +5,11 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.model.Repository;
+import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
+import com.example.recognition.viewmodel.favorites.DemographicFavoriteViewModel;
+import com.example.recognition.viewmodel.favorites.FavoriteViewModel;
+import com.example.recognition.viewmodel.favorites.GeneralFavoriteViewModel;
+import com.example.recognition.viewmodel.favorites.ImageFavoriteViewModel;
 import com.example.recognition.viewmodel.request_response.ColorViewModel;
 import com.example.recognition.viewmodel.request_response.DemographicViewModel;
 import com.example.recognition.viewmodel.request_response.GeneralViewModel;
@@ -27,6 +32,14 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             return (T)(new DemographicViewModel(repository));
         } else if(modelClass.getName().equals("ColorViewModel")) {
             return (T) (new ColorViewModel(repository));
+        } else if(modelClass.getName().equals("GeneralFavoriteViewModel")){
+            return (T)(new GeneralFavoriteViewModel(repository));
+        } else if(modelClass.getName().equals("DemographicFavoriteViewModel")){
+            return (T)(new DemographicFavoriteViewModel(repository));
+        } else if(modelClass.getName().equals("ColorFavoriteViewModel")) {
+            return (T) (new ColorFavoriteViewModel(repository));
+        } else if(modelClass.getName().equals("ImageFavoriteViewModel")) {
+            return (T) (new ImageFavoriteViewModel());
         }
         return null;
     }
