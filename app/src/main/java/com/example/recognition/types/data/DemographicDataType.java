@@ -154,8 +154,8 @@ public class DemographicDataType {
             this.frame = frame;
         }
     }
-    private Face[] faces;
 
+    private Face[] faces;
     public Face[] getFaces() {
         return faces;
     }

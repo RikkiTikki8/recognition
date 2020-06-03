@@ -1,4 +1,4 @@
-package com.example.recognition.view.response;
+package com.example.recognition.view.response_favorite.GeneralFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,23 +16,14 @@ import com.example.recognition.aplication.App;
 import com.example.recognition.types.data.GeneralDataType;
 import com.example.recognition.viewmodel.request_response.GeneralViewModel;
 
-public class GeneralResponseFragment extends Fragment implements Observer<GeneralDataType> {
+public class GeneralResponseFragment extends BaseGeneralResponseFragment {
 
-    private View view;
     private GeneralViewModel viewModel;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_choose_image, container, false);
-        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication()).getViewModelFactory()).get(GeneralViewModel.class);
+    protected void init() {
+        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
+                .getViewModelFactory()).get(GeneralViewModel.class);
         viewModel.getData().observe(getViewLifecycleOwner(), this);
-        return view;
     }
-
-    @Override
-    public void onChanged(GeneralDataType data) {
-        //TODO
-    }
-
 }

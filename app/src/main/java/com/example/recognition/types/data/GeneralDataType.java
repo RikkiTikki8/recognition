@@ -1,6 +1,7 @@
 package com.example.recognition.types.data;
 
 public class GeneralDataType{
+
     public static class Property {
         private String name;
         private double value;

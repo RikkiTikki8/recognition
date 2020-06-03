@@ -1,4 +1,4 @@
-package com.example.recognition.view.response;
+package com.example.recognition.view.response_favorite.GeneralFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,25 +13,24 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.R;
 import com.example.recognition.aplication.App;
-import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.viewmodel.request_response.ColorViewModel;
+import com.example.recognition.types.data.GeneralDataType;
+import com.example.recognition.viewmodel.request_response.GeneralViewModel;
 
-public class ColorResponseFragment extends Fragment implements Observer<ColorDataType> {
+public abstract class BaseGeneralResponseFragment extends Fragment implements Observer<GeneralDataType> {
 
     private View view;
-    private ColorViewModel viewModel;
+    protected abstract void init();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_choose_image, container, false);
-        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication()).getViewModelFactory()).get(ColorViewModel.class);
-        viewModel.getData().observe(getViewLifecycleOwner(), this);
+        init();
         return view;
     }
 
     @Override
-    public void onChanged(ColorDataType data) {
+    public void onChanged(GeneralDataType data) {
         //TODO
     }
 }
