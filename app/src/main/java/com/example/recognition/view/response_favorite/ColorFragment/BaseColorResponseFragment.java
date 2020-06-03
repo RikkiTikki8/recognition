@@ -10,9 +10,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.recognition.R;
+import com.example.recognition.types.data.ColorDataType;
 import com.example.recognition.types.response.ColorResponseType;
 
-public abstract class BaseColorResponseFragment extends Fragment implements Observer<ColorResponseType>  {
+public abstract class BaseColorResponseFragment extends Fragment implements Observer<ColorDataType>  {
 
     private View view;
     protected abstract void init();
@@ -26,7 +27,7 @@ public abstract class BaseColorResponseFragment extends Fragment implements Obse
     }
 
     @Override
-    public void onChanged(ColorResponseType colorResponseType) {
+    public void onChanged(ColorDataType colorDataType) {
         //TODO
     }
 }

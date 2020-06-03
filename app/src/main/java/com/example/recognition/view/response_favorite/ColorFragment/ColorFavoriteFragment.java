@@ -20,7 +20,7 @@ public class ColorFavoriteFragment extends BaseColorResponseFragment {
         imageViewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String image) {
-                viewModel.getFavorite(image).observe(getViewLifecycleOwner(), this);
+                viewModel.getFavorite(image).observe(getViewLifecycleOwner(), ColorFavoriteFragment.this);
             }
             //TODO Update(String image) { ... GeneralFavoriteViewModel.getFavorite(image).observe(this, this); }
         });

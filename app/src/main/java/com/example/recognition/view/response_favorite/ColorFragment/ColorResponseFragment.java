@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.aplication.App;
 import com.example.recognition.types.data.ColorDataType;
+import com.example.recognition.types.response.ColorResponseType;
 import com.example.recognition.viewmodel.request_response.ColorViewModel;
 
 public class ColorResponseFragment extends BaseColorResponseFragment implements Observer<ColorDataType> {
@@ -15,7 +16,7 @@ public class ColorResponseFragment extends BaseColorResponseFragment implements 
     protected void init() {
         viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(ColorViewModel.class);
-        viewModel.getData().observe(getViewLifecycleOwner(), this);
+        viewModel.getData().observe(getViewLifecycleOwner(), ColorResponseFragment.this);
     }
 
     @Override
