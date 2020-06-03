@@ -10,10 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.recognition.R;
 
-public class ResultFragment {
+public class ResponseFragment {
     private int mDataIndex;
-    public static ResultFragment newInstance() {
-        return new ResultFragment();
+    public static ResponseFragment newInstance() {
+        return new ResponseFragment();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
