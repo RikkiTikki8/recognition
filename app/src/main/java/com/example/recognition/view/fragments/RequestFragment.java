@@ -1,7 +1,6 @@
 package com.example.recognition.view.fragments;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +53,7 @@ public class RequestFragment extends BaseFragment {
                     Bundle b = new Bundle();
                     b.putString(IMAGE_KEY, mImageUri);
                     b.putInt(INDEX_KEY, mIndex);
-                    Fragment fragment = ResultFragment.newInstance();
+                    Fragment fragment = ResponseFragment.newInstance();
                     fragment.setArguments(b);
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, fragment)

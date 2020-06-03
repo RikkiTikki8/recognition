@@ -13,10 +13,10 @@ import com.example.recognition.model.types.Data;
 
 import java.util.List;
 
-public class ResultFragment extends BaseFragment {
+public class ResponseFragment extends BaseFragment {
     private int mDataIndex;
-    public static ResultFragment newInstance() {
-        return new ResultFragment();
+    public static ResponseFragment newInstance() {
+        return new ResponseFragment();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
