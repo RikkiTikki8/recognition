@@ -58,7 +58,6 @@ public class SharedPreferencesHelper {
         return generalResponse;
     }
     public void setGeneralResponse(GeneralResponse response) {
-        generalResponse.setValue(response);
         sharedPreferences.edit().putString(
                 LAST_RESPONSE_KEY + GeneralResponse.class.getSimpleName(),
                 gson.toJson(response)
@@ -80,7 +79,6 @@ public class SharedPreferencesHelper {
         return demographicsResponse;
     }
     public void setDemographicsResponse(DemographicResponse response) {
-        demographicsResponse.setValue(response);
         sharedPreferences.edit().putString(
                 LAST_RESPONSE_KEY + DemographicResponse.class.getSimpleName(),
                 gson.toJson(response)
@@ -102,7 +100,6 @@ public class SharedPreferencesHelper {
         return colorResponse;
     }
     public void setColorResponse(ColorResponse response) {
-        colorResponse.setValue(response);
         sharedPreferences.edit().putString(
                 LAST_RESPONSE_KEY + ColorResponse.class.getSimpleName(),
                 gson.toJson(response)

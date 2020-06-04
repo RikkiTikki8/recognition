@@ -37,7 +37,6 @@ public class Repository {
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
-                loadStatus.setValue(true);
                 try {
                     localDataSource.setLastGeneralResponse(
                             ResponseConverter.convertGeneral(
@@ -47,7 +46,6 @@ public class Repository {
                 } catch (IOException e) {
 
                 }
-                loadStatus.setValue(false);
             }
         });
         return localDataSource.getLastGeneralData();
@@ -58,8 +56,7 @@ public class Repository {
     public void addLastGeneralToFavorites() {
         executorIO.execute(new Runnable() {
             @Override
-            public void run() {
-                localDataSource.addLastGeneralResponseToFavorite();
+            public void run() { localDataSource.addLastGeneralResponseToFavorite();
             }
         });
     }
@@ -69,8 +66,7 @@ public class Repository {
     public void removeGeneralFavorite(final String image) {
         executorIO.execute(new Runnable() {
                @Override
-               public void run() {
-                   localDataSource.removeGeneralFavoriteResponse(image);
+               public void run() { localDataSource.removeGeneralFavoriteResponse(image);
                }
            }
         );
@@ -79,7 +75,6 @@ public class Repository {
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
-                loadStatus.setValue(true);
                 try {
                     localDataSource.setLastDemographicResponse(
                             ResponseConverter.convertDemographic(
@@ -89,7 +84,6 @@ public class Repository {
                 } catch (IOException e) {
 
                 }
-                loadStatus.setValue(false);
             }
         });
         return localDataSource.getLastDemographicData();
@@ -118,7 +112,6 @@ public class Repository {
         );
     }
     public LiveData<ColorResponse> getColorResponse(final String image) {
-        loadStatus.setValue(true);
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
@@ -131,7 +124,6 @@ public class Repository {
                 } catch (IOException e) {
 
                 }
-                loadStatus.setValue(false);
             }
         });
         return localDataSource.getLastColorData();
@@ -157,8 +149,5 @@ public class Repository {
                 localDataSource.removeColorFavoriteResponse(image);
             }
         });
-    }
-    public LiveData<Boolean> getLoadStatus() {
-        return loadStatus;
     }
 }
