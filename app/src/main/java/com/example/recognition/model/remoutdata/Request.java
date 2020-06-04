@@ -3,18 +3,18 @@ package com.example.recognition.model.remoutdata;
 import java.util.List;
 
 public class Request {
-    public static class Inputs {
+    public static class Input {
         public static class Data {
             public static class Image {
-                public Image(String base64) {
-                    this.base64 = base64;
+                public Image(String url) {
+                    this.url = url;
                 }
-                private String base64;
-                public void setBase64(String base64){
-                    this.base64 = base64;
+                private String url;
+                public void setUrl(String url){
+                    this.url = url;
                 }
-                public String getBase64(){
-                    return this.base64;
+                public String getUrl(){
+                    return this.url;
                 }
             }
             public Data(Image image) {
@@ -28,7 +28,7 @@ public class Request {
                 return this.image;
             }
         }
-        public Inputs(Data data) {
+        public Input(Data data) {
             this.data = data;
         }
         private Data data;
@@ -39,14 +39,14 @@ public class Request {
             return this.data;
         }
     }
-    public Request(List<Inputs> inputs) {
+    public Request(Input[] inputs) {
         this.inputs = inputs;
     }
-    private List<Inputs> inputs;
-    public void setInputs(List<Inputs> inputs){
+    private Input[] inputs;
+    public void setInputs(Input[] inputs){
         this.inputs = inputs;
     }
-    public List<Inputs> getInputs(){
+    public Input[] getInputs(){
         return this.inputs;
     }
 }

@@ -1,12 +1,14 @@
 package com.example.recognition.model;
 
+import android.util.Log;
+
 import com.example.recognition.model.localdata.room.entity.ColorResponse;
 import com.example.recognition.model.remoutdata.ColorResponsePojo;
 import com.example.recognition.model.remoutdata.DemographicResponsePojo;
 import com.example.recognition.model.remoutdata.DemographicResponsePojo.Output.Data.Region.RegionInfo.BoundingBox;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo.Results.Outputs;
-import com.example.recognition.model.remoutdata.GeneralResponsePojo.Results.Outputs.Data.Concepts;
+import com.example.recognition.model.remoutdata.GeneralResponsePojo.Results.Outputs.Data.Concept;
 import com.example.recognition.types.ColorDataType;
 import com.example.recognition.types.ColorDataType.Color;
 import com.example.recognition.types.DemographicDataType;
@@ -42,7 +44,7 @@ public class ResponseConverter {
                 Property property;
                 for (Results result : response.getResults()) {
                     for (Outputs output : result.getOutputs()) {
-                        for (Concepts concept : output.getData().getConcepts()) {
+                        for (Concept concept : output.getData().getConcepts()) {
                             property = new Property();
                             property.setValue(concept.getValue());
                             property.setName(concept.getName());
@@ -112,6 +114,8 @@ public class ResponseConverter {
         }
     }
     public static ColorResponse convertColor (String image, Response<ColorResponsePojo> retrofitResponse) {
+        //Log.d("Response", retrofitResponse.message());
+        //Log.d("Response", retrofitResponse.headers().toString());
         if (retrofitResponse.isSuccessful()) {
             ColorResponsePojo response = retrofitResponse.body();
             ColorResponse responseType = new ColorResponse();

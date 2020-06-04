@@ -7,20 +7,20 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ClarifaiService {
-    String BASE_URL = "https://api.clarifai.com/";
-    @Headers({"authorization: baf77c8d447d41b2b1bde3950c633a01",
+    String BASE_URL = "https://api.clarifai.com/v2/";
+    @Headers({"authorization: Key baf77c8d447d41b2b1bde3950c633a01",
             "content-type: application/json"
     })
-    @POST("v2/workflows/General/results")
+    @POST("workflows/General/results")
     Call<GeneralResponsePojo> generalRequest(@Body Request request);
-    @Headers({"authorization: baf77c8d447d41b2b1bde3950c633a01",
+    @Headers({"authorization: Key baf77c8d447d41b2b1bde3950c633a01",
             "content-type: application/json"
     })
-    @POST("v2/workflows/Demographics/results")
+    @POST("workflows/Demographics/results")
     Call<DemographicResponsePojo> demographicRequest(@Body Request request);
-    @Headers({"authorization: baf77c8d447d41b2b1bde3950c633a01",
+    @Headers({"authorization: Key baf77c8d447d41b2b1bde3950c633a01",
             "content-type: application/json"
     })
-    @POST("v2/workflows/Color/results")
+    @POST("workflows/Color/results")
     Call<ColorResponsePojo> colorRequest(@Body Request request);
 }
