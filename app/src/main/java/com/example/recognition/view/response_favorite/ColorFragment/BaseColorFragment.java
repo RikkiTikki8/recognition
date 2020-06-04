@@ -43,9 +43,8 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
     public void onChanged(ColorResponse response) {
         imageView.setImageURI(Uri.parse(response.getImage()));
         RecyclerView rv = view.findViewById(R.id.rv_col);
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        rv.setLayoutManager(llm);
-        ColorRecyclerAdapter adapter = new ColorRecyclerAdapter(response.getData().getColors());
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        final ColorRecyclerAdapter adapter = new ColorRecyclerAdapter(response.getData().getColors());
         rv.setAdapter(adapter);
 //        Integer response_text_size = 20;
 //        ScrollView scroll_view = view.findViewById(R.id.scroll_view);

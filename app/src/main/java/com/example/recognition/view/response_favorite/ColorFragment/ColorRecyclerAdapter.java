@@ -18,6 +18,7 @@ import java.util.List;
 public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdapter.ColorViewHolder>{
 
     ColorDataType.Color[] colors;
+    ColorViewHolder holder;
 
     ColorRecyclerAdapter(ColorDataType.Color[] colors){
         this.colors = colors;
@@ -32,10 +33,11 @@ public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ColorViewHolder holder, int i) {
-        ColorViewHolder.container.setBackgroundColor(Color.parseColor(colors[i].getColor()));
-        ColorViewHolder.name.setText(colors[i].getNameColor());
-        ColorViewHolder.number.setText(colors[i].getColor());
-        ColorViewHolder.percent.setText(colors[i].getPercent());
+        this.holder = holder;
+        holder.container.setBackgroundColor(Color.parseColor(colors[i].getColor()));
+        holder.name.setText(colors[i].getNameColor());
+        holder.number.setText(colors[i].getColor());
+        holder.percent.setText(colors[i].getPercent());
     }
 
     @Override
