@@ -4,7 +4,6 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.recognition.types.ColorDataType;
-
 import org.jetbrains.annotations.NotNull;
 @Entity
 public class ColorResponse {

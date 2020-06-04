@@ -5,17 +5,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.GeneralFavoriteViewModel;
-import com.example.recognition.viewmodel.favorites.ImageFavoriteViewModel;
+import com.example.recognition.viewmodel.ImageViewModel;
 
 public class GeneralFavoriteFragment extends BaseGeneralFragment {
 
-    private ImageFavoriteViewModel imageViewModel;
+    private ImageViewModel imageViewModel;
     private GeneralFavoriteViewModel viewModel;
 
     @Override
     protected void init() {
         viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(GeneralFavoriteViewModel.class);
+        imageViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
+                .getViewModelFactory()).get(ImageViewModel.class);
         imageViewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String image) {

@@ -16,9 +16,9 @@ public class DemographicViewModel extends ViewModel {
     public DemographicViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<DemographicResponse> getData() {
+    public LiveData<DemographicResponse> getData(String image) {
         if (null == data.getValue()) {
-            data.addSource(repository.getDemographicResponse(image.getValue()), new Observer<DemographicResponse>() {
+            data.addSource(repository.getDemographicResponse(image), new Observer<DemographicResponse>() {
                 @Override
                 public void onChanged(DemographicResponse response) {
                     data.setValue(response);
@@ -29,14 +29,5 @@ public class DemographicViewModel extends ViewModel {
     }
     public void addToFavorite() {
         repository.addLastDemographicToFavorites();
-    }
-    public void setImage(String image) {
-        if (this.image.getValue() != image) {
-            data.setValue(null);
-            this.image.setValue(image);
-        }
-    }
-    public LiveData<String> getImage() {
-        return image;
     }
 }
