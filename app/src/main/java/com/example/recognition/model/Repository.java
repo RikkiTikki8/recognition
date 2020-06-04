@@ -1,5 +1,7 @@
 package com.example.recognition.model;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -28,6 +30,9 @@ public class Repository {
     public Repository(LocalDataSource localDataSource, RemoteDataSource remoteDataSource) {
         this.localDataSource = localDataSource;
         this.remoteDataSource = remoteDataSource;
+    }
+    public LiveData<String> getErrorMessage() {
+        return errorMessage;
     }
     public LiveData<SettingsType> getSettings() {
         return localDataSource.getSettings();

@@ -28,6 +28,14 @@ public class GeneralViewModel extends ViewModel {
         return data;
     }
     public LiveData<String> getErrorMassage() {
+        if (null == message.getValue()) {
+            message.addSource(repository.getErrorMessage(), new Observer<String>() {
+                @Override
+                public void onChanged(String s) {
+                    message.setValue(s);
+                }
+            });
+        }
         return message;
     }
     public LiveData<SettingsType> getSettings() {
