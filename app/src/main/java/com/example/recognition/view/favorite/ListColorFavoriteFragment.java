@@ -1,9 +1,11 @@
 package com.example.recognition.view.favorite;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.recognition.R;
 import com.example.recognition.application.App;
 import com.example.recognition.model.localdata.room.entity.ColorResponse;
+import com.example.recognition.model.remoutdata.ColorResponsePojo;
 import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 
 import java.util.List;
@@ -34,6 +37,14 @@ public class ListColorFavoriteFragment extends Fragment {
         return view;
     }
     private void onChangedColorFavorites(List<ColorResponse> response ) {
-
+        for (int i = 0; i < response.size(); i++) {
+            LinearLayout layout;
+            Image image;
+            if (0 == i % 2) {
+                //TODO new LinearLayout
+            }
+            //TODO new Image
+            //TODO linearLayout.add(image);
+        }
     }
 }
