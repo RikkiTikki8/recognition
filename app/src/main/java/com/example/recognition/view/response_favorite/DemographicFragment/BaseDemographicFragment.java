@@ -24,7 +24,7 @@ public abstract class BaseDemographicFragment extends Fragment implements Observ
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_choose_image, container, false);
+        view = inflater.inflate(R.layout.fragment_result_demographic, container, false);
         init();
         return view;
     }

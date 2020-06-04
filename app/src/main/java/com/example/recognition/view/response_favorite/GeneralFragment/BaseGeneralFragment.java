@@ -20,7 +20,7 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_choose_image, container, false);
+        view = inflater.inflate(R.layout.fragment_result_general, container, false);
         init();
         return view;
     }

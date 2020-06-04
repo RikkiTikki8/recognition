@@ -17,35 +17,30 @@ import java.util.List;
 
 public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdapter.ColorViewHolder>{
 
-    List<ColorDataType.Color> colors;
+    ColorDataType.Color[] colors;
 
-    ColorRecyclerAdapter(List<ColorDataType.Color> colors){
+    ColorRecyclerAdapter(ColorDataType.Color[] colors){
         this.colors = colors;
-    }
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
     }
 
     @NonNull
     @Override
     public ColorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_color, parent, false);
-        ColorViewHolder cvh = new ColorViewHolder(view);
-        return cvh;
+        return new ColorViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ColorViewHolder holder, int i) {
-        ColorViewHolder.container.setBackgroundColor(Color.parseColor(colors.get(i).getColor()));
-        ColorViewHolder.name.setText(colors.get(i).getNameColor());
-        ColorViewHolder.number.setText(colors.get(i).getColor());
-        ColorViewHolder.percent.setText(colors.get(i).getPercent());
+        ColorViewHolder.container.setBackgroundColor(Color.parseColor(colors[i].getColor()));
+        ColorViewHolder.name.setText(colors[i].getNameColor());
+        ColorViewHolder.number.setText(colors[i].getColor());
+        ColorViewHolder.percent.setText(colors[i].getPercent());
     }
 
     @Override
     public int getItemCount() {
-        return colors.size();
+        return colors.length;
     }
 
     public static class ColorViewHolder extends RecyclerView.ViewHolder {
