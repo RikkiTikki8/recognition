@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.recognition.aplication.App;
 import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 import com.example.recognition.viewmodel.favorites.ImageFavoriteViewModel;
-import com.example.recognition.viewmodel.request_response.ColorViewModel;
 
 public class ColorFavoriteFragment extends BaseColorResponseFragment {
 
@@ -22,7 +21,6 @@ public class ColorFavoriteFragment extends BaseColorResponseFragment {
             public void onChanged(String image) {
                 viewModel.getFavorite(image).observe(getViewLifecycleOwner(), ColorFavoriteFragment.this);
             }
-            //TODO Update(String image) { ... GeneralFavoriteViewModel.getFavorite(image).observe(this, this); }
         });
     }
 }
