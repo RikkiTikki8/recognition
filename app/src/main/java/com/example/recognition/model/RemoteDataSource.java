@@ -4,7 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.DocumentsContract;
-import android.provider.MediaStore;;
+import android.provider.MediaStore;
+import android.util.Log;;
 import androidx.annotation.NonNull;
 
 import com.example.recognition.model.remoutdata.ClarifaiService;
@@ -24,12 +25,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RemoteDataSource {
-    private String apiKey;
     private ClarifaiService service;
     private Context context;
-    public RemoteDataSource(Context context, String apiKey) {
+    public RemoteDataSource(Context context) {
         this.context = context;
-        this.apiKey = apiKey;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ClarifaiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -38,17 +37,17 @@ public class RemoteDataSource {
     }
     public Response<GeneralResponsePojo> fetchGeneralData(String uri) throws IOException {
         String path = getRealPathFromURI(context, Uri.parse(uri));
-        Call<GeneralResponsePojo> call = service.generalRequest(apiKey, makeRequest(path));
+        Call<GeneralResponsePojo> call = service.generalRequest(makeRequest(path));
         return call.execute();
     }
     public Response<DemographicResponsePojo> fetchDemographicData(String uri) throws IOException {
         String path = getRealPathFromURI(context, Uri.parse(uri));
-        Call<DemographicResponsePojo> call = service.demographicRequest(apiKey, makeRequest(path));
+        Call<DemographicResponsePojo> call = service.demographicRequest(makeRequest(path));
         return call.execute();
     }
     public Response<ColorResponsePojo> fetchColorData(String uri) throws IOException {
         String path = getRealPathFromURI(context, Uri.parse(uri));
-        Call<ColorResponsePojo> call = service.colorRequest(apiKey, makeRequest(path));
+        Call<ColorResponsePojo> call = service.colorRequest(makeRequest(path));
         return call.execute();
     }
     private Request makeRequest(String path) {
@@ -67,28 +66,16 @@ public class RemoteDataSource {
         );
     }
     private String getRealPathFromURI(Context context, Uri uri) {
-        String filePath = "";
-        String wholeID = DocumentsContract.getDocumentId(uri);
-        String id = wholeID.split(":")[1];
-        String[] column = {
-                MediaStore.Images.Media.DATA
-        };
-        String sel = MediaStore.Images.Media._ID + "=?";
-        Cursor cursor = context.getContentResolver()
-                .query(
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                        column,
-                        sel,
-                        new String[]{
-                                id
-                        },
-                        null
-                );
-        int columnIndex = cursor.getColumnIndex(column[0]);
-        if (cursor.moveToFirst()) {
-            filePath = cursor.getString(columnIndex);
+        String result;
+        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        if (cursor == null) {
+            result = uri.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
         }
-        cursor.close();
-        return filePath;
+        return result;
     }
 }

@@ -23,7 +23,6 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        Log.d("Fabric", modelClass.getSimpleName());
         if(modelClass.getSimpleName().equals("SettingViewModel")){
             return (T)(new SettingsViewModel(repository));
         } else if(modelClass.getSimpleName().equals("FavoriteViewModel")){

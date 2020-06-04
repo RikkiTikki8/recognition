@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        repository = new Repository(new LocalDataSource(this), new RemoteDataSource(this, getString(R.string.API_KEY)));
+        repository = new Repository(new LocalDataSource(this), new RemoteDataSource(this));
         factory = new ViewModelFactory(repository);
     }
     public ViewModelProvider.Factory getViewModelFactory() {
