@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.R;
@@ -17,16 +18,22 @@ import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 import java.util.List;
 
 public class ListColorFavoriteFragment extends Fragment {
-    View view;
-    ColorFavoriteViewModel viewModel;
+    private View view;
+    private ColorFavoriteViewModel viewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fr_color_fav, container, false);
         viewModel = new ViewModelProvider(this, ((App) getActivity().getApplication())
                 .getViewModelFactory()).get(ColorFavoriteViewModel.class);
+        viewModel.getColorFavorites().observe(getViewLifecycleOwner(), new Observer<List<ColorResponse>>() {
+            @Override
+            public void onChanged(List<ColorResponse> colorResponses) {
+                onChangedColorFavorites(colorResponses);
+            }
+        });
         return view;
     }
-    private void onChangedGeneralFavorites(List<ColorResponse> response ) {
+    private void onChangedColorFavorites(List<ColorResponse> response ) {
 
     }
 }
