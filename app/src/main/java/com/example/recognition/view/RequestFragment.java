@@ -1,4 +1,4 @@
-package com.example.recognition.view.request;
+package com.example.recognition.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,22 +11,27 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.recognition.R;
+import com.example.recognition.application.App;
+import com.example.recognition.viewmodel.HomeViewModel;
+import com.example.recognition.viewmodel.ImageViewModel;
 
 import static android.app.Activity.RESULT_OK;
 
-public abstract class BaseRequestFragment extends Fragment {
-    protected View view;
-    protected String image;
+public class RequestFragment extends Fragment {
+    private ImageViewModel imageViewModel;
+    private HomeViewModel homeViewModel;
+    private int layoutId;
+    private View view;
+    private String image;
     private Button button_choose;
     private Button button_send;
     private static final int IMAGE_SEARCH_CODE = 1001;
 
-    protected abstract void init();
-    protected abstract int getNextFragmentId();
-    protected abstract void setImage(String image);
     private View.OnClickListener onButtonChooseClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -43,7 +48,7 @@ public abstract class BaseRequestFragment extends Fragment {
             case IMAGE_SEARCH_CODE:
                 if(RESULT_OK == resultCode) {
                     image = data.getData().toString();
-                    setImage(image);
+                    imageViewModel.setImage(image);
                 }
                 break;
         }
@@ -53,7 +58,7 @@ public abstract class BaseRequestFragment extends Fragment {
         @Override
         public void onClick(View v) {
             if (image != null) {
-                Navigation.findNavController(view).navigate(getNextFragmentId());
+                Navigation.findNavController(view).navigate(layoutId);
             }
             else {
                 Toast.makeText(view.getContext(), "Choose an image", Toast.LENGTH_SHORT).show();
@@ -64,7 +69,20 @@ public abstract class BaseRequestFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_choose_image, container, false);
-        init();
+        imageViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication()).getViewModelFactory()).get(ImageViewModel.class);
+        imageViewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String mImage) {
+                image = mImage;
+            }
+        });
+        homeViewModel= new ViewModelProvider(getActivity(), ((App)getActivity().getApplication()).getViewModelFactory()).get(HomeViewModel.class);
+        homeViewModel.getModelLayout().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                layoutId = integer;
+            }
+        });
         button_choose = view.findViewById(R.id.button_choose_image);
         button_choose.setOnClickListener(onButtonChooseClickListener);
         button_send = view.findViewById(R.id.button_send_image);

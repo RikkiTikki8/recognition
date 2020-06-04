@@ -11,13 +11,42 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
+            android:id="@+id/action_HomeFragment_to_ChooseImageFragment"
+            app:destination="@id/nav_choose" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_choose"
-        android:name
+        android:name="com.example.recognition.view.RequestFragment"
+        android:label="Choose image"
+        tools:layout="@layout/fragment_choose_image">
+        <action
+            android:id="@+id/action_ChooseImageFragment_to_GeneralResponseFragment"
+            app:destination="@id/nav_general_response" />
+        <action
+            android:id="@+id/action_ChooseImageFragment_to_DemographicResponseFragment"
+            app:destination="@id/nav_demographic_response" />
+        <action
+            android:id="@+id/action_ChooseImageFragment_to_ColorResponseFragment"
+            app:destination="@id/nav_color_response" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_general_response"
+        android:name="com.example.recognition.view.response_favorite.GeneralFragment.GeneralResponseFragment"
+        android:label="@string/general"
+        tools:layout="@layout/fragment_result_general" />
+
+    <fragment
+        android:id="@+id/nav_demographic_response"
+        android:name="com.example.recognition.view.response_favorite.DemographicFragment.DemographicResponseFragment"
+        android:label="@string/demographic"
+        tools:layout="@layout/fragment_result_demographic" />
+    <fragment
+        android:id="@+id/nav_color_response"
+        android:name="com.example.recognition.view.response_favorite.ColorFragment.ColorResponseFragment"
+        android:label="@string/color"
+        tools:layout="@layout/fragment_result_color" />
 
     <fragment
         android:id="@+id/nav_favorite"

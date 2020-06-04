@@ -1,6 +1,7 @@
 package com.example.recognition.view.response_favorite.ColorFragment;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +52,7 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
         ImageView imageView = new ImageView(view.getContext());
         imageView.setLayoutParams(imageParams);
 //        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(R.drawable.flower);
+        imageView.setImageURI(Uri.parse(response.getImage()));
         main_linear_layout.addView(imageView);
 
         for (ColorDataType.Color color : response.getData().getColors()){

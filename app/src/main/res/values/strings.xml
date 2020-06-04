@@ -11,4 +11,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_favorite">Favorite</string>
     <string name="menu_settings">Settings</string>
+    <string name="color">Color Model</string>
+    <string name="demographic">Demographic Model</string>
+    <string name="general">General Model</string>
 </resources>

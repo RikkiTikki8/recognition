@@ -9,27 +9,58 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.recognition.R;
+import com.example.recognition.application.App;
+import com.example.recognition.viewmodel.HomeViewModel;
 
 public class HomeFragment extends Fragment {
 
     View view;
+    HomeViewModel viewModel;
 
-    private View.OnClickListener onButtonSendClickListener = new View.OnClickListener() {
+    private View.OnClickListener onGeneralClickListener = new View.OnClickListener() {
         @SuppressLint("ResourceType")
         @Override
         public void onClick(View v) {
-            Navigation.findNavController(view).navigate(R.layout.fragment_choose_image);
+            viewModel.setNavModel(R.id.action_ChooseImageFragment_to_GeneralResponseFragment);
+            Navigation.findNavController(view).navigate(R.id.action_HomeFragment_to_ChooseImageFragment);
+        }
+    };
+    private View.OnClickListener onDemographicClickListener = new View.OnClickListener() {
+        @SuppressLint("ResourceType")
+        @Override
+        public void onClick(View v) {
+            viewModel.setNavModel(R.id.action_ChooseImageFragment_to_DemographicResponseFragment);
+            Navigation.findNavController(view).navigate(R.id.action_HomeFragment_to_ChooseImageFragment);
+        }
+    };
+    private View.OnClickListener onColorClickListener = new View.OnClickListener() {
+        @SuppressLint("ResourceType")
+        @Override
+        public void onClick(View v) {
+            viewModel.setNavModel(R.id.action_ChooseImageFragment_to_ColorResponseFragment);
+            Navigation.findNavController(view).navigate(R.id.action_HomeFragment_to_ChooseImageFragment);
         }
     };
 
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
+                .getViewModelFactory()).get(HomeViewModel.class);
+
         final Button bGeneral = view.findViewById(R.id.button_general);
         final Button bDemographic = view.findViewById(R.id.button_demographics);
         final Button bColor = view.findViewById(R.id.button_color);
+
+        bGeneral.setOnClickListener(onGeneralClickListener);
+        bDemographic.setOnClickListener(onDemographicClickListener);
+        bColor.setOnClickListener(onColorClickListener);
+
         return view;
     }
 }
