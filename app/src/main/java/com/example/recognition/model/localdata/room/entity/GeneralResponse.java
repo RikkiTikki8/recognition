@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 import com.example.recognition.types.GeneralDataType;
 
 import org.jetbrains.annotations.NotNull;
+
 @Entity
 public class GeneralResponse {
     @PrimaryKey

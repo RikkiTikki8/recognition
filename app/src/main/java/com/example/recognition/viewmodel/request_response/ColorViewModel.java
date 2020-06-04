@@ -10,15 +10,14 @@ import com.example.recognition.model.Repository;
 import com.example.recognition.model.localdata.room.entity.ColorResponse;
 
 public class ColorViewModel extends ViewModel {
-    private MutableLiveData<String> image = new MutableLiveData<>();
     private MediatorLiveData<ColorResponse> data = new MediatorLiveData<>();
     private Repository repository;
     public ColorViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<ColorResponse> getData() {
+    public LiveData<ColorResponse> getData(String image) {
         if (null == data.getValue()) {
-            data.addSource(repository.getColorResponse(image.getValue()), new Observer<ColorResponse>() {
+            data.addSource(repository.getColorResponse(image), new Observer<ColorResponse>() {
                 @Override
                 public void onChanged(ColorResponse response) {
                     data.setValue(response);
@@ -29,14 +28,5 @@ public class ColorViewModel extends ViewModel {
     }
     public void addToFavorite() {
         repository.addLastColorToFavorites();
-    }
-    public void setImage(String image) {
-        if (this.image.getValue() != image) {
-            data.setValue(null);
-            this.image.setValue(image);
-        }
-    }
-    public LiveData<String> getImage() {
-        return image;
     }
 }
