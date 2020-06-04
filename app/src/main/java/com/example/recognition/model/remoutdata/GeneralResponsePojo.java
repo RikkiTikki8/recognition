@@ -193,7 +193,7 @@ public class GeneralResponsePojo {
             }
             private Model model;
             public static class Data {
-                public static class Concepts {
+                public static class Concept {
                     private String id;
                     private String name;
                     private double value;
@@ -223,11 +223,11 @@ public class GeneralResponsePojo {
                         return this.app_id;
                     }
                 }
-                private List<Concepts> concepts;
-                public void setConcepts(List<Concepts> concepts){
+                private List<Concept> concepts;
+                public void setConcepts(List<Concept> concepts){
                     this.concepts = concepts;
                 }
-                public List<Concepts> getConcepts(){
+                public List<Concept> getConcepts(){
                     return this.concepts;
                 }
             }

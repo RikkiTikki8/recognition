@@ -320,7 +320,7 @@ public class ColorResponsePojo {
             this.additionalProperties.put(name, value);
         }
     }
-    private List<Output> outputs = null;
+    private List<Output> outputs;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Status getStatus() {

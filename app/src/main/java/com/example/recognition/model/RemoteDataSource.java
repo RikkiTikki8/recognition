@@ -3,10 +3,8 @@ package com.example.recognition.model;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.util.Log;;
-import androidx.annotation.NonNull;
+;
 
 import com.example.recognition.model.remoutdata.ClarifaiService;
 import com.example.recognition.model.remoutdata.ColorResponsePojo;
@@ -17,7 +15,6 @@ import com.example.recognition.model.remoutdata.Request;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -52,17 +49,16 @@ public class RemoteDataSource {
     }
     private Request makeRequest(String path) {
         return new Request(
-                new ArrayList<Request.Inputs>(
-                        Arrays.asList(
-                                new Request.Inputs(
-                                        new Request.Inputs.Data(
-                                                new Request.Inputs.Data.Image(
-                                                        "\'\"`base64 " + path + "`\"\'"//"$(base64 "  + path + ")"
-                                                )
+                new Request.Input[]{
+                        new Request.Input(
+                                new Request.Input.Data(
+                                        new Request.Input.Data.Image(
+                                                "https://samples.clarifai.com/metro-north.jpg"
+                                                //"\'\"`base64 " + path + "`\"\'"//"$(base64 "  + path + ")"
                                         )
                                 )
                         )
-                )
+                }
         );
     }
     private String getRealPathFromURI(Context context, Uri uri) {
