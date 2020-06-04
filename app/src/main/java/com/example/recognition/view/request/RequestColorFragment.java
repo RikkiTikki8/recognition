@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.R;
-import com.example.recognition.aplication.App;
+import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.request_response.ColorViewModel;
 
 public class RequestColorFragment extends BaseRequestFragment {

@@ -1,7 +1,7 @@
 package com.example.recognition.view.response_favorite.GeneralFragment;
 
 import androidx.lifecycle.ViewModelProvider;
-import com.example.recognition.aplication.App;
+import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.request_response.GeneralViewModel;
 
 public class GeneralResponseFragment extends BaseGeneralResponseFragment {

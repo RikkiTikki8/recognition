@@ -3,7 +3,7 @@ package com.example.recognition.view.response_favorite.DemographicFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.recognition.aplication.App;
+import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.DemographicFavoriteViewModel;
 import com.example.recognition.viewmodel.favorites.ImageFavoriteViewModel;
 

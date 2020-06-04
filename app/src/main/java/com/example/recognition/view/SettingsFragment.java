@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.R;
-import com.example.recognition.aplication.App;
+import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.SettingsViewModel;
 
 public class SettingsFragment extends Fragment {

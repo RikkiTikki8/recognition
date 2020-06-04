@@ -3,7 +3,7 @@ package com.example.recognition.view.response_favorite.ColorFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.recognition.aplication.App;
+import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 import com.example.recognition.viewmodel.favorites.ImageFavoriteViewModel;
 

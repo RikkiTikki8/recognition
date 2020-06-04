@@ -1,4 +1,4 @@
-package com.example.recognition.aplication;
+package com.example.recognition.application;
 
 import android.app.Application;
 
