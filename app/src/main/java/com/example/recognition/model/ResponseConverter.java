@@ -1,23 +1,23 @@
 package com.example.recognition.model;
 
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
 import com.example.recognition.model.remoutdata.ColorResponsePojo;
 import com.example.recognition.model.remoutdata.DemographicResponsePojo;
 import com.example.recognition.model.remoutdata.DemographicResponsePojo.Output.Data.Region.RegionInfo.BoundingBox;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo.Results.Outputs;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo.Results.Outputs.Data.Concepts;
-import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.data.ColorDataType.Color;
-import com.example.recognition.types.data.DemographicDataType;
-import com.example.recognition.types.data.DemographicDataType.Face.AgeAppearance;
-import com.example.recognition.types.data.DemographicDataType.Face.Frame;
-import com.example.recognition.types.data.DemographicDataType.Face.GenderAppearance;
-import com.example.recognition.types.data.DemographicDataType.Face.MulticulturalAppearance;
-import com.example.recognition.types.data.GeneralDataType;
-import com.example.recognition.types.data.GeneralDataType.Property;
-import com.example.recognition.types.response.ColorResponseType;
-import com.example.recognition.types.response.DemographicResponseType;
-import com.example.recognition.types.response.GeneralResponseType;
+import com.example.recognition.types.ColorDataType;
+import com.example.recognition.types.ColorDataType.Color;
+import com.example.recognition.types.DemographicDataType;
+import com.example.recognition.types.DemographicDataType.Face.AgeAppearance;
+import com.example.recognition.types.DemographicDataType.Face.Frame;
+import com.example.recognition.types.DemographicDataType.Face.GenderAppearance;
+import com.example.recognition.types.DemographicDataType.Face.MulticulturalAppearance;
+import com.example.recognition.types.GeneralDataType;
+import com.example.recognition.types.GeneralDataType.Property;
+import com.example.recognition.model.localdata.room.entity.DemographicResponse;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +27,13 @@ import retrofit2.Response;
 import static com.example.recognition.model.remoutdata.ColorResponsePojo.Output.*;
 import static com.example.recognition.model.remoutdata.DemographicResponsePojo.*;
 import static com.example.recognition.model.remoutdata.GeneralResponsePojo.*;
-import static com.example.recognition.types.data.DemographicDataType.*;
+import static com.example.recognition.types.DemographicDataType.*;
 
 public class ResponseConverter {
-    public static GeneralResponseType convertGeneral (String image, Response<GeneralResponsePojo> retrofitResponse) {
+    public static GeneralResponse convertGeneral (String image, Response<GeneralResponsePojo> retrofitResponse) {
         if (retrofitResponse.isSuccessful()) {
             GeneralResponsePojo response = retrofitResponse.body();
-            GeneralResponseType responseType = new GeneralResponseType();
+            GeneralResponse responseType = new GeneralResponse();
             responseType.setImage(image);
             GeneralDataType dataType;
             if (10000 == response.getStatus().getCode()) {
@@ -60,10 +60,10 @@ public class ResponseConverter {
             return DataMapper.getGeneralResponseMap();
         }
     }
-    public static DemographicResponseType convertDemographic (String image, Response<DemographicResponsePojo> retrofitResponse) {
+    public static DemographicResponse convertDemographic (String image, Response<DemographicResponsePojo> retrofitResponse) {
         if (retrofitResponse.isSuccessful()) {
             DemographicResponsePojo response = retrofitResponse.body();
-            DemographicResponseType responseType = new DemographicResponseType();
+            DemographicResponse responseType = new DemographicResponse();
             responseType.setImage(image);
             DemographicDataType dataType;
             if (10000 == response.getStatus().getCode()) {
@@ -111,10 +111,10 @@ public class ResponseConverter {
             return DataMapper.getDemographicResponseMap();
         }
     }
-    public static ColorResponseType convertColor (String image, Response<ColorResponsePojo> retrofitResponse) {
+    public static ColorResponse convertColor (String image, Response<ColorResponsePojo> retrofitResponse) {
         if (retrofitResponse.isSuccessful()) {
             ColorResponsePojo response = retrofitResponse.body();
-            ColorResponseType responseType = new ColorResponseType();
+            ColorResponse responseType = new ColorResponse();
             responseType.setImage(image);
             ColorDataType dataType;
             if (10000 == response.getStatus().getCode()) {

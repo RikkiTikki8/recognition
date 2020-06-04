@@ -1,4 +1,4 @@
-package com.example.recognition.types.data;
+package com.example.recognition.types;
 
 public class GeneralDataType{
 

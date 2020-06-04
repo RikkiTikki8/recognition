@@ -7,13 +7,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.recognition.model.DataMapper;
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
+import com.example.recognition.model.localdata.room.entity.DemographicResponse;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 import com.example.recognition.types.SettingsType;
-import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.data.DemographicDataType;
-import com.example.recognition.types.data.GeneralDataType;
-import com.example.recognition.types.response.ColorResponseType;
-import com.example.recognition.types.response.DemographicResponseType;
-import com.example.recognition.types.response.GeneralResponseType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,9 +18,9 @@ public class SharedPreferencesHelper {
     private final static String SETTINGS_KEY = "SETTINGS_KEY";
     public static final String LAST_RESPONSE_KEY = "LAST_RESPONSE_KEY";
     private MutableLiveData<SettingsType> optionsData = new MutableLiveData<>();
-    private MutableLiveData<GeneralResponseType> generalResponse = new MutableLiveData<>();
-    private MutableLiveData<DemographicResponseType> demographicsResponse = new MutableLiveData<>();
-    private MutableLiveData<ColorResponseType> colorResponse = new MutableLiveData<>();
+    private MutableLiveData<GeneralResponse> generalResponse = new MutableLiveData<>();
+    private MutableLiveData<DemographicResponse> demographicsResponse = new MutableLiveData<>();
+    private MutableLiveData<ColorResponse> colorResponse = new MutableLiveData<>();
     private SharedPreferences sharedPreferences;
     private Gson gson;
     private String fileName;
@@ -45,69 +42,69 @@ public class SharedPreferencesHelper {
         sharedPreferences.edit().putString(SETTINGS_KEY, uploadedSettings).apply();
         optionsData.setValue(settings);
     }
-    public GeneralResponseType getGeneralResponse() {
+    public GeneralResponse getGeneralResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+GeneralResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ GeneralResponse.class.getName(),
                 gson.toJson(DataMapper.getGeneralResponseMap())
         );
-        return gson.fromJson(json, GeneralResponseType.class);
+        return gson.fromJson(json, GeneralResponse.class);
     }
-    public LiveData<GeneralResponseType> getLiveDataGeneralResponse() {
+    public LiveData<GeneralResponse> getLiveDataGeneralResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+GeneralResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ GeneralResponse.class.getName(),
                 gson.toJson(DataMapper.getGeneralDataMap())
         );
-        generalResponse.setValue(gson.fromJson(json, GeneralResponseType.class));
+        generalResponse.setValue(gson.fromJson(json, GeneralResponse.class));
         return generalResponse;
     }
-    public void setGeneralResponse(GeneralResponseType response) {
+    public void setGeneralResponse(GeneralResponse response) {
         generalResponse.setValue(response);
         sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY+GeneralResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ GeneralResponse.class.getName(),
                 gson.toJson(response)
         ).apply();
     }
-    public DemographicResponseType getDemographicsResponse() {
+    public DemographicResponse getDemographicsResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ DemographicResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ DemographicResponse.class.getName(),
                 gson.toJson(DataMapper.getDemographicResponseMap())
         );
-        return gson.fromJson(json, DemographicResponseType.class);
+        return gson.fromJson(json, DemographicResponse.class);
     }
-    public LiveData<DemographicResponseType> getLiveDataDemographicResponse() {
+    public LiveData<DemographicResponse> getLiveDataDemographicResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ DemographicResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ DemographicResponse.class.getName(),
                 gson.toJson(DataMapper.getDemographicDataMap())
         );
-        demographicsResponse.setValue(gson.fromJson(json, DemographicResponseType.class));
+        demographicsResponse.setValue(gson.fromJson(json, DemographicResponse.class));
         return demographicsResponse;
     }
-    public void setDemographicsResponse(DemographicResponseType response) {
+    public void setDemographicsResponse(DemographicResponse response) {
         demographicsResponse.setValue(response);
         sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY+ DemographicResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ DemographicResponse.class.getName(),
                 gson.toJson(response)
         ).apply();
     }
-    public ColorResponseType getColorResponse() {
+    public ColorResponse getColorResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ColorResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ ColorResponse.class.getName(),
                 gson.toJson(DataMapper.getColorResponseMap())
         );
-        return gson.fromJson(json, ColorResponseType.class);
+        return gson.fromJson(json, ColorResponse.class);
     }
-    public LiveData<ColorResponseType> getLiveDataColorResponse() {
+    public LiveData<ColorResponse> getLiveDataColorResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ColorResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ ColorResponse.class.getName(),
                 gson.toJson(DataMapper.getColorDataMap())
         );
-        colorResponse.setValue(gson.fromJson(json, ColorResponseType.class));
+        colorResponse.setValue(gson.fromJson(json, ColorResponse.class));
         return colorResponse;
     }
-    public void setColorResponse(ColorResponseType response) {
+    public void setColorResponse(ColorResponse response) {
         colorResponse.setValue(response);
         sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY+ColorResponseType.class.getName(),
+                LAST_RESPONSE_KEY+ ColorResponse.class.getName(),
                 gson.toJson(response)
         ).apply();
     }

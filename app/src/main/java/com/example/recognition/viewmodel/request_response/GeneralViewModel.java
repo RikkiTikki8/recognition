@@ -7,20 +7,20 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.recognition.model.Repository;
-import com.example.recognition.types.response.GeneralResponseType;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 
 public class GeneralViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
-    private MediatorLiveData<GeneralResponseType> data = new MediatorLiveData<>();
+    private MediatorLiveData<GeneralResponse> data = new MediatorLiveData<>();
     private Repository repository;
     public GeneralViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<GeneralResponseType> getData() {
+    public LiveData<GeneralResponse> getData() {
         if (null == data.getValue()) {
-            data.addSource(repository.getGeneralResponse(image.getValue()), new Observer<GeneralResponseType>() {
+            data.addSource(repository.getGeneralResponse(image.getValue()), new Observer<GeneralResponse>() {
                 @Override
-                public void onChanged(GeneralResponseType response) {
+                public void onChanged(GeneralResponse response) {
                     data.setValue(response);
                 }
             });

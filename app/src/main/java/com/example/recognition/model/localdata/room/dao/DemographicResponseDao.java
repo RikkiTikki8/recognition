@@ -6,18 +6,18 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.recognition.types.data.DemographicDataType;
-import com.example.recognition.types.response.DemographicResponseType;
+import com.example.recognition.model.localdata.room.entity.DemographicResponse;
+
 import java.util.List;
 
 @Dao
 public interface DemographicResponseDao {
-    @Query("SELECT * FROM DemographicResponseEntity")
-    LiveData<List<DemographicResponseType>> getFavorites();
-    @Query("SELECT * FROM DemographicResponseEntity WHERE image = :image")
-    LiveData<DemographicResponseType> getFavorite(String image);
+    @Query("SELECT * FROM DemographicResponse")
+    LiveData<List<DemographicResponse>> getFavorites();
+    @Query("SELECT * FROM DemographicResponse WHERE image = :image")
+    LiveData<DemographicResponse> getFavorite(String image);
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addResponse(DemographicResponseType response);
-    @Query("DELETE FROM ColorResponseEntity WHERE image = :image")
+    void addResponse(DemographicResponse response);
+    @Query("DELETE FROM DemographicResponse WHERE image = :image")
     void removeResponse(String image);
 }

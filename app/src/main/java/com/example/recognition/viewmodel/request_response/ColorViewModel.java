@@ -7,21 +7,20 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.recognition.model.Repository;
-import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.response.ColorResponseType;
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
 
 public class ColorViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
-    private MediatorLiveData<ColorResponseType> data = new MediatorLiveData<>();
+    private MediatorLiveData<ColorResponse> data = new MediatorLiveData<>();
     private Repository repository;
     public ColorViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<ColorResponseType> getData() {
+    public LiveData<ColorResponse> getData() {
         if (null == data.getValue()) {
-            data.addSource(repository.getColorResponse(image.getValue()), new Observer<ColorResponseType>() {
+            data.addSource(repository.getColorResponse(image.getValue()), new Observer<ColorResponse>() {
                 @Override
-                public void onChanged(ColorResponseType response) {
+                public void onChanged(ColorResponse response) {
                     data.setValue(response);
                 }
             });

@@ -10,10 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.recognition.R;
-import com.example.recognition.types.data.GeneralDataType;
-import com.example.recognition.types.response.GeneralResponseType;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 
-public abstract class BaseGeneralFragment extends Fragment implements Observer<GeneralResponseType> {
+public abstract class BaseGeneralFragment extends Fragment implements Observer<GeneralResponse> {
 
     private View view;
     protected abstract void init();
@@ -27,7 +26,7 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
     }
 
     @Override
-    public void onChanged(GeneralResponseType response) {
+    public void onChanged(GeneralResponse response) {
         //TODO
     }
 }

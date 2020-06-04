@@ -6,19 +6,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.recognition.model.Repository;
-import com.example.recognition.types.response.DemographicResponseType;
+import com.example.recognition.model.localdata.room.entity.DemographicResponse;
 
 public class DemographicFavoriteViewModel extends ViewModel {
-    private MediatorLiveData<DemographicResponseType> response = new MediatorLiveData<>();
+    private MediatorLiveData<DemographicResponse> response = new MediatorLiveData<>();
     private Repository repository;
     public DemographicFavoriteViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<DemographicResponseType> getFavorite(String image) {
+    public LiveData<DemographicResponse> getFavorite(String image) {
         if (null == response.getValue()) {
-            response.addSource(repository.getDemographicFavorite(image), new Observer<DemographicResponseType>() {
+            response.addSource(repository.getDemographicFavorite(image), new Observer<DemographicResponse>() {
                 @Override
-                public void onChanged(DemographicResponseType dataType) {
+                public void onChanged(DemographicResponse dataType) {
                     response.setValue(dataType);
                 }
             });

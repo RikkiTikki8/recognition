@@ -6,19 +6,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.recognition.model.Repository;
-import com.example.recognition.types.response.GeneralResponseType;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 
 public class GeneralFavoriteViewModel extends ViewModel {
-    private MediatorLiveData<GeneralResponseType> response = new MediatorLiveData<>();
+    private MediatorLiveData<GeneralResponse> response = new MediatorLiveData<>();
     private Repository repository;
     public GeneralFavoriteViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<GeneralResponseType> getFavorite(String image) {
+    public LiveData<GeneralResponse> getFavorite(String image) {
         if (null == response.getValue()) {
-            response.addSource(repository.getGeneralFavorite(image), new Observer<GeneralResponseType>() {
+            response.addSource(repository.getGeneralFavorite(image), new Observer<GeneralResponse>() {
                 @Override
-                public void onChanged(GeneralResponseType dataType) {
+                public void onChanged(GeneralResponse dataType) {
                     response.setValue(dataType);
                 }
             });

@@ -7,21 +7,20 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.recognition.model.Repository;
-import com.example.recognition.types.data.DemographicDataType;
-import com.example.recognition.types.response.DemographicResponseType;
+import com.example.recognition.model.localdata.room.entity.DemographicResponse;
 
 public class DemographicViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
-    private MediatorLiveData<DemographicResponseType> data = new MediatorLiveData<>();
+    private MediatorLiveData<DemographicResponse> data = new MediatorLiveData<>();
     private Repository repository;
     public DemographicViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<DemographicResponseType> getData() {
+    public LiveData<DemographicResponse> getData() {
         if (null == data.getValue()) {
-            data.addSource(repository.getDemographicResponse(image.getValue()), new Observer<DemographicResponseType>() {
+            data.addSource(repository.getDemographicResponse(image.getValue()), new Observer<DemographicResponse>() {
                 @Override
-                public void onChanged(DemographicResponseType response) {
+                public void onChanged(DemographicResponse response) {
                     data.setValue(response);
                 }
             });

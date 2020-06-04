@@ -1,19 +1,19 @@
 package com.example.recognition.model;
 
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
+import com.example.recognition.model.localdata.room.entity.DemographicResponse;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 import com.example.recognition.types.SettingsType;
-import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.data.DemographicDataType;
-import com.example.recognition.types.data.GeneralDataType;
-import com.example.recognition.types.response.ColorResponseType;
-import com.example.recognition.types.response.DemographicResponseType;
-import com.example.recognition.types.response.GeneralResponseType;
+import com.example.recognition.types.ColorDataType;
+import com.example.recognition.types.DemographicDataType;
+import com.example.recognition.types.GeneralDataType;
 
 public class DataMapper {
     public static SettingsType getSettingMap() {
         return new SettingsType(0);
     }
-    public static GeneralResponseType getGeneralResponseMap() {
-        GeneralResponseType mapData = new GeneralResponseType();
+    public static GeneralResponse getGeneralResponseMap() {
+        GeneralResponse mapData = new GeneralResponse();
         mapData.setImage("");
         mapData.setData(getGeneralDataMap());
         return mapData;
@@ -26,8 +26,8 @@ public class DataMapper {
         mapData.setProperties(new GeneralDataType.Property[]{mapProperty});
         return mapData;
     }
-    public static DemographicResponseType getDemographicResponseMap() {
-        DemographicResponseType mapData = new DemographicResponseType();
+    public static DemographicResponse getDemographicResponseMap() {
+        DemographicResponse mapData = new DemographicResponse();
         mapData.setImage("");
         mapData.setData(getDemographicDataMap());
         return mapData;
@@ -48,8 +48,8 @@ public class DataMapper {
         mapData.setFaces(new DemographicDataType.Face[]{mapFace});
         return mapData;
     }
-    public static ColorResponseType getColorResponseMap() {
-        ColorResponseType mapData = new ColorResponseType();
+    public static ColorResponse getColorResponseMap() {
+        ColorResponse mapData = new ColorResponse();
         mapData.setImage("");
         mapData.setData(getColorDataMap());
         return mapData;

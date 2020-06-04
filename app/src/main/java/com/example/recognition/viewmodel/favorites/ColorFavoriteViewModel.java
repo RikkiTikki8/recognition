@@ -6,19 +6,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.recognition.model.Repository;
-import com.example.recognition.types.response.ColorResponseType;
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
 
 public class ColorFavoriteViewModel extends ViewModel {
-    private MediatorLiveData<ColorResponseType> response = new MediatorLiveData<>();
+    private MediatorLiveData<ColorResponse> response = new MediatorLiveData<>();
     private Repository repository;
     public ColorFavoriteViewModel(Repository repository) {
         this.repository = repository;
     }
-    public LiveData<ColorResponseType> getFavorite(String image) {
+    public LiveData<ColorResponse> getFavorite(String image) {
         if (null == response.getValue()) {
-            response.addSource(repository.getColorFavorite(image), new Observer<ColorResponseType>() {
+            response.addSource(repository.getColorFavorite(image), new Observer<ColorResponse>() {
                 @Override
-                public void onChanged(ColorResponseType dataType) {
+                public void onChanged(ColorResponse dataType) {
                     response.setValue(dataType);
                 }
             });

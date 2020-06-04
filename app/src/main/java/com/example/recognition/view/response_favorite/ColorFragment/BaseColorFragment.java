@@ -1,26 +1,18 @@
 package com.example.recognition.view.response_favorite.ColorFragment;
 
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.recognition.R;
-import com.example.recognition.types.data.ColorDataType;
-import com.example.recognition.types.response.ColorResponseType;
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
 
-public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponseType>  {
+public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponse>  {
 
     private View view;
     protected abstract void init();
@@ -34,7 +26,7 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
     }
 
     @Override
-    public void onChanged(ColorResponseType response) {
+    public void onChanged(ColorResponse response) {/*
         ColorDataType colorDataType = response.getData();
         ScrollView.LayoutParams scrollParams = new ScrollView.LayoutParams(ScrollView.LayoutParams.MATCH_PARENT,
                 ScrollView.LayoutParams.WRAP_CONTENT);
@@ -114,5 +106,6 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
 
         }
 
+    */
     }
 }

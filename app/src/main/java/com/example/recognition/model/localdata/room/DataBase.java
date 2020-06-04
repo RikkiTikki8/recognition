@@ -6,14 +6,16 @@ import androidx.room.TypeConverters;
 import com.example.recognition.model.localdata.room.dao.ColorResponseDao;
 import com.example.recognition.model.localdata.room.dao.DemographicResponseDao;
 import com.example.recognition.model.localdata.room.dao.GeneralResponseDao;
-import com.example.recognition.model.localdata.room.entity.GeneralResponseEntity;
+import com.example.recognition.model.localdata.room.entity.ColorResponse;
+import com.example.recognition.model.localdata.room.entity.DemographicResponse;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 
-@TypeConverters({ResponseConverter.class})
 @Database(entities = {
-        GeneralResponseEntity.class,
-        DemographicResponseDao.class,
-        ColorResponseDao.class},
+        GeneralResponse.class,
+        DemographicResponse.class,
+        ColorResponse.class},
         version = 1)
+@TypeConverters({DataConverter.class})
 public abstract class DataBase extends RoomDatabase {
     public abstract GeneralResponseDao generalResponseDao();
     public abstract DemographicResponseDao demographicsResponseDao();
