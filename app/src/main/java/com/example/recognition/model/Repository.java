@@ -118,10 +118,10 @@ public class Repository {
         );
     }
     public LiveData<ColorResponse> getColorResponse(final String image) {
+        loadStatus.setValue(true);
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
-                loadStatus.setValue(true);
                 try {
                     localDataSource.setLastColorResponse(
                             ResponseConverter.convertColor(

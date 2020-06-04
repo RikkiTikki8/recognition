@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel     {
+public class HomeViewModel extends ViewModel {
     MutableLiveData<Integer> model = new MutableLiveData<>();
     public void setNavModel(int model) {
         this.model.setValue(model);
