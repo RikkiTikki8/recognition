@@ -1,9 +1,10 @@
 package com.example.recognition.view.response_favorite.GeneralFragment;
 
+import android.widget.Toast;
+
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.recognition.application.App;
-import com.example.recognition.model.remoutdata.ColorResponsePojo;
 import com.example.recognition.viewmodel.ImageViewModel;
 import com.example.recognition.viewmodel.response.GeneralViewModel;
 
@@ -15,6 +16,12 @@ public class GeneralResponseFragment extends BaseGeneralFragment {
     protected void init() {
         viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(GeneralViewModel.class);
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
         imageViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(ImageViewModel.class);
         imageViewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {

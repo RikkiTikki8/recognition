@@ -1,5 +1,7 @@
 package com.example.recognition.view.response_favorite.ColorFragment;
 
+import android.widget.Toast;
+
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -15,6 +17,12 @@ public class ColorResponseFragment extends BaseColorFragment {
     protected void init() {
         viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(ColorViewModel.class);
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
         imageViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(ImageViewModel.class);
         imageViewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {
