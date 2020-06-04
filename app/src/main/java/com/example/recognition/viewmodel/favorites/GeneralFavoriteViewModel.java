@@ -5,14 +5,14 @@ import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
-
 import com.example.recognition.model.Repository;
 import com.example.recognition.model.localdata.room.entity.GeneralResponse;
-
+import com.example.recognition.types.SettingsType;
 import java.util.List;
 
 public class GeneralFavoriteViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
+    private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
     private MediatorLiveData<List<GeneralResponse>> generalFavorites = new MediatorLiveData<>();
     private MediatorLiveData<GeneralResponse> response = new MediatorLiveData<>();
     private Repository repository;
@@ -29,6 +29,18 @@ public class GeneralFavoriteViewModel extends ViewModel {
             });
         }
         return generalFavorites;
+    }
+
+    public LiveData<SettingsType> getSettings() {
+        if (null == settings.getValue()) {
+            settings.addSource(repository.getSettings(), new Observer<SettingsType>() {
+                @Override
+                public void onChanged(SettingsType options) {
+                    settings.setValue(options);
+                }
+            });
+        }
+        return settings;
     }
     public LiveData<GeneralResponse> getFavorite(String image) {
         if (null == response.getValue()) {
