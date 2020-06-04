@@ -41,6 +41,9 @@ public class ListColorFavoriteFragment extends Fragment {
             LinearLayout layout;
             Image image;
             if (0 == i % 2) {
+                if (0 != i) {
+                    //TODO container.add
+                }
                 //TODO new LinearLayout
             }
             //TODO new Image
