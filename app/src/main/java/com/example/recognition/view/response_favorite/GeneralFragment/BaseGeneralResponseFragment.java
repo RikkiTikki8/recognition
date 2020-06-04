@@ -11,8 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.recognition.R;
 import com.example.recognition.types.data.GeneralDataType;
+import com.example.recognition.types.response.GeneralResponseType;
 
-public abstract class BaseGeneralResponseFragment extends Fragment implements Observer<GeneralDataType> {
+public abstract class BaseGeneralResponseFragment extends Fragment implements Observer<GeneralResponseType> {
 
     private View view;
     protected abstract void init();
@@ -26,7 +27,7 @@ public abstract class BaseGeneralResponseFragment extends Fragment implements Ob
     }
 
     @Override
-    public void onChanged(GeneralDataType data) {
+    public void onChanged(GeneralResponseType response) {
         //TODO
     }
 }

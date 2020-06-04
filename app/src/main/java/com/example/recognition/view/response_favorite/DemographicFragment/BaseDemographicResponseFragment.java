@@ -12,9 +12,10 @@ import androidx.lifecycle.Observer;
 
 import com.example.recognition.R;
 import com.example.recognition.types.data.DemographicDataType;
+import com.example.recognition.types.response.DemographicResponseType;
 import com.example.recognition.viewmodel.request_response.DemographicViewModel;
 
-public abstract class BaseDemographicResponseFragment extends Fragment implements Observer<DemographicDataType> {
+public abstract class BaseDemographicResponseFragment extends Fragment implements Observer<DemographicResponseType> {
 
     private View view;
     private DemographicViewModel viewModel;
@@ -30,7 +31,7 @@ public abstract class BaseDemographicResponseFragment extends Fragment implement
     }
 
     @Override
-    public void onChanged(DemographicDataType data) {
+    public void onChanged(DemographicResponseType response) {
         //TODO
     }
 }

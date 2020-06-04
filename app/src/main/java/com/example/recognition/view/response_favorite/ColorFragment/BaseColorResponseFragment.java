@@ -18,8 +18,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.recognition.R;
 import com.example.recognition.types.data.ColorDataType;
+import com.example.recognition.types.response.ColorResponseType;
 
-public abstract class BaseColorResponseFragment extends Fragment implements Observer<ColorDataType>  {
+public abstract class BaseColorResponseFragment extends Fragment implements Observer<ColorResponseType>  {
 
     private View view;
     protected abstract void init();
@@ -33,7 +34,8 @@ public abstract class BaseColorResponseFragment extends Fragment implements Obse
     }
 
     @Override
-    public void onChanged(ColorDataType colorDataType) {
+    public void onChanged(ColorResponseType response) {
+        ColorDataType colorDataType = response.getData();
         ScrollView.LayoutParams scrollParams = new ScrollView.LayoutParams(ScrollView.LayoutParams.MATCH_PARENT,
                 ScrollView.LayoutParams.WRAP_CONTENT);
         ScrollView scrollView = new ScrollView(view.getContext());
