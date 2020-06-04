@@ -8,17 +8,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="@dimen/image_margin"
+        android:scrollbars="none">
 
         <ImageView
             android:id="@+id/color_model_image"
             android:layout_width="match_parent"
-            android:layout_height="1000dp" />
+            android:layout_height="500dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginBottom="@dimen/text_margin"
+            android:text="COLOR"
+            android:textSize="@dimen/response_text_size"
+            android:textColor="@color/response_annotation_text_color"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_col"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </LinearLayout>
 </ScrollView>

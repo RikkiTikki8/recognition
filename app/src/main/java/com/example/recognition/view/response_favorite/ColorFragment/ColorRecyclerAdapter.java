@@ -13,15 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.recognition.R;
 import com.example.recognition.types.ColorDataType;
 
-import java.util.List;
-
 public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdapter.ColorViewHolder>{
 
-    ColorDataType.Color[] colors;
+    ColorDataType.Color[] data;
     ColorViewHolder holder;
 
-    ColorRecyclerAdapter(ColorDataType.Color[] colors){
-        this.colors = colors;
+    public ColorRecyclerAdapter(ColorDataType.Color[] data){
+        this.data = data;
     }
 
     @NonNull
@@ -34,15 +32,15 @@ public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull ColorViewHolder holder, int i) {
         this.holder = holder;
-        holder.container.setBackgroundColor(Color.parseColor(colors[i].getColor()));
-        holder.name.setText(colors[i].getNameColor());
-        holder.number.setText(colors[i].getColor());
-        holder.percent.setText(colors[i].getPercent());
+        holder.container.setBackgroundColor(Color.parseColor(data[i].getColor()));
+        holder.name.setText(data[i].getNameColor());
+        holder.number.setText(data[i].getColor());
+        holder.percent.setText(data[i].getPercent());
     }
 
     @Override
     public int getItemCount() {
-        return colors.length;
+        return data.length;
     }
 
     public static class ColorViewHolder extends RecyclerView.ViewHolder {
