@@ -4,8 +4,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.application.App;
-import com.example.recognition.viewmodel.ImageViewModel;
-import com.example.recognition.viewmodel.request_response.ColorViewModel;
+import com.example.recognition.viewmodel.response.ColorViewModel;
 
 public class ColorResponseFragment extends BaseColorFragment {
 

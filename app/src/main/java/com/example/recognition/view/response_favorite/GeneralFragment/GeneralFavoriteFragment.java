@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.GeneralFavoriteViewModel;
-import com.example.recognition.viewmodel.ImageViewModel;
 
 public class GeneralFavoriteFragment extends BaseGeneralFragment {
 

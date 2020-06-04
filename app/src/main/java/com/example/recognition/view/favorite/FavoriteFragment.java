@@ -9,16 +9,9 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.recognition.R;
-import com.example.recognition.application.App;
-import com.example.recognition.model.localdata.room.entity.ColorResponse;
-import com.example.recognition.model.localdata.room.entity.DemographicResponse;
-import com.example.recognition.model.localdata.room.entity.GeneralResponse;
-import com.example.recognition.viewmodel.favorites.FavoriteViewModel;
-import java.util.List;
 
 public class FavoriteFragment extends Fragment {
 
