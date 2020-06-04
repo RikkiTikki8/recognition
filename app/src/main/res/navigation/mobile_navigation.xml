@@ -53,41 +53,41 @@
         android:label="@string/menu_favorite"
         tools:layout="@layout/fragment_favorite">
         <action
-            android:id="@+id/action_FavoriteFragment_to_GeneralFavoriteFragment"
+            android:id="@+id/action_FavoriteFragment_to_ListGeneralFavoriteFragment"
             app:destination="@id/nav_gen_fav" />
         <action
-            android:id="@+id/action_FavoriteFragment_to_DemographicFavoriteFragment"
+            android:id="@+id/action_FavoriteFragment_to_ListDemographicFavoriteFragment"
             app:destination="@id/nav_dem_fav" />
         <action
-            android:id="@+id/action_FavoriteFragment_to_ColorFavoriteFragment"
+            android:id="@+id/action_FavoriteFragment_to_ListColorFavoriteFragment"
             app:destination="@id/nav_color_fav" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_gen_fav"
-        android:name="com.example.recognition.view.favorite.GeneralFavoriteFragment"
+        android:name="com.example.recognition.view.favorite.ListGeneralFavoriteFragment"
         android:label="@string/general"
         tools:layout="@layout/fr_gen_fav">
         <action
-            android:id="@+id/action_GeneralFavoriteFragment_to_GeneralResponseFragment"
+            android:id="@+id/action_ListGeneralFavoriteFragment_to_GeneralFavoriteFragment"
             app:destination="@id/nav_general_response" />
     </fragment>
     <fragment
         android:id="@+id/nav_dem_fav"
-        android:name="com.example.recognition.view.favorite.DemographicFavoriteFragment"
+        android:name="com.example.recognition.view.favorite.ListDemographicFavoriteFragment"
         android:label="@string/demographic"
         tools:layout="@layout/fr_dem_fav">
         <action
-            android:id="@+id/action_DemographicFavoriteFragment_to_DemographicResponseFragment"
+            android:id="@+id/action_ListDemographicFavoriteFragment_to_DemographicResponseFragment"
             app:destination="@id/nav_demographic_response" />
     </fragment>
     <fragment
         android:id="@+id/nav_color_fav"
-        android:name="com.example.recognition.view.favorite.ColorFavoriteFragment"
+        android:name="com.example.recognition.view.favorite.ListColorFavoriteFragment"
         android:label="@string/color"
         tools:layout="@layout/fr_color_fav">
         <action
-            android:id="@+id/action_ColorFavoriteFragment_to_ColorResponseFragment"
+            android:id="@+id/action_ListColorFavoriteFragment_to_ColorResponseFragment"
             app:destination="@id/nav_color_response" />
     </fragment>
 

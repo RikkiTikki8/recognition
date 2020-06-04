@@ -9,16 +9,9 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.recognition.R;
-import com.example.recognition.application.App;
-import com.example.recognition.model.localdata.room.entity.ColorResponse;
-import com.example.recognition.model.localdata.room.entity.DemographicResponse;
-import com.example.recognition.model.localdata.room.entity.GeneralResponse;
-import com.example.recognition.viewmodel.favorites.FavoriteViewModel;
-import java.util.List;
 
 public class FavoriteFragment extends Fragment {
 
@@ -28,21 +21,21 @@ public class FavoriteFragment extends Fragment {
         @SuppressLint("ResourceType")
         @Override
         public void onClick(View v) {
-            Navigation.findNavController(view).navigate(R.id.action_FavoriteFragment_to_GeneralFavoriteFragment);
+            Navigation.findNavController(view).navigate(R.id.action_FavoriteFragment_to_ListGeneralFavoriteFragment);
         }
     };
     private View.OnClickListener onDemographicClickListener = new View.OnClickListener() {
         @SuppressLint("ResourceType")
         @Override
         public void onClick(View v) {
-            Navigation.findNavController(view).navigate(R.id.action_FavoriteFragment_to_DemographicFavoriteFragment);
+            Navigation.findNavController(view).navigate(R.id.action_FavoriteFragment_to_ListDemographicFavoriteFragment);
         }
     };
     private View.OnClickListener onColorClickListener = new View.OnClickListener() {
         @SuppressLint("ResourceType")
         @Override
         public void onClick(View v) {
-            Navigation.findNavController(view).navigate(R.id.action_FavoriteFragment_to_ColorFavoriteFragment);
+            Navigation.findNavController(view).navigate(R.id.action_FavoriteFragment_to_ListColorFavoriteFragment);
         }
     };
 

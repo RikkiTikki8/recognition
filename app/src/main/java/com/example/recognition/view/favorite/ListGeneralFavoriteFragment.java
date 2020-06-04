@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -11,22 +12,22 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.R;
 import com.example.recognition.application.App;
-import com.example.recognition.model.localdata.room.entity.DemographicResponse;
-import com.example.recognition.viewmodel.favorites.DemographicFavoriteViewModel;
+import com.example.recognition.model.localdata.room.entity.GeneralResponse;
+import com.example.recognition.viewmodel.favorites.GeneralFavoriteViewModel;
 
 import java.util.List;
 
-public class DemographicFavoriteFragment extends Fragment {
+public class ListGeneralFavoriteFragment extends Fragment {
     View view;
-    DemographicFavoriteViewModel viewModel;
+    GeneralFavoriteViewModel viewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fr_dem_fav, container, false);
+        view = inflater.inflate(R.layout.fr_gen_fav, container, false);
         viewModel = new ViewModelProvider(this, ((App) getActivity().getApplication())
-                .getViewModelFactory()).get(DemographicFavoriteViewModel.class);
+                .getViewModelFactory()).get(GeneralFavoriteViewModel.class);
         return view;
     }
-    private void onChangedGeneralFavorites(List<DemographicResponse> response ) {
+    private void onChangedGeneralFavorites(List<GeneralResponse> response ) {
 
     }
 }

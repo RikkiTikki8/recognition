@@ -16,7 +16,7 @@ import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 
 import java.util.List;
 
-public class ColorFavoriteFragment extends Fragment {
+public class ListColorFavoriteFragment extends Fragment {
     View view;
     ColorFavoriteViewModel viewModel;
 
