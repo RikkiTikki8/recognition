@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.DemographicFavoriteViewModel;
-import com.example.recognition.viewmodel.ImageViewModel;
 
 public class DemographicFavoriteFragment extends BaseDemographicFragment {
 

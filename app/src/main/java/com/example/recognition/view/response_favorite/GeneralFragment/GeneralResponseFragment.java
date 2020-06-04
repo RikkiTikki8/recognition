@@ -3,8 +3,7 @@ package com.example.recognition.view.response_favorite.GeneralFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.recognition.application.App;
-import com.example.recognition.viewmodel.ImageViewModel;
-import com.example.recognition.viewmodel.request_response.GeneralViewModel;
+import com.example.recognition.viewmodel.response.GeneralViewModel;
 
 public class GeneralResponseFragment extends BaseGeneralFragment {
 

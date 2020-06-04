@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer;
 
 import com.example.recognition.R;
 import com.example.recognition.model.localdata.room.entity.DemographicResponse;
-import com.example.recognition.viewmodel.request_response.DemographicViewModel;
+import com.example.recognition.viewmodel.response.DemographicViewModel;
 
 public abstract class BaseDemographicFragment extends Fragment implements Observer<DemographicResponse> {
 

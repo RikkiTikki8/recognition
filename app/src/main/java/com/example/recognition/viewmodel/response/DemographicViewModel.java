@@ -1,4 +1,4 @@
-package com.example.recognition.viewmodel.request_response;
+package com.example.recognition.viewmodel.response;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
@@ -15,6 +15,12 @@ public class DemographicViewModel extends ViewModel {
     private Repository repository;
     public DemographicViewModel(Repository repository) {
         this.repository = repository;
+    }
+    public void setImage(String image) {
+        this.image.setValue(image);
+    }
+    public LiveData<String> getImage() {
+        return image;
     }
     public LiveData<DemographicResponse> getData(String image) {
         if (null == data.getValue()) {
