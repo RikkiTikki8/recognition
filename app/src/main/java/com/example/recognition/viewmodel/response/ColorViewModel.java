@@ -9,6 +9,7 @@ import com.example.recognition.model.localdata.room.entity.ColorResponse;
 import com.example.recognition.types.SettingsType;
 
 public class ColorViewModel extends ViewModel {
+    private MediatorLiveData<String> message = new MediatorLiveData<>();
     private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
     private MediatorLiveData<ColorResponse> data = new MediatorLiveData<>();
     private Repository repository;
@@ -26,7 +27,9 @@ public class ColorViewModel extends ViewModel {
         }
         return data;
     }
-
+    public LiveData<String> getErrorMassage() {
+        return message;
+    }
     public LiveData<SettingsType> getSettings() {
         if (null == settings.getValue()) {
             settings.addSource(repository.getSettings(), new Observer<SettingsType>() {
