@@ -44,15 +44,15 @@ public class SharedPreferencesHelper {
     }
     public GeneralResponse getGeneralResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ GeneralResponse.class.getName(),
+                LAST_RESPONSE_KEY + GeneralResponse.class.getSimpleName(),
                 gson.toJson(DataMapper.getGeneralResponseMap())
         );
         return gson.fromJson(json, GeneralResponse.class);
     }
     public LiveData<GeneralResponse> getLiveDataGeneralResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ GeneralResponse.class.getName(),
-                gson.toJson(DataMapper.getGeneralDataMap())
+                LAST_RESPONSE_KEY + GeneralResponse.class.getSimpleName(),
+                gson.toJson(DataMapper.getGeneralResponseMap())
         );
         generalResponse.setValue(gson.fromJson(json, GeneralResponse.class));
         return generalResponse;
@@ -60,21 +60,21 @@ public class SharedPreferencesHelper {
     public void setGeneralResponse(GeneralResponse response) {
         generalResponse.setValue(response);
         sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY+ GeneralResponse.class.getName(),
+                LAST_RESPONSE_KEY + GeneralResponse.class.getSimpleName(),
                 gson.toJson(response)
         ).apply();
     }
     public DemographicResponse getDemographicsResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ DemographicResponse.class.getName(),
+                LAST_RESPONSE_KEY + DemographicResponse.class.getSimpleName(),
                 gson.toJson(DataMapper.getDemographicResponseMap())
         );
         return gson.fromJson(json, DemographicResponse.class);
     }
     public LiveData<DemographicResponse> getLiveDataDemographicResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ DemographicResponse.class.getName(),
-                gson.toJson(DataMapper.getDemographicDataMap())
+                LAST_RESPONSE_KEY + DemographicResponse.class.getSimpleName(),
+                gson.toJson(DataMapper.getDemographicResponseMap())
         );
         demographicsResponse.setValue(gson.fromJson(json, DemographicResponse.class));
         return demographicsResponse;
@@ -82,21 +82,21 @@ public class SharedPreferencesHelper {
     public void setDemographicsResponse(DemographicResponse response) {
         demographicsResponse.setValue(response);
         sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY+ DemographicResponse.class.getName(),
+                LAST_RESPONSE_KEY + DemographicResponse.class.getSimpleName(),
                 gson.toJson(response)
         ).apply();
     }
     public ColorResponse getColorResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ ColorResponse.class.getName(),
+                LAST_RESPONSE_KEY + ColorResponse.class.getSimpleName(),
                 gson.toJson(DataMapper.getColorResponseMap())
         );
         return gson.fromJson(json, ColorResponse.class);
     }
     public LiveData<ColorResponse> getLiveDataColorResponse() {
         String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY+ ColorResponse.class.getName(),
-                gson.toJson(DataMapper.getColorDataMap())
+                LAST_RESPONSE_KEY + ColorResponse.class.getSimpleName(),
+                gson.toJson(DataMapper.getColorResponseMap())
         );
         colorResponse.setValue(gson.fromJson(json, ColorResponse.class));
         return colorResponse;
@@ -104,7 +104,7 @@ public class SharedPreferencesHelper {
     public void setColorResponse(ColorResponse response) {
         colorResponse.setValue(response);
         sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY+ ColorResponse.class.getName(),
+                LAST_RESPONSE_KEY + ColorResponse.class.getSimpleName(),
                 gson.toJson(response)
         ).apply();
     }

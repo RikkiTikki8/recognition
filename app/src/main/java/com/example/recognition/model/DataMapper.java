@@ -21,7 +21,7 @@ public class DataMapper {
     public static GeneralDataType getGeneralDataMap() {
         GeneralDataType mapData = new GeneralDataType();
         GeneralDataType.Property mapProperty = new GeneralDataType.Property();
-        mapProperty.setName("");
+        mapProperty.setName("None");
         mapProperty.setValue(0);
         mapData.setProperties(new GeneralDataType.Property[]{mapProperty});
         return mapData;
@@ -37,13 +37,13 @@ public class DataMapper {
         DemographicDataType.Face mapFace = new DemographicDataType.Face();
         mapFace.setFrame(new DemographicDataType.Face.Frame(0, 0, 0, 0));
         DemographicDataType.Face.AgeAppearance mapAgeAppearance
-                = new DemographicDataType.Face.AgeAppearance("", 0);
+                = new DemographicDataType.Face.AgeAppearance("None", 0);
         mapFace.setAgesAppearance(new DemographicDataType.Face.AgeAppearance[]{mapAgeAppearance});
         DemographicDataType.Face.GenderAppearance mapGenderAppearance
-                = new DemographicDataType.Face.GenderAppearance("", 0);
+                = new DemographicDataType.Face.GenderAppearance("None", 0);
         mapFace.setGendersAppearance(new DemographicDataType.Face.GenderAppearance[]{mapGenderAppearance});
         DemographicDataType.Face.MulticulturalAppearance mapMulticulturalAppearance
-                = new DemographicDataType.Face.MulticulturalAppearance("",0);
+                = new DemographicDataType.Face.MulticulturalAppearance("None",0);
         mapFace.setMulticulturalAppearances(new DemographicDataType.Face.MulticulturalAppearance[]{mapMulticulturalAppearance});
         mapData.setFaces(new DemographicDataType.Face[]{mapFace});
         return mapData;
@@ -56,7 +56,7 @@ public class DataMapper {
     }
     public static ColorDataType getColorDataMap() {
         ColorDataType mapData = new ColorDataType();
-        ColorDataType.Color mapColor = new ColorDataType.Color("", "", "0%");
+        ColorDataType.Color mapColor = new ColorDataType.Color("#000000", "None", "0%");
         mapData.setColors(new ColorDataType.Color[]{mapColor});
         return mapData;
     }

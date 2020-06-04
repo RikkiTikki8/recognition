@@ -55,7 +55,7 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
         imageView.setImageURI(Uri.parse(response.getImage()));
         main_linear_layout.addView(imageView);
 
-        for (ColorDataType.Color color : response.getData().getColors()){
+        for (ColorDataType.Color color : response.getData().getColors()) {
             LinearLayout color_linear_layout_first = new LinearLayout(view.getContext());
             color_linear_layout_first.setLayoutParams(linMatchWrap);
             color_linear_layout_first.setOrientation(LinearLayout.VERTICAL);
