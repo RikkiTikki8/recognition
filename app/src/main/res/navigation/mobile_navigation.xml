@@ -36,7 +36,6 @@
         android:name="com.example.recognition.view.response_favorite.GeneralFragment.GeneralResponseFragment"
         android:label="@string/general"
         tools:layout="@layout/fragment_result_general" />
-
     <fragment
         android:id="@+id/nav_demographic_response"
         android:name="com.example.recognition.view.response_favorite.DemographicFragment.DemographicResponseFragment"
@@ -50,9 +49,35 @@
 
     <fragment
         android:id="@+id/nav_favorite"
-        android:name="com.example.recognition.view.FavoriteFragment"
+        android:name="com.example.recognition.view.favorite.FavoriteFragment"
         android:label="@string/menu_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_FavoriteFragment_to_GeneralFavoriteFragment"
+            app:destination="@id/nav_gen_fav" />
+        <action
+            android:id="@+id/action_FavoriteFragment_to_DemographicFavoriteFragment"
+            app:destination="@id/nav_dem_fav" />
+        <action
+            android:id="@+id/action_FavoriteFragment_to_ColorFavoriteFragment"
+            app:destination="@id/nav_color_fav" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gen_fav"
+        android:name="com.example.recognition.view.favorite.GeneralFavoriteFragment"
+        android:label="@string/general"
+        tools:layout="@layout/fr_gen_fav"/>
+    <fragment
+        android:id="@+id/nav_dem_fav"
+        android:name="com.example.recognition.view.favorite.DemographicFavoriteFragment"
+        android:label="@string/demographic"
+        tools:layout="@layout/fr_dem_fav"/>
+    <fragment
+        android:id="@+id/nav_color_fav"
+        android:name="com.example.recognition.view.favorite.ColorFavoriteFragment"
+        android:label="@string/color"
+        tools:layout="@layout/fr_color_fav"/>
 
     <fragment
         android:id="@+id/nav_settings"

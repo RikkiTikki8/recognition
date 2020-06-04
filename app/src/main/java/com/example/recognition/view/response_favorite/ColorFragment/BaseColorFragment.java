@@ -27,7 +27,7 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_choose_image, container, false);
+        view = inflater.inflate(R.layout.fragment_result_color, container, false);
         init();
         return view;
     }
