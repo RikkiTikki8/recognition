@@ -123,7 +123,7 @@ public class ResponseConverter {
                 for (ColorResponsePojo.Output output : response.getOutputs()) {
                     for (Data.Color color : output.getData().getColors()) {
                         colorList.add(
-                                new Color(color.getW3c().getHex(), color.getW3c().getName(), color.getValue())
+                                new Color(color.getW3c().getHex(), color.getW3c().getName(), String.valueOf((int)(color.getValue()*100)) + "%")
                         );
                     }
                 }

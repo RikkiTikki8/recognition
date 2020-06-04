@@ -25,7 +25,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.clarifai:clarifai-grpc:0.1.1'
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'

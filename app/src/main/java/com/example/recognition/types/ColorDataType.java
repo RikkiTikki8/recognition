@@ -4,13 +4,13 @@ public class ColorDataType {
     public static class Color {
 
         private String color;
-        private String name_color;
-        private double value;
+        private String nameColor;
+        private String percent;
 
-        public Color(String color, String name_color, double value) {
+        public Color(String color, String nameColor, String percent) {
             this.color = color;
-            this.name_color = name_color;
-            this.value = value;
+            this.nameColor = nameColor;
+            this.percent = percent;
         }
 
         public String getColor() {
@@ -19,17 +19,17 @@ public class ColorDataType {
         public void setColor(String color) {
             this.color = color;
         }
-        public String getName_color() {
-            return name_color;
+        public String getNameColor() {
+            return nameColor;
         }
-        public void setName_color(String name_color) {
-            this.name_color = name_color;
+        public void setNameColor(String nameColor) {
+            this.nameColor = nameColor;
         }
-        public double getValue() {
-            return value;
+        public String getPercent() {
+            return percent;
         }
-        public void setValue(double value) {
-            this.value = value;
+        public void setPercent(String percent) {
+            this.percent = percent;
         }
     }
     private Color[] Colors;
