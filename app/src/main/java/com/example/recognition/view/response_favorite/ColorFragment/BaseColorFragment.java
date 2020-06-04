@@ -20,7 +20,7 @@ import com.example.recognition.R;
 import com.example.recognition.types.data.ColorDataType;
 import com.example.recognition.types.response.ColorResponseType;
 
-public abstract class BaseColorResponseFragment extends Fragment implements Observer<ColorResponseType>  {
+public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponseType>  {
 
     private View view;
     protected abstract void init();

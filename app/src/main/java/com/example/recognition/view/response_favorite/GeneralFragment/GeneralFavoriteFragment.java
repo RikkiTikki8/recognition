@@ -7,7 +7,7 @@ import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.GeneralFavoriteViewModel;
 import com.example.recognition.viewmodel.favorites.ImageFavoriteViewModel;
 
-public class GeneralFavoriteFragment extends BaseGeneralResponseFragment {
+public class GeneralFavoriteFragment extends BaseGeneralFragment {
 
     private ImageFavoriteViewModel imageViewModel;
     private GeneralFavoriteViewModel viewModel;

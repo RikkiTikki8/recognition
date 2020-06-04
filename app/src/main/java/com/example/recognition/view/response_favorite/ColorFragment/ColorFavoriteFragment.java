@@ -7,7 +7,7 @@ import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 import com.example.recognition.viewmodel.favorites.ImageFavoriteViewModel;
 
-public class ColorFavoriteFragment extends BaseColorResponseFragment {
+public class ColorFavoriteFragment extends BaseColorFragment {
 
     private ImageFavoriteViewModel imageViewModel;
     private ColorFavoriteViewModel viewModel;

@@ -13,7 +13,7 @@ import com.example.recognition.R;
 import com.example.recognition.types.data.GeneralDataType;
 import com.example.recognition.types.response.GeneralResponseType;
 
-public abstract class BaseGeneralResponseFragment extends Fragment implements Observer<GeneralResponseType> {
+public abstract class BaseGeneralFragment extends Fragment implements Observer<GeneralResponseType> {
 
     private View view;
     protected abstract void init();

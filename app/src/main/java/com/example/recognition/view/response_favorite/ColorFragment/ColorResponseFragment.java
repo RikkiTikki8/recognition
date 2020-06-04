@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.request_response.ColorViewModel;
 
-public class ColorResponseFragment extends BaseColorResponseFragment {
+public class ColorResponseFragment extends BaseColorFragment {
 
     private ColorViewModel viewModel;
 

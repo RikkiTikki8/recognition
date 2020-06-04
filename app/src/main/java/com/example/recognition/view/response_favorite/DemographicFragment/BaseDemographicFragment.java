@@ -15,7 +15,7 @@ import com.example.recognition.types.data.DemographicDataType;
 import com.example.recognition.types.response.DemographicResponseType;
 import com.example.recognition.viewmodel.request_response.DemographicViewModel;
 
-public abstract class BaseDemographicResponseFragment extends Fragment implements Observer<DemographicResponseType> {
+public abstract class BaseDemographicFragment extends Fragment implements Observer<DemographicResponseType> {
 
     private View view;
     private DemographicViewModel viewModel;

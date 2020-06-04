@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.request_response.GeneralViewModel;
 
-public class GeneralResponseFragment extends BaseGeneralResponseFragment {
+public class GeneralResponseFragment extends BaseGeneralFragment {
 
     private GeneralViewModel viewModel;
 

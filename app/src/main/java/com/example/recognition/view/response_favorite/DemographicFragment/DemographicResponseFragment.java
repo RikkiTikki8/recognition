@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.request_response.DemographicViewModel;
 
-public class DemographicResponseFragment extends BaseDemographicResponseFragment {
+public class DemographicResponseFragment extends BaseDemographicFragment {
 
     private DemographicViewModel viewModel;
 
