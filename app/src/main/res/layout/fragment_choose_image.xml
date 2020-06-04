@@ -10,11 +10,12 @@
         android:id="@+id/button_choose_image"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="7"
+        android:layout_weight="8"
         android:layout_marginBottom="30dp"/>
+
     <Button
         android:id="@+id/button_send_image"
-        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="2"/>
+        android:layout_height="0dp"
+        android:layout_weight="2" />
 </LinearLayout>
