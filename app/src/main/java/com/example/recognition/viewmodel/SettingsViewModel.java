@@ -8,8 +8,8 @@ import com.example.recognition.model.Repository;
 import com.example.recognition.types.SettingsType;
 
 public class SettingsViewModel extends ViewModel {
-    private Repository repository;
     private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
+    private Repository repository;
 
     public SettingsViewModel(Repository repository) {
         this.repository = repository;

@@ -17,14 +17,14 @@ import androidx.navigation.Navigation;
 
 import com.example.recognition.R;
 import com.example.recognition.application.App;
-import com.example.recognition.viewmodel.HomeViewModel;
+import com.example.recognition.viewmodel.NavModelViewModel;
 import com.example.recognition.viewmodel.ImageViewModel;
 
 import static android.app.Activity.RESULT_OK;
 
 public class RequestFragment extends Fragment {
     private ImageViewModel imageViewModel;
-    private HomeViewModel homeViewModel;
+    private NavModelViewModel navModelViewModel;
     private int layoutId;
     private View view;
     private String image;
@@ -76,8 +76,8 @@ public class RequestFragment extends Fragment {
                 image = mImage;
             }
         });
-        homeViewModel= new ViewModelProvider(getActivity(), ((App)getActivity().getApplication()).getViewModelFactory()).get(HomeViewModel.class);
-        homeViewModel.getModelLayout().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+        navModelViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication()).getViewModelFactory()).get(NavModelViewModel.class);
+        navModelViewModel.getModelLayout().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                 layoutId = integer;

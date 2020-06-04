@@ -14,12 +14,12 @@ import androidx.navigation.Navigation;
 
 import com.example.recognition.R;
 import com.example.recognition.application.App;
-import com.example.recognition.viewmodel.HomeViewModel;
+import com.example.recognition.viewmodel.NavModelViewModel;
 
 public class HomeFragment extends Fragment {
 
     View view;
-    HomeViewModel viewModel;
+    NavModelViewModel viewModel;
 
     private View.OnClickListener onGeneralClickListener = new View.OnClickListener() {
         @SuppressLint("ResourceType")
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
-                .getViewModelFactory()).get(HomeViewModel.class);
+                .getViewModelFactory()).get(NavModelViewModel.class);
 
         final Button bGeneral = view.findViewById(R.id.button_general);
         final Button bDemographic = view.findViewById(R.id.button_demographics);

@@ -34,8 +34,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             return (T)(new DemographicFavoriteViewModel(repository));
         } else if(modelClass.getSimpleName().equals("ColorFavoriteViewModel")) {
             return (T) (new ColorFavoriteViewModel(repository));
-        } else if(modelClass.getSimpleName().equals("HomeViewModel")) {
-            return (T) (new HomeViewModel());
+        } else if(modelClass.getSimpleName().equals("NavModelViewModel")) {
+            return (T) (new NavModelViewModel());
         } else if(modelClass.getSimpleName().equals("ImageViewModel")) {
             return (T) (new ImageViewModel());
         }
