@@ -31,8 +31,13 @@ public class Repository {
     public LiveData<SettingsType> getSettings() {
         return localDataSource.getSettings();
     }
-    public void setThreshold(int threshold) {
-        localDataSource.setThreshold(threshold);
+    public void setThreshold(final int threshold) {
+        executorIO.execute(new Runnable() {
+            @Override
+            public void run() {
+                localDataSource.setThreshold(threshold);
+            }
+        });
     }
     public LiveData<GeneralResponseType> getGeneralResponse(final String image) {
         executorIO.execute(new Runnable() {
@@ -57,13 +62,24 @@ public class Repository {
         return localDataSource.getGeneralFavorites();
     }
     public void addLastGeneralToFavorites() {
-        localDataSource.addLastGeneralResponseToFavorite();
+        executorIO.execute(new Runnable() {
+            @Override
+            public void run() {
+                localDataSource.addLastGeneralResponseToFavorite();
+            }
+        });
     }
     public LiveData<GeneralResponseType> getGeneralFavorite(String image) {
         return localDataSource.getGeneralFavorite(image);
     }
-    public void removeGeneralFavorite(String image) {
-        localDataSource.removeGeneralFavoriteResponse(image);
+    public void removeGeneralFavorite(final String image) {
+        executorIO.execute(new Runnable() {
+               @Override
+               public void run() {
+                   localDataSource.removeGeneralFavoriteResponse(image);
+               }
+           }
+        );
     }
     public LiveData<DemographicResponseType> getDemographicResponse(final String image) {
         executorIO.execute(new Runnable() {
@@ -88,13 +104,24 @@ public class Repository {
         return localDataSource.getDemographicFavorites();
     }
     public void addLastDemographicToFavorites() {
-        localDataSource.addLastDemographicResponseToFavorite();
+        executorIO.execute(new Runnable() {
+            @Override
+            public void run() {
+                localDataSource.addLastDemographicResponseToFavorite();
+            }
+        });
     }
     public LiveData<DemographicResponseType> getDemographicFavorite (String image) {
         return localDataSource.getDemographicFavorite(image);
     }
-    public void removeDemographicFavorite(String image) {
-        localDataSource.removeDemographicFavoriteResponse(image);
+    public void removeDemographicFavorite(final String image) {
+        executorIO.execute(new Runnable() {
+               @Override
+               public void run() {
+                   localDataSource.removeDemographicFavoriteResponse(image);
+               }
+           }
+        );
     }
     public LiveData<ColorResponseType> getColorResponse(final String image) {
         executorIO.execute(new Runnable() {
@@ -119,13 +146,23 @@ public class Repository {
         return localDataSource.getColorFavorites();
     }
     public void addLastColorToFavorites() {
-        localDataSource.addLastColorResponseToFavorite();
+        executorIO.execute(new Runnable() {
+            @Override
+            public void run() {
+                localDataSource.addLastColorResponseToFavorite();
+            }
+        });
     }
     public LiveData<ColorResponseType> getColorFavorite(String image) {
         return localDataSource.getColorFavorite(image);
     }
-    public void removeColorFavorite(String image) {
-        localDataSource.removeColorFavoriteResponse(image);
+    public void removeColorFavorite(final String image) {
+        executorIO.execute(new Runnable() {
+            @Override
+            public void run() {
+                localDataSource.removeColorFavoriteResponse(image);
+            }
+        });
     }
     public LiveData<Boolean> getLoadStatus() {
         return loadStatus;
