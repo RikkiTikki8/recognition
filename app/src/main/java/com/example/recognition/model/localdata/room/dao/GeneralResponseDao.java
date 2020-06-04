@@ -15,7 +15,7 @@ public interface GeneralResponseDao {
     @Query("SELECT * FROM GeneralResponseEntity")
     LiveData<List<GeneralResponseType>> getFavorites();
     @Query("SELECT * FROM GeneralResponseEntity WHERE image = :image")
-    LiveData<GeneralDataType> getFavorite(String image);
+    LiveData<GeneralResponseType> getFavorite(String image);
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addResponse(GeneralResponseType response);
     @Query("DELETE FROM ColorResponseEntity WHERE image = :image")

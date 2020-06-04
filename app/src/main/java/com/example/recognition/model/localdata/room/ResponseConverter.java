@@ -69,22 +69,4 @@ public class ResponseConverter {
         response.setData(gson.fromJson(generalResponse.getData(), GeneralDataType.class));
         return response;
     }
-    @TypeConverter
-    ColorDataType getColorDataType(ColorResponseEntity colorResponse) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        return gson.fromJson(colorResponse.getData(), ColorDataType.class);
-    }
-    @TypeConverter
-    DemographicDataType getDemographicDataType(DemographicResponseEntity demographicResponse) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        return gson.fromJson(demographicResponse.getData(), DemographicDataType.class);
-    }
-    @TypeConverter
-    GeneralDataType getGeneralDataType(GeneralResponseEntity generalResponse) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        return gson.fromJson(generalResponse.getData(), GeneralDataType.class);
-    }
 }

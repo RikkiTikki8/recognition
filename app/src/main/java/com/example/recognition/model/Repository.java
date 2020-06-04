@@ -34,7 +34,7 @@ public class Repository {
     public void setThreshold(int threshold) {
         localDataSource.setThreshold(threshold);
     }
-    public LiveData<GeneralDataType> getGeneralData(final String image) {
+    public LiveData<GeneralResponseType> getGeneralResponse(final String image) {
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
@@ -59,13 +59,13 @@ public class Repository {
     public void addLastGeneralToFavorites() {
         localDataSource.addLastGeneralResponseToFavorite();
     }
-    public LiveData<GeneralDataType> getGeneralFavorite(String image) {
+    public LiveData<GeneralResponseType> getGeneralFavorite(String image) {
         return localDataSource.getGeneralFavorite(image);
     }
     public void removeGeneralFavorite(String image) {
         localDataSource.removeGeneralFavoriteResponse(image);
     }
-    public LiveData<DemographicDataType> getDemographicData(final String image) {
+    public LiveData<DemographicResponseType> getDemographicResponse(final String image) {
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
@@ -90,13 +90,13 @@ public class Repository {
     public void addLastDemographicToFavorites() {
         localDataSource.addLastDemographicResponseToFavorite();
     }
-    public LiveData<DemographicDataType> getDemographicFavorite (String image) {
+    public LiveData<DemographicResponseType> getDemographicFavorite (String image) {
         return localDataSource.getDemographicFavorite(image);
     }
     public void removeDemographicFavorite(String image) {
         localDataSource.removeDemographicFavoriteResponse(image);
     }
-    public LiveData<ColorDataType> getColorData(final String image) {
+    public LiveData<ColorResponseType> getColorResponse(final String image) {
         executorIO.execute(new Runnable() {
             @Override
             public void run() {
@@ -121,7 +121,7 @@ public class Repository {
     public void addLastColorToFavorites() {
         localDataSource.addLastColorResponseToFavorite();
     }
-    public LiveData<ColorDataType> getColorFavorite(String image) {
+    public LiveData<ColorResponseType> getColorFavorite(String image) {
         return localDataSource.getColorFavorite(image);
     }
     public void removeColorFavorite(String image) {

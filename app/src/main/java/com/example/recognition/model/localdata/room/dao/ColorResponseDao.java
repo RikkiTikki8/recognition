@@ -15,7 +15,7 @@ public interface ColorResponseDao {
     @Query("SELECT * FROM ColorResponseEntity")
     LiveData<List<ColorResponseType>> getFavorites();
     @Query("SELECT * FROM ColorResponseEntity WHERE image = :image")
-    LiveData<ColorDataType> getFavorite(String image);
+    LiveData<ColorResponseType> getFavorite(String image);
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addResponse(ColorResponseType response);
     @Query("DELETE FROM ColorResponseEntity WHERE image = :image")
