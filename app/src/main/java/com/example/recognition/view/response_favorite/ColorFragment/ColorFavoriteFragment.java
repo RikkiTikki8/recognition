@@ -7,6 +7,7 @@ import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 
 public class ColorFavoriteFragment extends BaseColorFragment {
+
     private ColorFavoriteViewModel viewModel;
 
     @Override

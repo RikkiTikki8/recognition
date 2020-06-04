@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 import com.example.recognition.R;
 import com.example.recognition.application.App;
 import com.example.recognition.viewmodel.HomeViewModel;
+import com.example.recognition.viewmodel.ImageViewModel;
 
 import static android.app.Activity.RESULT_OK;
 

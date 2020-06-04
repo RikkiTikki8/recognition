@@ -10,17 +10,10 @@ import com.example.recognition.model.Repository;
 import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 
 public class GeneralViewModel extends ViewModel {
-    private MutableLiveData<String> image = new MutableLiveData<>();
     private MediatorLiveData<GeneralResponse> data = new MediatorLiveData<>();
     private Repository repository;
     public GeneralViewModel(Repository repository) {
         this.repository = repository;
-    }
-    public void setImage(String image) {
-        this.image.setValue(image);
-    }
-    public LiveData<String> getImage() {
-        return image;
     }
     public LiveData<GeneralResponse> getData(String image) {
         if (null == data.getValue()) {
