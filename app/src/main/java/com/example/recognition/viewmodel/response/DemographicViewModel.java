@@ -27,9 +27,9 @@ public class DemographicViewModel extends ViewModel {
         }
         return data;
     }
-    public LiveData<String> getErrorMassage() {
+    public LiveData<String> getMassage() {
         if (null == message.getValue()) {
-            message.addSource(repository.getErrorMessage(), new Observer<String>() {
+            message.addSource(repository.getMessage(), new Observer<String>() {
                 @Override
                 public void onChanged(String s) {
                     message.setValue(s);

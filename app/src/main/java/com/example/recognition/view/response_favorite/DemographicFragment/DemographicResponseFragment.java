@@ -13,9 +13,9 @@ public class DemographicResponseFragment extends BaseDemographicFragment {
     private DemographicViewModel viewModel;
 
     protected void init(){
-        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
+        viewModel = new ViewModelProvider(this, ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(DemographicViewModel.class);
-        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+        viewModel.getMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();

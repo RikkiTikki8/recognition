@@ -12,7 +12,7 @@ public class ColorFavoriteFragment extends BaseColorFragment {
 
     @Override
     protected void init() {
-        viewModel = new ViewModelProvider(this, ((App)getActivity().getApplication())
+        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(ColorFavoriteViewModel.class);
         viewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

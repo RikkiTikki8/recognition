@@ -57,7 +57,7 @@ public class RemoteDataSource {
                                 new Request.Inputs(
                                         new Request.Inputs.Data(
                                                 new Request.Inputs.Data.Image(
-                                                        "$(base64 "  + path + ")"
+                                                        "\'\"`base64 " + path + "`\"\'"//"$(base64 "  + path + ")"
                                                 )
                                         )
                                 )

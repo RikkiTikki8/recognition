@@ -1,7 +1,5 @@
 package com.example.recognition.model;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -23,16 +21,17 @@ import retrofit2.Response;
 public class Repository {
     private final String ERROR = "Ooops, something going wrong";
     private final String NETWORK_ERROR = "Please, check your internet connection";
+    private final String DONE = "Done!";
     private Executor executorIO = Executors.newSingleThreadExecutor();
-    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
+    private MutableLiveData<String> message = new MutableLiveData<>();
     private LocalDataSource localDataSource;
     private RemoteDataSource remoteDataSource;
     public Repository(LocalDataSource localDataSource, RemoteDataSource remoteDataSource) {
         this.localDataSource = localDataSource;
         this.remoteDataSource = remoteDataSource;
     }
-    public LiveData<String> getErrorMessage() {
-        return errorMessage;
+    public LiveData<String> getMessage() {
+        return message;
     }
     public LiveData<SettingsType> getSettings() {
         return localDataSource.getSettings();
@@ -52,12 +51,14 @@ public class Repository {
                 try {
                     Response<GeneralResponsePojo> responsePojo = remoteDataSource.fetchGeneralData(image);
                     if (!responsePojo.isSuccessful()) {
-                        errorMessage.postValue(NETWORK_ERROR);
+                        message.postValue(ERROR);
+                    } else {
+                        message.postValue(DONE);
                     }
                     GeneralResponse response = ResponseConverter.convertGeneral(image, responsePojo);
                     localDataSource.setLastGeneralResponse(response);
                 } catch (IOException e) {
-                    errorMessage.postValue(ERROR);
+                    message.postValue(NETWORK_ERROR);
                 }
             }
         });
@@ -91,12 +92,14 @@ public class Repository {
                 try {
                     Response<DemographicResponsePojo> responsePojo = remoteDataSource.fetchDemographicData(image);
                     if (!responsePojo.isSuccessful()) {
-                        errorMessage.postValue(NETWORK_ERROR);
+                        message.postValue(ERROR);
+                    } else {
+                        message.postValue(DONE);
                     }
                     DemographicResponse response = ResponseConverter.convertDemographic(image, responsePojo);
                     localDataSource.setLastDemographicResponse(response);
                 } catch (IOException e) {
-                    errorMessage.postValue(ERROR);
+                    message.postValue(NETWORK_ERROR);
                 }
             }
         });
@@ -132,12 +135,14 @@ public class Repository {
                 try {
                     Response<ColorResponsePojo> responsePojo = remoteDataSource.fetchColorData(image);
                     if (!responsePojo.isSuccessful()) {
-                        errorMessage.postValue(NETWORK_ERROR);
+                        message.postValue(ERROR);
+                    } else {
+                        message.postValue(DONE);
                     }
                     ColorResponse response = ResponseConverter.convertColor(image, responsePojo);
                     localDataSource.setLastColorResponse(response);
                 } catch (IOException e) {
-                    errorMessage.postValue(ERROR);
+                    message.postValue(NETWORK_ERROR);
                 }
             }
         });

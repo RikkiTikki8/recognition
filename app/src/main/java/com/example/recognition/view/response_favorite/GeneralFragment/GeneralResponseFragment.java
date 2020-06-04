@@ -14,9 +14,9 @@ public class GeneralResponseFragment extends BaseGeneralFragment {
 
     @Override
     protected void init() {
-        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
+        viewModel = new ViewModelProvider(this, ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(GeneralViewModel.class);
-        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+        viewModel.getMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
