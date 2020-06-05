@@ -139,11 +139,13 @@ public class ResponseConverter {
                 List<Color> colorList = new ArrayList<>();
                 for (ColorResponsePojo.Results result : response.getResults()) {
                     for (ColorResponsePojo.Results.Output output : result.getOutputs()) {
-                        for (Data.Color color : output.getData().getColors()) {
-                            Log.d("Color", color.getW3c().getName());
-                            colorList.add(
-                                    new Color(color.getW3c().getHex(), color.getW3c().getName(), color.getValue()*100)
-                            );
+                        if (null != output.getData().getColors()) {
+                            for (Data.Color color : output.getData().getColors()) {
+                                Log.d("Color", color.getW3c().getName());
+                                colorList.add(
+                                        new Color(color.getW3c().getHex(), color.getW3c().getName(), color.getValue()*100)
+                                );
+                            }
                         }
                     }
                 }

@@ -22,6 +22,7 @@ import com.example.recognition.view.response_favorite.ColorFragment.ColorRecycle
 public abstract class BaseGeneralFragment extends Fragment implements Observer<GeneralResponse> {
     protected boolean isFavorite;
     protected int threshold;
+    private RecyclerView rv;
     private View view;
     private ImageView imageView;
     protected Button favoriteButton;
@@ -34,6 +35,7 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
         view = inflater.inflate(R.layout.fragment_result_general, container, false);
         imageView = view.findViewById(R.id.gen_model_image);
         favoriteButton = view.findViewById(R.id.but_gen_add_to_favorite);
+        rv = view.findViewById(R.id.rv_gen);
         init();
         return view;
     }
@@ -41,7 +43,6 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
     @Override
     public void onChanged(GeneralResponse response) {
         imageView.setImageURI(Uri.parse(response.getImage()));
-        RecyclerView rv = view.findViewById(R.id.rv_gen);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         final GeneralRecyclerAdapter adapter = new GeneralRecyclerAdapter(response.getData().getProperties(), threshold);
         rv.setAdapter(adapter);
