@@ -52,12 +52,12 @@ public abstract class BaseDemographicFragment extends Fragment implements Observ
             final GenderDemographicRecyclerAdapter adapter_gender =
                     new GenderDemographicRecyclerAdapter(faces.getGendersAppearance(), threshold);
             rv_gender.setAdapter(adapter_gender);
-            RecyclerView rv_age = view.findViewById(R.id.rv_dem_gender);
+            RecyclerView rv_age = view.findViewById(R.id.rv_dem_age);
             rv_gender.setLayoutManager(llm);
             final AgeDemographicRecyclerAdapter adapter_age =
                     new AgeDemographicRecyclerAdapter(faces.getAgesAppearance(), threshold);
             rv_age.setAdapter(adapter_age);
-            RecyclerView rv_multi = view.findViewById(R.id.rv_dem_gender);
+            RecyclerView rv_multi = view.findViewById(R.id.rv_dem_multicolor);
             rv_gender.setLayoutManager(llm);
             final MultiDemographicRecyclerAdapter adapter_multi =
                     new MultiDemographicRecyclerAdapter(faces.getMulticulturalAppearances(), threshold);
