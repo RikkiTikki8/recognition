@@ -39,7 +39,7 @@ public class SharedPreferencesHelper {
         settings.setThreshold(threshold);
         String uploadedSettings = gson.toJson(settings);
         sharedPreferences.edit().putString(SETTINGS_KEY, uploadedSettings).apply();
-        optionsData.setValue(settings);
+        optionsData.postValue(settings);
     }
     public GeneralResponse getGeneralResponse() {
         return generalResponse.getValue();
