@@ -16,7 +16,8 @@
         <ImageView
             android:id="@+id/color_model_image"
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="500dp"
+            android:layout_marginBottom="@dimen/image_margin"/>
 
         <Button
             android:id="@+id/but_col_add_to_favorite"
@@ -30,7 +31,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginTop="@dimen/image_margin"
             android:layout_marginBottom="@dimen/text_margin"
             android:text="COLOR"
             android:textSize="@dimen/response_text_size"/>
