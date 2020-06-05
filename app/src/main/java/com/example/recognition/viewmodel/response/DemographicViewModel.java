@@ -66,7 +66,7 @@ public class DemographicViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         if (isFavorite.getValue()) {
-            repository.addLastGeneralToFavorites();
+            repository.addLastDemographicToFavorites();
         }
         super.onCleared();
     }

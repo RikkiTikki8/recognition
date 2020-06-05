@@ -39,7 +39,7 @@ public abstract class BaseDemographicFragment extends Fragment implements Observ
 
     @Override
     public void onChanged(DemographicResponse response) {
-        //imageView.setImageURI(Uri.parse(response.getImage()));
+        imageView.setImageURI(Uri.parse(response.getImage()));
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         //TODO кнопки с лицами
         for (DemographicDataType.Face faces : response.getData().getFaces()){

@@ -66,7 +66,7 @@ public class ColorViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         if (isFavorite.getValue()) {
-            repository.addLastGeneralToFavorites();
+            repository.addLastColorToFavorites();
         }
         super.onCleared();
     }

@@ -43,11 +43,13 @@ public class ResponseConverter {
                 Property property;
                 for (GeneralResponsePojo.Results result : response.getResults()) {
                     for (Outputs output : result.getOutputs()) {
-                        for (Concept concept : output.getData().getConcepts()) {
-                            property = new Property();
-                            property.setValue(concept.getValue());
-                            property.setName(concept.getName());
-                            propertyList.add(property);
+                        if (null != output.getData().getConcepts()) {
+                            for (Concept concept : output.getData().getConcepts()) {
+                                property = new Property();
+                                property.setValue(concept.getValue());
+                                property.setName(concept.getName());
+                                propertyList.add(property);
+                            }
                         }
                     }
                 }
@@ -73,45 +75,50 @@ public class ResponseConverter {
                 dataType = new DemographicDataType();
                 List<Face> faces = new ArrayList<>();
                 Face face;
-                for (DemographicResponsePojo.Results result : response.getResults())
-                for (DemographicResponsePojo.Results.Output output : result.getOutputs()) {
-                    for (DemographicResponsePojo.Results.Output.Data.Region region : output.getData().getRegions()) {
-                        face = new Face();
-                        DemographicResponsePojo.Results.Output.Data.Region.RegionInfo.BoundingBox box = region.getRegionInfo().getBoundingBox();
-                        Frame frame = new Frame();
-                        frame.setTop(box.getTopRow());
-                        frame.setLeft(box.getLeftCol());
-                        frame.setBottom(box.getBottomRow());
-                        frame.setRight(box.getRightCol());
-                        face.setFrame(frame);
-                        List<AgeAppearance> ageAppearanceList = new ArrayList<>();
-                        for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
-                                region.getData().getFace().getAgeAppearance().getConcepts()) {
-                            ageAppearanceList.add(new AgeAppearance(concept.getName(), concept.getValue()));
+                for (DemographicResponsePojo.Results result : response.getResults()) {
+                    for (DemographicResponsePojo.Results.Output output : result.getOutputs()) {
+                        if (null != output.getData().getRegions()) {
+                            for (DemographicResponsePojo.Results.Output.Data.Region region : output.getData().getRegions()) {
+                                face = new Face();
+                                DemographicResponsePojo.Results.Output.Data.Region.RegionInfo.BoundingBox box = region.getRegionInfo().getBoundingBox();
+                                Frame frame = new Frame();
+                                frame.setTop(box.getTopRow());
+                                frame.setLeft(box.getLeftCol());
+                                frame.setBottom(box.getBottomRow());
+                                frame.setRight(box.getRightCol());
+                                face.setFrame(frame);
+                                List<AgeAppearance> ageAppearanceList = new ArrayList<>();
+                                for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
+                                        region.getData().getFace().getAgeAppearance().getConcepts()) {
+                                    ageAppearanceList.add(new AgeAppearance(concept.getName(), concept.getValue()));
+                                }
+                                AgeAppearance[] ageAppearanceArray = new AgeAppearance[ageAppearanceList.size()];
+                                ageAppearanceList.toArray(ageAppearanceArray);
+                                face.setAgesAppearance(ageAppearanceArray);
+                                List<GenderAppearance> genderAppearanceList = new ArrayList<>();
+                                for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
+                                        region.getData().getFace().getGenderAppearance().getConcepts()) {
+                                    genderAppearanceList.add(new GenderAppearance(concept.getName(), concept.getValue()));
+                                }
+                                GenderAppearance[] genderAppearanceArray = new GenderAppearance[genderAppearanceList.size()];
+                                genderAppearanceList.toArray(genderAppearanceArray);
+                                face.setGendersAppearance(genderAppearanceArray);
+                                List<MulticulturalAppearance> multiculturalAppearanceList = new ArrayList<>();
+                                for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
+                                        region.getData().getFace().getMulticulturalAppearance().getConcepts()) {
+                                    multiculturalAppearanceList.add(new MulticulturalAppearance(concept.getName(), concept.getValue()));
+                                }
+                                MulticulturalAppearance[] multiculturalAppearanceArray = new MulticulturalAppearance[multiculturalAppearanceList.size()];
+                                multiculturalAppearanceList.toArray(multiculturalAppearanceArray);
+                                face.setMulticulturalAppearances(multiculturalAppearanceArray);
+                                faces.add(face);
+                            }
                         }
-                        AgeAppearance[] ageAppearanceArray = new AgeAppearance[ageAppearanceList.size()];
-                        ageAppearanceList.toArray(ageAppearanceArray);
-                        face.setAgesAppearance(ageAppearanceArray);
-                        List<GenderAppearance> genderAppearanceList = new ArrayList<>();
-                        for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
-                                region.getData().getFace().getGenderAppearance().getConcepts()) {
-                            genderAppearanceList.add(new GenderAppearance(concept.getName(), concept.getValue()));
-                        }
-                        GenderAppearance[] genderAppearanceArray = new GenderAppearance[genderAppearanceList.size()];
-                        genderAppearanceList.toArray(genderAppearanceArray);
-                        face.setGendersAppearance(genderAppearanceArray);
-                        List<MulticulturalAppearance> multiculturalAppearanceList = new ArrayList<>();
-                        for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
-                                region.getData().getFace().getMulticulturalAppearance().getConcepts()) {
-                            multiculturalAppearanceList.add(new MulticulturalAppearance(concept.getName(), concept.getValue()));
-                        }
-                        MulticulturalAppearance[] multiculturalAppearanceArray = new MulticulturalAppearance[multiculturalAppearanceList.size()];
-                        multiculturalAppearanceList.toArray(multiculturalAppearanceArray);
-                        face.setMulticulturalAppearances(multiculturalAppearanceArray);
-                        faces.add(face);
                     }
                 }
-                dataType.setFaces((Face[]) faces.toArray());
+                Face[] faceArray = new Face[faces.size()];
+                faces.toArray(faceArray);
+                dataType.setFaces(faceArray);
             } else {
                 dataType = DataMapper.getDemographicDataMap();
             }
@@ -130,13 +137,14 @@ public class ResponseConverter {
             if (10000 == response.getStatus().getCode()) {
                 dataType = new ColorDataType();
                 List<Color> colorList = new ArrayList<>();
-                for (ColorResponsePojo.Results result : response.getResults())
-                for (ColorResponsePojo.Results.Output output : result.getOutputs()) {
-                    for (Data.Color color : output.getData().getColors()) {
-                        Log.d("Color", color.getW3c().getName());
-                        colorList.add(
-                                new Color(color.getW3c().getHex(), color.getW3c().getName(), color.getValue()*100)
-                        );
+                for (ColorResponsePojo.Results result : response.getResults()) {
+                    for (ColorResponsePojo.Results.Output output : result.getOutputs()) {
+                        for (Data.Color color : output.getData().getColors()) {
+                            Log.d("Color", color.getW3c().getName());
+                            colorList.add(
+                                    new Color(color.getW3c().getHex(), color.getW3c().getName(), color.getValue()*100)
+                            );
+                        }
                     }
                 }
                 Color[] colorArray = new Color[colorList.size()];
