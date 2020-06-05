@@ -35,7 +35,7 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
 
     @Override
     public void onChanged(GeneralResponse response) {
-        imageView.setImageURI(Uri.parse(response.getImage()));
+        //imageView.setImageURI(Uri.parse(response.getImage()));
         RecyclerView rv = view.findViewById(R.id.rv_gen);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         final GeneralRecyclerAdapter adapter = new GeneralRecyclerAdapter(response.getData().getProperties());

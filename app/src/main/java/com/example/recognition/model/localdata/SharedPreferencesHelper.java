@@ -16,7 +16,6 @@ import com.google.gson.GsonBuilder;
 
 public class SharedPreferencesHelper {
     private final static String SETTINGS_KEY = "SETTINGS_KEY";
-    public static final String LAST_RESPONSE_KEY = "LAST_RESPONSE_KEY";
     private MutableLiveData<SettingsType> optionsData = new MutableLiveData<>();
     private MutableLiveData<GeneralResponse> generalResponse = new MutableLiveData<>();
     private MutableLiveData<DemographicResponse> demographicsResponse = new MutableLiveData<>();
@@ -43,66 +42,30 @@ public class SharedPreferencesHelper {
         optionsData.setValue(settings);
     }
     public GeneralResponse getGeneralResponse() {
-        String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY + GeneralResponse.class.getSimpleName(),
-                gson.toJson(DataMapper.getGeneralResponseMap())
-        );
-        return gson.fromJson(json, GeneralResponse.class);
+        return generalResponse.getValue();
     }
     public LiveData<GeneralResponse> getLiveDataGeneralResponse() {
-        String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY + GeneralResponse.class.getSimpleName(),
-                gson.toJson(DataMapper.getGeneralResponseMap())
-        );
-        generalResponse.setValue(gson.fromJson(json, GeneralResponse.class));
         return generalResponse;
     }
     public void setGeneralResponse(GeneralResponse response) {
-        sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY + GeneralResponse.class.getSimpleName(),
-                gson.toJson(response)
-        ).apply();
+        generalResponse.postValue(response);
     }
     public DemographicResponse getDemographicsResponse() {
-        String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY + DemographicResponse.class.getSimpleName(),
-                gson.toJson(DataMapper.getDemographicResponseMap())
-        );
-        return gson.fromJson(json, DemographicResponse.class);
+        return demographicsResponse.getValue();
     }
     public LiveData<DemographicResponse> getLiveDataDemographicResponse() {
-        String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY + DemographicResponse.class.getSimpleName(),
-                gson.toJson(DataMapper.getDemographicResponseMap())
-        );
-        demographicsResponse.setValue(gson.fromJson(json, DemographicResponse.class));
         return demographicsResponse;
     }
     public void setDemographicsResponse(DemographicResponse response) {
-        sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY + DemographicResponse.class.getSimpleName(),
-                gson.toJson(response)
-        ).apply();
+        demographicsResponse.postValue(response);
     }
     public ColorResponse getColorResponse() {
-        String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY + ColorResponse.class.getSimpleName(),
-                gson.toJson(DataMapper.getColorResponseMap())
-        );
-        return gson.fromJson(json, ColorResponse.class);
+        return colorResponse.getValue();
     }
     public LiveData<ColorResponse> getLiveDataColorResponse() {
-        String json = sharedPreferences.getString(
-                LAST_RESPONSE_KEY + ColorResponse.class.getSimpleName(),
-                gson.toJson(DataMapper.getColorResponseMap())
-        );
-        colorResponse.setValue(gson.fromJson(json, ColorResponse.class));
         return colorResponse;
     }
     public void setColorResponse(ColorResponse response) {
-        sharedPreferences.edit().putString(
-                LAST_RESPONSE_KEY + ColorResponse.class.getSimpleName(),
-                gson.toJson(response)
-        ).apply();
+        colorResponse.postValue(response);
     }
 }
