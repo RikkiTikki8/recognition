@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,11 @@ import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 import com.example.recognition.view.response_favorite.ColorFragment.ColorRecyclerAdapter;
 
 public abstract class BaseGeneralFragment extends Fragment implements Observer<GeneralResponse> {
-
+    protected boolean isFavorite;
     private View view;
     private ImageView imageView;
+    protected Button favoriteButton;
+
     protected abstract void init();
 
     @Nullable
@@ -30,12 +33,13 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
         view = inflater.inflate(R.layout.fragment_result_general, container, false);
         init();
         imageView = view.findViewById(R.id.gen_model_image);
+        favoriteButton = view.findViewById(R.id.button_add_to_favorite);
         return view;
     }
 
     @Override
     public void onChanged(GeneralResponse response) {
-        //imageView.setImageURI(Uri.parse(response.getImage()));
+        imageView.setImageURI(Uri.parse(response.getImage()));
         RecyclerView rv = view.findViewById(R.id.rv_gen);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         final GeneralRecyclerAdapter adapter = new GeneralRecyclerAdapter(response.getData().getProperties());

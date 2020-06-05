@@ -19,11 +19,11 @@ import com.example.recognition.R;
 import com.example.recognition.model.localdata.room.entity.ColorResponse;
 
 public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponse>  {
-
-    private Boolean isFavorite;
-    private Button button;
+    protected boolean isFavorite;
+    protected Button favoriteButton;
     private View view;
     private ImageView imageView;
+
     protected abstract void init();
 
     @Nullable
@@ -32,14 +32,7 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
         view = inflater.inflate(R.layout.fragment_result_color, container, false);
         init();
         imageView = view.findViewById(R.id.color_model_image);
-        button = view.findViewById(R.id.button_add_to_favorite);
-        isFavorite = false;
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isFavorite = !isFavorite;
-            }
-        });
+        favoriteButton = view.findViewById(R.id.button_add_to_favorite);
         return view;
     }
 

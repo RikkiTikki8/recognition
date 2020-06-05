@@ -1,5 +1,6 @@
 package com.example.recognition.view.response_favorite.DemographicFragment;
 
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
@@ -12,6 +13,18 @@ public class DemographicResponseFragment extends BaseDemographicFragment {
     private ImageViewModel imageViewModel;
     private DemographicViewModel viewModel;
 
+    private View.OnClickListener changeFavorite = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (isFavorite) {
+                viewModel.removeFromFavorite();
+            }
+            else {
+                viewModel.addToFavorite();
+            }
+            isFavorite = !isFavorite;
+        }
+    };
     protected void init(){
         viewModel = new ViewModelProvider(this, ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(DemographicViewModel.class);
@@ -21,6 +34,7 @@ public class DemographicResponseFragment extends BaseDemographicFragment {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
             }
         });
+        favoriteButton.setOnClickListener(changeFavorite);
         imageViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(ImageViewModel.class);
         imageViewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {

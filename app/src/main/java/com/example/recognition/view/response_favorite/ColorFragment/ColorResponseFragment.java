@@ -1,5 +1,6 @@
 package com.example.recognition.view.response_favorite.ColorFragment;
 
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
@@ -13,6 +14,18 @@ public class ColorResponseFragment extends BaseColorFragment {
     private ImageViewModel imageViewModel;
     private ColorViewModel viewModel;
 
+    private View.OnClickListener changeFavorite = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (isFavorite) {
+                viewModel.removeFromFavorite();
+            }
+            else {
+                viewModel.addToFavorite();
+            }
+            isFavorite = !isFavorite;
+        }
+    };
     @Override
     protected void init() {
         viewModel = new ViewModelProvider(this, ((App)getActivity().getApplication())
@@ -23,6 +36,7 @@ public class ColorResponseFragment extends BaseColorFragment {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
             }
         });
+        favoriteButton.setOnClickListener(changeFavorite);
         imageViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(ImageViewModel.class);
         imageViewModel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {

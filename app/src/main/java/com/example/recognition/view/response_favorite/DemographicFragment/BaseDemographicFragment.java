@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -22,9 +23,10 @@ import com.example.recognition.view.response_favorite.DemographicFragment.Recycl
 import com.example.recognition.view.response_favorite.DemographicFragment.RecyclerAdapters.MultiDemographicRecyclerAdapter;
 
 public abstract class BaseDemographicFragment extends Fragment implements Observer<DemographicResponse> {
-
+    protected boolean isFavorite;
     private View view;
     private ImageView imageView;
+    protected Button favoriteButton;
 
     protected abstract void init();
 
@@ -34,6 +36,7 @@ public abstract class BaseDemographicFragment extends Fragment implements Observ
         view = inflater.inflate(R.layout.fragment_result_demographic, container, false);
         init();
         imageView = view.findViewById(R.id.dem_model_image);
+        favoriteButton = view.findViewById(R.id.button_add_to_favorite);
         return view;
     }
 
