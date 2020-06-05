@@ -28,7 +28,7 @@ public class ListColorFavoriteFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fr_list_fav, container, false);
-        viewModel = new ViewModelProvider(this, ((App) getActivity().getApplication())
+        viewModel = new ViewModelProvider(getActivity(), ((App) getActivity().getApplication())
                 .getViewModelFactory()).get(ColorFavoriteViewModel.class);
         viewModel.getColorFavorites().observe(getViewLifecycleOwner(), new Observer<List<ColorResponse>>() {
             @Override
