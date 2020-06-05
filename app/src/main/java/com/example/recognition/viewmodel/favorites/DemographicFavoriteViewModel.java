@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DemographicFavoriteViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>(true);
     private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
     private MediatorLiveData<List<DemographicResponse>> demographicFavorites = new MediatorLiveData<>();
     private MediatorLiveData<DemographicResponse> response = new MediatorLiveData<>();

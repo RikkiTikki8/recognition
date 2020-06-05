@@ -12,15 +12,7 @@ import java.util.List;
 
 public class ColorFavoriteViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
-
-    public MutableLiveData<Boolean> getIsFavorite() {
-        return isFavorite;
-    }
-    public void setIsFavorite(MutableLiveData<Boolean> isFavorite) {
-        this.isFavorite = isFavorite;
-    }
-
-    private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>(true);
     private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
     private MediatorLiveData<List<ColorResponse>> colorFavorites = new MediatorLiveData<>();
     private MediatorLiveData<ColorResponse> response = new MediatorLiveData<>();
@@ -50,6 +42,15 @@ public class ColorFavoriteViewModel extends ViewModel {
         }
         return settings;
     }
+    public MutableLiveData<Boolean> getIsFavorite() {
+        return isFavorite;
+    }
+    public void setIsFavorite(MutableLiveData<Boolean> isFavorite) {
+        this.isFavorite = isFavorite;
+    }
+    public LiveData<Boolean> isFavorite() {
+        return isFavorite;
+    }
     public LiveData<ColorResponse> getFavorite(String image) {
         if (null == response.getValue()) {
             response.addSource(repository.getColorFavorite(image), new Observer<ColorResponse>() {
@@ -67,12 +68,7 @@ public class ColorFavoriteViewModel extends ViewModel {
     public void removeFromFavorite() {
         isFavorite.setValue(false);
     }
-    public LiveData<Boolean> isFavorite() {
-        if (null == isFavorite) {
-            isFavorite.setValue(true);
-        }
-        return isFavorite;
-    }
+
     public void setImage(String image) {
         this.image.setValue(image);
     }

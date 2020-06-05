@@ -11,7 +11,7 @@ import com.example.recognition.types.SettingsType;
 
 public class DemographicViewModel extends ViewModel {
     private MediatorLiveData<String> message = new MediatorLiveData<>();
-    private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>(false);
     private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
     private MediatorLiveData<DemographicResponse> data = new MediatorLiveData<>();
     private Repository repository;
@@ -58,9 +58,6 @@ public class DemographicViewModel extends ViewModel {
         isFavorite.setValue(false);
     }
     public LiveData<Boolean> isFavorite() {
-        if (null == isFavorite) {
-            isFavorite.setValue(true);
-        }
         return isFavorite;
     }
     @Override
