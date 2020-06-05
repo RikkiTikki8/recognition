@@ -12,6 +12,7 @@ import java.util.List;
 
 public class ColorFavoriteViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>();
     private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
     private MediatorLiveData<List<ColorResponse>> colorFavorites = new MediatorLiveData<>();
     private MediatorLiveData<ColorResponse> response = new MediatorLiveData<>();
@@ -52,13 +53,30 @@ public class ColorFavoriteViewModel extends ViewModel {
         }
         return response;
     }
-    public void removeFromFavorite(String image) {
-        repository.removeColorFavorite(image);
+    public void addToFavorite() {
+        isFavorite.setValue(true);
+    }
+    public void removeFromFavorite() {
+        isFavorite.setValue(false);
+    }
+    public LiveData<Boolean> isFavorite() {
+        if (null == isFavorite) {
+            isFavorite.setValue(true);
+        }
+        return isFavorite;
     }
     public void setImage(String image) {
         this.image.setValue(image);
     }
     public LiveData<String> getImage() {
         return image;
+    }
+
+    @Override
+    protected void onCleared() {
+        if (!isFavorite.getValue()) {
+            repository.removeColorFavorite(image.getValue());
+        }
+        super.onCleared();
     }
 }
