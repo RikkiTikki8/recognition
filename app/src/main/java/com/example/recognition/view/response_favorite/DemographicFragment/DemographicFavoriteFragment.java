@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.application.App;
+import com.example.recognition.types.SettingsType;
 import com.example.recognition.viewmodel.favorites.DemographicFavoriteViewModel;
 
 public class DemographicFavoriteFragment extends BaseDemographicFragment {
@@ -32,6 +33,12 @@ public class DemographicFavoriteFragment extends BaseDemographicFragment {
             @Override
             public void onChanged(String image) {
                 viewModel.getFavorite(image).observe(getViewLifecycleOwner(), DemographicFavoriteFragment.this);
+            }
+        });
+        viewModel.getSettings().observe(getViewLifecycleOwner(), new Observer<SettingsType>() {
+            @Override
+            public void onChanged(SettingsType settingsType) {
+                threshold = settingsType.getThreshold();
             }
         });
         favoriteButton.setOnClickListener(changeFavorite);

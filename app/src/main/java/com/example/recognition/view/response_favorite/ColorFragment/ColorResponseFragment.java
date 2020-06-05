@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.recognition.application.App;
+import com.example.recognition.types.SettingsType;
 import com.example.recognition.viewmodel.ImageViewModel;
 import com.example.recognition.viewmodel.response.ColorViewModel;
 
@@ -34,6 +35,12 @@ public class ColorResponseFragment extends BaseColorFragment {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
+        viewModel.getSettings().observe(getViewLifecycleOwner(), new Observer<SettingsType>() {
+            @Override
+            public void onChanged(SettingsType settingsType) {
+                threshold = settingsType.getThreshold();
             }
         });
         favoriteButton.setOnClickListener(changeFavorite);

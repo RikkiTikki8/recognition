@@ -24,6 +24,7 @@ import com.example.recognition.view.response_favorite.DemographicFragment.Recycl
 
 public abstract class BaseDemographicFragment extends Fragment implements Observer<DemographicResponse> {
     protected boolean isFavorite;
+    protected int threshold;
     private View view;
     private ImageView imageView;
     protected Button favoriteButton;
@@ -49,17 +50,17 @@ public abstract class BaseDemographicFragment extends Fragment implements Observ
             RecyclerView rv_gender = view.findViewById(R.id.rv_dem_gender);
             rv_gender.setLayoutManager(llm);
             final GenderDemographicRecyclerAdapter adapter_gender =
-                    new GenderDemographicRecyclerAdapter(faces.getGendersAppearance());
+                    new GenderDemographicRecyclerAdapter(faces.getGendersAppearance(), threshold);
             rv_gender.setAdapter(adapter_gender);
             RecyclerView rv_age = view.findViewById(R.id.rv_dem_gender);
             rv_gender.setLayoutManager(llm);
             final AgeDemographicRecyclerAdapter adapter_age =
-                    new AgeDemographicRecyclerAdapter(faces.getAgesAppearance());
+                    new AgeDemographicRecyclerAdapter(faces.getAgesAppearance(), threshold);
             rv_age.setAdapter(adapter_age);
             RecyclerView rv_multi = view.findViewById(R.id.rv_dem_gender);
             rv_gender.setLayoutManager(llm);
             final MultiDemographicRecyclerAdapter adapter_multi =
-                    new MultiDemographicRecyclerAdapter(faces.getMulticulturalAppearances());
+                    new MultiDemographicRecyclerAdapter(faces.getMulticulturalAppearances(), threshold);
             rv_multi.setAdapter(adapter_multi);
         }
     }
