@@ -21,6 +21,7 @@ import com.example.recognition.model.localdata.room.entity.ColorResponse;
 public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponse>  {
     protected boolean isFavorite;
     protected int threshold;
+    private RecyclerView rv;
     protected Button favoriteButton;
     private View view;
     private ImageView imageView;
@@ -40,7 +41,7 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
     @Override
     public void onChanged(ColorResponse response) {
             imageView.setImageURI(Uri.parse(response.getImage()));
-            RecyclerView rv = view.findViewById(R.id.rv_col);
+            rv = view.findViewById(R.id.rv_col);
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
             final ColorRecyclerAdapter adapter = new ColorRecyclerAdapter(response.getData().getColors(), threshold);
             rv.setAdapter(adapter);
