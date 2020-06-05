@@ -13,12 +13,13 @@ import com.example.recognition.types.DemographicDataType;
 import com.example.recognition.view.response_favorite.GenDemViewHolder;
 
 public class GenderDemographicRecyclerAdapter extends RecyclerView.Adapter<GenDemViewHolder>{
-
+    int threshold;
     DemographicDataType.Face.GenderAppearance[] data;
     GenDemViewHolder holder;
 
-    public GenderDemographicRecyclerAdapter(DemographicDataType.Face.GenderAppearance[] data){
+    public GenderDemographicRecyclerAdapter(DemographicDataType.Face.GenderAppearance[] data, int threshold){
         this.data = data;
+        this.threshold = threshold;
     }
 
     @NonNull
@@ -32,8 +33,13 @@ public class GenderDemographicRecyclerAdapter extends RecyclerView.Adapter<GenDe
     @Override
     public void onBindViewHolder(@NonNull GenDemViewHolder holder, int i) {
         this.holder = holder;
-        GenDemViewHolder.name.setText(data[i].getName());
-        GenDemViewHolder.value.setText(String.format("%.3f", data[i].getValue()));
+        if (data[i].getValue() < threshold) {
+            GenDemViewHolder.view.setVisibility(View.GONE);
+        } else {
+            GenDemViewHolder.view.setVisibility(View.VISIBLE);
+            GenDemViewHolder.name.setText(data[i].getName());
+            GenDemViewHolder.value.setText(String.format("%.3f", data[i].getValue()));
+        }
     }
 
     @Override

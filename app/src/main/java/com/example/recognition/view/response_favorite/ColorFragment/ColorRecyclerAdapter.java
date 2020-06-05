@@ -12,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recognition.R;
 import com.example.recognition.types.ColorDataType;
+import com.example.recognition.view.response_favorite.GenDemViewHolder;
 
 public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdapter.ColorViewHolder>{
-
+    int threshold;
     ColorDataType.Color[] data;
     ColorViewHolder holder;
 
-    public ColorRecyclerAdapter(ColorDataType.Color[] data){
+    public ColorRecyclerAdapter(ColorDataType.Color[] data, int threshold){
         this.data = data;
+        this.threshold = threshold;
     }
 
     @NonNull
@@ -32,10 +34,15 @@ public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull ColorViewHolder holder, int i) {
         this.holder = holder;
-        holder.color.setBackgroundColor(Color.parseColor(data[i].getColor()));
-        holder.name.setText(data[i].getNameColor());
-        holder.number.setText(data[i].getColor());
-        holder.percent.setText(String.format("%.0f", data[i].getPercent()) + "%");
+        if (data[i].getPercent() < threshold) {
+            ColorViewHolder.view.setVisibility(View.GONE);
+        } else {
+            ColorViewHolder.view.setVisibility(View.VISIBLE);
+            holder.color.setBackgroundColor(Color.parseColor(data[i].getColor()));
+            holder.name.setText(data[i].getNameColor());
+            holder.number.setText(data[i].getColor());
+            holder.percent.setText(String.format("%.0f", data[i].getPercent()) + "%");
+        }
     }
 
     @Override
@@ -44,12 +51,14 @@ public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdap
     }
 
     public static class ColorViewHolder extends RecyclerView.ViewHolder {
+            public static View view;
             public static TextView color;
             public static TextView name;
             public static TextView number;
             public static TextView percent;
             public ColorViewHolder(View view){
                 super(view);
+                this.view = view;
                 color = view.findViewById(R.id.color_color);
                 name = view.findViewById(R.id.color_name);
                 number = view.findViewById(R.id.color_number);

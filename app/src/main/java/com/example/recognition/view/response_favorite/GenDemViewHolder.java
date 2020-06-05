@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.recognition.R;
 
 public class GenDemViewHolder extends RecyclerView.ViewHolder {
+    public static View view;
     public static TextView name;
     public static TextView value;
-
     public GenDemViewHolder(View view) {
         super(view);
+        this.view = view;
         name = view.findViewById(R.id.item_name);
         value = view.findViewById(R.id.item_value);
     }
