@@ -24,6 +24,7 @@ import java.util.List;
 public class ListColorFavoriteFragment extends Fragment {
 
     private View view;
+    private GridView gv;
     private ColorFavoriteViewModel viewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class ListColorFavoriteFragment extends Fragment {
                 onChangedColorFavorites(colorResponses);
             }
         });
+        gv = view.findViewById(R.id.gridView);
         return view;
     }
     private void onChangedColorFavorites(final List<ColorResponse> response) {
@@ -43,7 +45,7 @@ public class ListColorFavoriteFragment extends Fragment {
         for (ColorResponse colorResponse : response){
             list.add(colorResponse.getImage());
         }
-        GridView gv = view.findViewById(R.id.gridView);
+
         gv.setAdapter(new ImageAdapter(view.getContext(), list));
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

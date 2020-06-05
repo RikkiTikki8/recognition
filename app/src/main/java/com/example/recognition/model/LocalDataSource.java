@@ -3,6 +3,7 @@ package com.example.recognition.model;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Room;
 
 import com.example.recognition.model.localdata.SharedPreferencesHelper;
@@ -17,6 +18,9 @@ import java.util.List;
 public class LocalDataSource {
     private static String SHARED_PREFERENCES_FILE = "SHARED_PREFERENCES";
     private static String DATA_BASE_FILE = "MY_DATA_BASE";
+    private MutableLiveData<GeneralResponse> generalResponse = new MutableLiveData<>();
+    private MutableLiveData<DemographicResponse> demographicsResponse = new MutableLiveData<>();
+    private MutableLiveData<ColorResponse> colorResponse = new MutableLiveData<>();
     private DataBase dataBase;
     private SharedPreferencesHelper helper;
     public LocalDataSource(Context context) {
@@ -24,39 +28,39 @@ public class LocalDataSource {
         helper = new SharedPreferencesHelper(context, SHARED_PREFERENCES_FILE);
     }
     public LiveData<GeneralResponse> getLastGeneralData() {
-        return helper.getLiveDataGeneralResponse();
+        return generalResponse;
     }
     public LiveData<DemographicResponse> getLastDemographicData() {
-        return helper.getLiveDataDemographicResponse();
+        return demographicsResponse;
     }
     public LiveData<ColorResponse> getLastColorData() {
-        return helper.getLiveDataColorResponse();
+        return colorResponse;
     }
     public void setLastGeneralResponse(GeneralResponse response) {
-        helper.setGeneralResponse(response);
+        generalResponse.postValue(response);
     }
     public void setLastDemographicResponse(DemographicResponse response) {
-        helper.setDemographicsResponse(response);
+        demographicsResponse.postValue(response);
     }
     public void setLastColorResponse(ColorResponse response) {
-        helper.setColorResponse(response);
+        colorResponse.postValue(response);
     }
     public void addLastGeneralResponseToFavorite() {
         dataBase.generalResponseDao()
                 .addResponse(
-                        helper.getGeneralResponse()
+                        generalResponse.getValue()
                 );
     }
     public void addLastDemographicResponseToFavorite() {
         dataBase.demographicsResponseDao()
                 .addResponse(
-                        helper.getDemographicsResponse()
+                        demographicsResponse.getValue()
                 );
     }
     public void addLastColorResponseToFavorite() {
         dataBase.colorResponseDao()
                 .addResponse(
-                        helper.getColorResponse()
+                        colorResponse.getValue()
                 );
     }
     public LiveData<List<GeneralResponse>> getGeneralFavorites() {
