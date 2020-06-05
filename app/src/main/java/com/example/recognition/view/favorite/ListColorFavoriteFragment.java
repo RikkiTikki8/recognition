@@ -18,6 +18,7 @@ import com.example.recognition.application.App;
 import com.example.recognition.model.localdata.room.entity.ColorResponse;
 import com.example.recognition.viewmodel.favorites.ColorFavoriteViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListColorFavoriteFragment extends Fragment {
@@ -38,7 +39,7 @@ public class ListColorFavoriteFragment extends Fragment {
         return view;
     }
     private void onChangedColorFavorites(final List<ColorResponse> response) {
-        List<String> list = null;
+        List<String> list = new ArrayList<>();
         for (ColorResponse colorResponse : response){
             list.add(colorResponse.getImage());
         }

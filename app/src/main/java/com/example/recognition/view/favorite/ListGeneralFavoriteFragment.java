@@ -20,6 +20,7 @@ import com.example.recognition.model.localdata.room.entity.DemographicResponse;
 import com.example.recognition.model.localdata.room.entity.GeneralResponse;
 import com.example.recognition.viewmodel.favorites.GeneralFavoriteViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListGeneralFavoriteFragment extends Fragment {
@@ -39,7 +40,7 @@ public class ListGeneralFavoriteFragment extends Fragment {
         return view;
     }
     private void onChangedGeneralFavorites(final List<GeneralResponse> response) {
-        List<String> list = null;
+        List<String> list = new ArrayList<>();
         for (GeneralResponse genResponse : response){
             list.add(genResponse.getImage());
         }
