@@ -1,15 +1,11 @@
 package com.example.recognition.view.response_favorite.ColorFragment;
 
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,9 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recognition.R;
 import com.example.recognition.model.localdata.room.entity.ColorResponse;
-import com.example.recognition.types.ColorDataType;
-
-import java.util.Arrays;
 
 public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponse>  {
 

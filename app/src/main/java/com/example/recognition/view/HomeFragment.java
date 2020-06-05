@@ -21,6 +21,22 @@ public class HomeFragment extends Fragment {
     View view;
     NavModelViewModel viewModel;
 
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
+                .getViewModelFactory()).get(NavModelViewModel.class);
+
+        final Button bGeneral = view.findViewById(R.id.button_general);
+        final Button bDemographic = view.findViewById(R.id.button_demographics);
+        final Button bColor = view.findViewById(R.id.button_color);
+
+        bGeneral.setOnClickListener(onGeneralClickListener);
+        bDemographic.setOnClickListener(onDemographicClickListener);
+        bColor.setOnClickListener(onColorClickListener);
+
+        return view;
+    }
+
     private View.OnClickListener onGeneralClickListener = new View.OnClickListener() {
         @SuppressLint("ResourceType")
         @Override
@@ -45,22 +61,4 @@ public class HomeFragment extends Fragment {
             Navigation.findNavController(view).navigate(R.id.action_HomeFragment_to_ChooseImageFragment);
         }
     };
-
-
-
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
-        viewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication())
-                .getViewModelFactory()).get(NavModelViewModel.class);
-
-        final Button bGeneral = view.findViewById(R.id.button_general);
-        final Button bDemographic = view.findViewById(R.id.button_demographics);
-        final Button bColor = view.findViewById(R.id.button_color);
-
-        bGeneral.setOnClickListener(onGeneralClickListener);
-        bDemographic.setOnClickListener(onDemographicClickListener);
-        bColor.setOnClickListener(onColorClickListener);
-
-        return view;
-    }
 }

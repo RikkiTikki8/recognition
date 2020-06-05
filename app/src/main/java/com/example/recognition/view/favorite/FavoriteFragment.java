@@ -41,8 +41,6 @@ public class FavoriteFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_favorite, container, false);
-//        favoriteViewModel = new ViewModelProvider(this, ((App) getActivity().getApplication())
-//                .getViewModelFactory()).get(FavoriteViewModel.class);
 
         final Button bGeneral = view.findViewById(R.id.button_fav_gen);
         final Button bDemographic = view.findViewById(R.id.button_fav_dem);
@@ -53,13 +51,4 @@ public class FavoriteFragment extends Fragment {
 
         return view;
     }
-//    private void onChangedGeneralFavorites(List<GeneralResponse> response ) {
-//
-//    }
-//    private void onChangedDemographicFavorites(List<DemographicResponse> response) {
-//
-//    }
-//    private void onChangedColorFavorites(List<ColorResponse> response) {
-//
-//    }
 }
