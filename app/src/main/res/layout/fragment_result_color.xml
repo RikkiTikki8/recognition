@@ -19,7 +19,7 @@
             android:layout_height="500dp" />
 
         <Button
-            android:id="@+id/button_add_to_favorite"
+            android:id="@+id/but_col_add_to_favorite"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Add to favorite"

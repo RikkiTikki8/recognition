@@ -33,7 +33,7 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
         view = inflater.inflate(R.layout.fragment_result_general, container, false);
         init();
         imageView = view.findViewById(R.id.gen_model_image);
-        favoriteButton = view.findViewById(R.id.button_add_to_favorite);
+        favoriteButton = view.findViewById(R.id.but_gen_add_to_favorite);
         return view;
     }
 

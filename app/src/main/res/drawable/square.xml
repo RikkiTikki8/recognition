@@ -5,6 +5,11 @@
         android:shape="rectangle">
         <stroke android:width="4dp"
             android:color="#2C347F"/>
+        <gradient
+            android:angle="270"
+            android:startColor="#FFF7DF"
+            android:endColor="#E6EAFD"
+            />
     </shape>
 </item>
 </selector>
