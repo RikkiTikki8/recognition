@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.example.recognition.model.localdata.room.entity.ColorResponse;
 import com.example.recognition.model.remoutdata.ColorResponsePojo;
+import com.example.recognition.model.remoutdata.ColorResponsePojo.Results.Output.Data;
 import com.example.recognition.model.remoutdata.DemographicResponsePojo;
-import com.example.recognition.model.remoutdata.DemographicResponsePojo.Output.Data.Region.RegionInfo.BoundingBox;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo.Results.Outputs;
 import com.example.recognition.model.remoutdata.GeneralResponsePojo.Results.Outputs.Data.Concept;
@@ -26,7 +26,6 @@ import java.util.List;
 
 import retrofit2.Response;
 
-import static com.example.recognition.model.remoutdata.ColorResponsePojo.Output.*;
 import static com.example.recognition.model.remoutdata.DemographicResponsePojo.*;
 import static com.example.recognition.model.remoutdata.GeneralResponsePojo.*;
 import static com.example.recognition.types.DemographicDataType.*;
@@ -42,7 +41,7 @@ public class ResponseConverter {
                 dataType = new GeneralDataType();
                 List<Property> propertyList = new ArrayList<>();
                 Property property;
-                for (Results result : response.getResults()) {
+                for (GeneralResponsePojo.Results result : response.getResults()) {
                     for (Outputs output : result.getOutputs()) {
                         for (Concept concept : output.getData().getConcepts()) {
                             property = new Property();
@@ -52,7 +51,9 @@ public class ResponseConverter {
                         }
                     }
                 }
-                dataType.setProperties((Property[]) propertyList.toArray());
+                Property[] propertyArray = new Property[propertyList.size()];
+                propertyList.toArray(propertyArray);
+                dataType.setProperties(propertyArray);
             } else {
                 dataType = DataMapper.getGeneralDataMap();
             }
@@ -72,10 +73,11 @@ public class ResponseConverter {
                 dataType = new DemographicDataType();
                 List<Face> faces = new ArrayList<>();
                 Face face;
-                for (Output output : response.getOutputs()) {
-                    for (Output.Data.Region region : output.getData().getRegions()) {
+                for (DemographicResponsePojo.Results result : response.getResults())
+                for (DemographicResponsePojo.Results.Output output : result.getOutputs()) {
+                    for (DemographicResponsePojo.Results.Output.Data.Region region : output.getData().getRegions()) {
                         face = new Face();
-                        BoundingBox box = region.getRegionInfo().getBoundingBox();
+                        DemographicResponsePojo.Results.Output.Data.Region.RegionInfo.BoundingBox box = region.getRegionInfo().getBoundingBox();
                         Frame frame = new Frame();
                         frame.setTop(box.getTopRow());
                         frame.setLeft(box.getLeftCol());
@@ -83,23 +85,29 @@ public class ResponseConverter {
                         frame.setRight(box.getRightCol());
                         face.setFrame(frame);
                         List<AgeAppearance> ageAppearanceList = new ArrayList<>();
-                        for (Output.Data.Region.RegionData.Face.Concept concept :
+                        for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
                                 region.getData().getFace().getAgeAppearance().getConcepts()) {
                             ageAppearanceList.add(new AgeAppearance(concept.getName(), concept.getValue()));
                         }
-                        face.setAgesAppearance((AgeAppearance[]) ageAppearanceList.toArray());
+                        AgeAppearance[] ageAppearanceArray = new AgeAppearance[ageAppearanceList.size()];
+                        ageAppearanceList.toArray(ageAppearanceArray);
+                        face.setAgesAppearance(ageAppearanceArray);
                         List<GenderAppearance> genderAppearanceList = new ArrayList<>();
-                        for (Output.Data.Region.RegionData.Face.Concept concept :
+                        for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
                                 region.getData().getFace().getGenderAppearance().getConcepts()) {
                             genderAppearanceList.add(new GenderAppearance(concept.getName(), concept.getValue()));
                         }
-                        face.setGendersAppearance((GenderAppearance[]) genderAppearanceList.toArray());
+                        GenderAppearance[] genderAppearanceArray = new GenderAppearance[genderAppearanceList.size()];
+                        genderAppearanceList.toArray(genderAppearanceArray);
+                        face.setGendersAppearance(genderAppearanceArray);
                         List<MulticulturalAppearance> multiculturalAppearanceList = new ArrayList<>();
-                        for (Output.Data.Region.RegionData.Face.Concept concept :
+                        for (DemographicResponsePojo.Results.Output.Data.Region.RegionData.Face.Concept concept :
                                 region.getData().getFace().getMulticulturalAppearance().getConcepts()) {
                             multiculturalAppearanceList.add(new MulticulturalAppearance(concept.getName(), concept.getValue()));
                         }
-                        face.setMulticulturalAppearances((MulticulturalAppearance[]) multiculturalAppearanceList.toArray());
+                        MulticulturalAppearance[] multiculturalAppearanceArray = new MulticulturalAppearance[multiculturalAppearanceList.size()];
+                        multiculturalAppearanceList.toArray(multiculturalAppearanceArray);
+                        face.setMulticulturalAppearances(multiculturalAppearanceArray);
                         faces.add(face);
                     }
                 }
@@ -114,8 +122,6 @@ public class ResponseConverter {
         }
     }
     public static ColorResponse convertColor (String image, Response<ColorResponsePojo> retrofitResponse) {
-        //Log.d("Response", retrofitResponse.message());
-        //Log.d("Response", retrofitResponse.headers().toString());
         if (retrofitResponse.isSuccessful()) {
             ColorResponsePojo response = retrofitResponse.body();
             ColorResponse responseType = new ColorResponse();
@@ -124,21 +130,18 @@ public class ResponseConverter {
             if (10000 == response.getStatus().getCode()) {
                 dataType = new ColorDataType();
                 List<Color> colorList = new ArrayList<>();
-                for (ColorResponsePojo.Output output : response.getOutputs()) {
+                for (ColorResponsePojo.Results result : response.getResults())
+                for (ColorResponsePojo.Results.Output output : result.getOutputs()) {
                     for (Data.Color color : output.getData().getColors()) {
+                        Log.d("Color", color.getW3c().getName());
                         colorList.add(
-                                new Color(color.getW3c().getHex(), color.getW3c().getName(), String.valueOf((int)(color.getValue()*100)) + "%")
+                                new Color(color.getW3c().getHex(), color.getW3c().getName(), color.getValue()*100)
                         );
                     }
                 }
-//                for (ColorResponsePojo.Output output : response.getOutputs()) {
-//                    for (ColorResponsePojo.Color color : output.getData().getColors()) {
-//                        colorList.add(
-//                                new Color(color.getW3c().getHex(), color.getW3c().getName(), String.valueOf((int)(color.getValue()*100)) + "%")
-//                        );
-//                    }
-//                }
-                dataType.setColors((Color[]) colorList.toArray());
+                Color[] colorArray = new Color[colorList.size()];
+                colorList.toArray(colorArray);
+                dataType.setColors(colorArray);
             } else {
                 dataType = DataMapper.getColorDataMap();
             }
