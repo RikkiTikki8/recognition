@@ -17,6 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="500dp" />
 
+        <Button
+            android:id="@+id/button_add_to_favorite"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Add to favorite"
+            android:textColor="@color/yellow"
+            android:background="@drawable/square"
+            android:textSize="@dimen/response_text_size"/>
         <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

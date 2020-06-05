@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,8 @@ import com.example.recognition.model.localdata.room.entity.ColorResponse;
 
 public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponse>  {
 
+    private Boolean isFavorite = false;
+    private Button button;
     private View view;
     private ImageView imageView;
     protected abstract void init();
@@ -29,6 +32,15 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
         view = inflater.inflate(R.layout.fragment_result_color, container, false);
         init();
         imageView = view.findViewById(R.id.gen_model_image);
+        button = view.findViewById(R.id.button_add_to_favorite);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isFavorite){
+
+                }
+            }
+        });
         return view;
     }
 
