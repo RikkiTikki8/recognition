@@ -1,7 +1,5 @@
 package com.example.recognition.model.remoutdata;
 
-import java.util.List;
-
 public class Request {
     public static class Input {
         public static class Data {

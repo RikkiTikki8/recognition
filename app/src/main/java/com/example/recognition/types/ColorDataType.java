@@ -5,9 +5,9 @@ public class ColorDataType {
 
         private String color;
         private String nameColor;
-        private String percent;
+        private double percent;
 
-        public Color(String color, String nameColor, String percent) {
+        public Color(String color, String nameColor, double percent) {
             this.color = color;
             this.nameColor = nameColor;
             this.percent = percent;
@@ -25,10 +25,10 @@ public class ColorDataType {
         public void setNameColor(String nameColor) {
             this.nameColor = nameColor;
         }
-        public String getPercent() {
+        public double getPercent() {
             return percent;
         }
-        public void setPercent(String percent) {
+        public void setPercent(double percent) {
             this.percent = percent;
         }
     }

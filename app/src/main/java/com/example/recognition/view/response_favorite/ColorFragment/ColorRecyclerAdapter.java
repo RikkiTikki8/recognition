@@ -35,7 +35,7 @@ public class ColorRecyclerAdapter extends RecyclerView.Adapter<ColorRecyclerAdap
         holder.container.setBackgroundColor(Color.parseColor(data[i].getColor()));
         holder.name.setText(data[i].getNameColor());
         holder.number.setText(data[i].getColor());
-        holder.percent.setText(data[i].getPercent());
+        holder.percent.setText(String.format("%.0f", data[i].getPercent()) + "%");
     }
 
     @Override
