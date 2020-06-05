@@ -15,6 +15,6 @@
         android:layout_gravity="right"
         android:contentDescription="@string/nav_header_desc"
         android:scaleType="centerCrop"
-        android:src="@drawable/cat" />
+        android:src="@drawable/cat_2" />
 
 </LinearLayout>
