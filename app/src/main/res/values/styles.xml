@@ -3,11 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#F8E223</item>
-        <item name="colorPrimaryDark">#12003C</item>
+        <item name="colorPrimary">#E1A900</item>
+        <item name="colorPrimaryDark">#2C347F</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">#FFECB3</item>
-        <item name="android:windowBackground">@drawable/gradient</item>
+        <item name="android:textColor">#070047</item>
+<!--        <item name="android:windowBackground">@drawable/gradient</item>-->
 
     </style>
 

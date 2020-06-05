@@ -31,7 +31,7 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_result_color, container, false);
         init();
-        imageView = view.findViewById(R.id.gen_model_image);
+        imageView = view.findViewById(R.id.color_model_image);
         button = view.findViewById(R.id.button_add_to_favorite);
         isFavorite = false;
         button.setOnClickListener(new View.OnClickListener() {
