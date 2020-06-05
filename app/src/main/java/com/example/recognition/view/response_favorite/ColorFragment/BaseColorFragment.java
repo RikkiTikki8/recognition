@@ -45,10 +45,10 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
 
     @Override
     public void onChanged(ColorResponse response) {
-        imageView.setImageURI(Uri.parse(response.getImage()));
-        RecyclerView rv = view.findViewById(R.id.rv_col);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        final ColorRecyclerAdapter adapter = new ColorRecyclerAdapter(response.getData().getColors());
-        rv.setAdapter(adapter);
+            //imageView.setImageURI(Uri.parse(response.getImage()));
+            RecyclerView rv = view.findViewById(R.id.rv_col);
+            rv.setLayoutManager(new LinearLayoutManager(getContext()));
+            final ColorRecyclerAdapter adapter = new ColorRecyclerAdapter(response.getData().getColors());
+            rv.setAdapter(adapter);
     }
 }
