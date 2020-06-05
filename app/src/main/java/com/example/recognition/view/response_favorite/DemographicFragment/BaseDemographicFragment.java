@@ -34,9 +34,9 @@ public abstract class BaseDemographicFragment extends Fragment implements Observ
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_result_demographic, container, false);
-        init();
         imageView = view.findViewById(R.id.dem_model_image);
         favoriteButton = view.findViewById(R.id.but_dem_add_to_favorite);
+        init();
         return view;
     }
 

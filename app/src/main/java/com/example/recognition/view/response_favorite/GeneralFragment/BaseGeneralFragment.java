@@ -31,9 +31,9 @@ public abstract class BaseGeneralFragment extends Fragment implements Observer<G
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_result_general, container, false);
-        init();
         imageView = view.findViewById(R.id.gen_model_image);
         favoriteButton = view.findViewById(R.id.but_gen_add_to_favorite);
+        init();
         return view;
     }
 
