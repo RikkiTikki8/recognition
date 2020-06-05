@@ -18,15 +18,16 @@ import com.example.recognition.viewmodel.SettingsViewModel;
 public class SettingsFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private View view;
-    TextView textView;
+    private TextView textView;
     private SettingsViewModel viewModel;
+    private SeekBar seekBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_settings, container, false);
         viewModel = new ViewModelProvider(this, ((App)getActivity().getApplication())
                 .getViewModelFactory()).get(SettingsViewModel.class);
 
-        final SeekBar seekBar = (SeekBar) view.findViewById(R.id.seekBar);
+        seekBar = (SeekBar) view.findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(this);
 
         textView = (TextView) view.findViewById(R.id.settings_number);

@@ -20,7 +20,7 @@ import com.example.recognition.model.localdata.room.entity.ColorResponse;
 
 public abstract class BaseColorFragment extends Fragment implements Observer<ColorResponse>  {
 
-    private Boolean isFavorite = false;
+    private Boolean isFavorite;
     private Button button;
     private View view;
     private ImageView imageView;
@@ -33,12 +33,11 @@ public abstract class BaseColorFragment extends Fragment implements Observer<Col
         init();
         imageView = view.findViewById(R.id.gen_model_image);
         button = view.findViewById(R.id.button_add_to_favorite);
+        isFavorite = false;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isFavorite){
-
-                }
+                isFavorite = !isFavorite;
             }
         });
         return view;
