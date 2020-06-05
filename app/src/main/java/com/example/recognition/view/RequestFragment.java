@@ -1,6 +1,7 @@
 package com.example.recognition.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,6 +76,7 @@ public class RequestFragment extends Fragment {
             @Override
             public void onChanged(String mImage) {
                 image = mImage;
+                button_choose.setImageURI(Uri.parse(image));
             }
         });
         navModelViewModel = new ViewModelProvider(getActivity(), ((App)getActivity().getApplication()).getViewModelFactory()).get(NavModelViewModel.class);
