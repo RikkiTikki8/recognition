@@ -29,7 +29,7 @@ public class ListDemographicFavoriteFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fr_list_fav, container, false);
-        viewModel = new ViewModelProvider(this, ((App) getActivity().getApplication())
+        viewModel = new ViewModelProvider(getActivity(), ((App) getActivity().getApplication())
                 .getViewModelFactory()).get(DemographicFavoriteViewModel.class);
         viewModel.getDemographicFavorites().observe(getViewLifecycleOwner(), new Observer<List<DemographicResponse>>() {
             @Override
