@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,7 @@ public class RequestFragment extends Fragment {
     private int layoutId;
     private View view;
     private String image;
-    private Button button_choose;
+    private ImageView button_choose;
     private Button button_send;
     private static final int IMAGE_SEARCH_CODE = 1001;
 

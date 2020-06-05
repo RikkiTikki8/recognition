@@ -56,7 +56,7 @@ public class DataMapper {
     }
     public static ColorDataType getColorDataMap() {
         ColorDataType mapData = new ColorDataType();
-        ColorDataType.Color mapColor = new ColorDataType.Color("#FFFFFF", "", "0%");
+        ColorDataType.Color mapColor = new ColorDataType.Color("#FFFFFF", "", 0);
         mapData.setColors(new ColorDataType.Color[]{mapColor});
         return mapData;
     }

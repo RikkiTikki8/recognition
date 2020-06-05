@@ -12,6 +12,14 @@ import java.util.List;
 
 public class ColorFavoriteViewModel extends ViewModel {
     private MutableLiveData<String> image = new MutableLiveData<>();
+
+    public MutableLiveData<Boolean> getIsFavorite() {
+        return isFavorite;
+    }
+    public void setIsFavorite(MutableLiveData<Boolean> isFavorite) {
+        this.isFavorite = isFavorite;
+    }
+
     private MutableLiveData<Boolean> isFavorite = new MutableLiveData<>();
     private MediatorLiveData<SettingsType> settings = new MediatorLiveData<>();
     private MediatorLiveData<List<ColorResponse>> colorFavorites = new MediatorLiveData<>();

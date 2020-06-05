@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="@dimen/image_margin"
     tools:context="com.example.recognition.view.HomeFragment">
 
     <LinearLayout
@@ -16,6 +17,10 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/button_general"
+            android:text="General\nModel"
+            android:textColor="@color/yellow"
+            android:background="@drawable/square"
+            android:textSize="@dimen/response_text_size"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
@@ -30,6 +35,10 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/button_demographics"
+            android:text="@string/demographic"
+            android:textColor="@color/yellow"
+            android:background="@drawable/square"
+            android:textSize="@dimen/response_text_size"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
@@ -44,6 +53,10 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/button_color"
+            android:text="@string/color"
+            android:textColor="@color/yellow"
+            android:background="@drawable/square"
+            android:textSize="@dimen/response_text_size"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>

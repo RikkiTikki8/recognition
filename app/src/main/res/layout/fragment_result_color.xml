@@ -23,8 +23,7 @@
             android:layout_marginTop="@dimen/text_margin"
             android:layout_marginBottom="@dimen/text_margin"
             android:text="COLOR"
-            android:textSize="@dimen/response_text_size"
-            android:textColor="@color/response_annotation_text_color"/>
+            android:textSize="@dimen/response_text_size"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_col"

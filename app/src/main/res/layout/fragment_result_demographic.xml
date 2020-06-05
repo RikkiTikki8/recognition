@@ -37,16 +37,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="GENDER APPEARANCE"
-                android:textSize="@dimen/response_text_size"
-                android:textColor="@color/response_annotation_text_color"/>
+                android:textSize="@dimen/response_text_size"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="end"
                 android:text="PROBABILITY"
-                android:textSize="@dimen/response_text_size"
-                android:textColor="@color/response_annotation_text_color"/>
+                android:textSize="@dimen/response_text_size"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -66,16 +64,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="AGE APPEARANCE"
-            android:textSize="@dimen/response_text_size"
-            android:textColor="@color/response_annotation_text_color"/>
+            android:textSize="@dimen/response_text_size"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="end"
             android:text="PROBABILITY"
-            android:textSize="@dimen/response_text_size"
-            android:textColor="@color/response_annotation_text_color"/>
+            android:textSize="@dimen/response_text_size"/>
     </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -95,16 +91,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="MULTICULTURAL APPEARANCE"
-                android:textSize="@dimen/response_text_size"
-                android:textColor="@color/response_annotation_text_color"/>
+                android:textSize="@dimen/response_text_size"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="end"
                 android:text="PROBABILITY"
-                android:textSize="@dimen/response_text_size"
-                android:textColor="@color/response_annotation_text_color"/>
+                android:textSize="@dimen/response_text_size"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

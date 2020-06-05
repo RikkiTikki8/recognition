@@ -4,24 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/image_margin"
     tools:context="com.example.recognition.view.favorite.FavoriteFragment"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/button_fav_gen"
         android:layout_width="match_parent"
+        android:textColor="@color/yellow"
+        android:background="@drawable/square"
+        android:textSize="@dimen/response_text_size"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="@string/general"/>
+        android:layout_marginBottom="@dimen/text_margin"
+        android:text="@string/general" />
     <Button
         android:id="@+id/button_fav_dem"
         android:layout_width="match_parent"
+        android:textColor="@color/yellow"
+        android:background="@drawable/square"
+        android:textSize="@dimen/response_text_size"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginBottom="@dimen/text_margin"
         android:text="@string/demographic"/>
     <Button
         android:id="@+id/button_fav_color"
         android:layout_width="match_parent"
+        android:textColor="@color/yellow"
+        android:background="@drawable/square"
+        android:textSize="@dimen/response_text_size"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:text="@string/color"/>
