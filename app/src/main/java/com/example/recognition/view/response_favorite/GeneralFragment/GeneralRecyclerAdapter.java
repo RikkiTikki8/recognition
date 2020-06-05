@@ -26,7 +26,7 @@ public class GeneralRecyclerAdapter extends RecyclerView.Adapter<GenDemViewHolde
     @NonNull
     @Override
     public GenDemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_color, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_param_list, parent, false);
         return new GenDemViewHolder(view);
     }
 
