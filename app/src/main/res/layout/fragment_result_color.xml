@@ -23,7 +23,7 @@
             android:id="@+id/but_col_add_to_favorite"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Add to favorite"
+            android:text="@string/add_to_favorite"
             android:textColor="@color/yellow"
             android:background="@drawable/square"
             android:textSize="@dimen/response_text_size"/>

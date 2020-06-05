@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.example.recognition.R;
 import com.example.recognition.application.App;
 import com.example.recognition.types.SettingsType;
 import com.example.recognition.viewmodel.ImageViewModel;
@@ -24,6 +26,7 @@ public class DemographicResponseFragment extends BaseDemographicFragment {
                 viewModel.addToFavorite();
             }
             isFavorite = !isFavorite;
+            favoriteButton.setText((isFavorite)? R.string.remove_from_favorite : R.string.add_to_favorite);
         }
     };
     protected void init(){

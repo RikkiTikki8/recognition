@@ -13,4 +13,6 @@
     <string name="color">Color Model</string>
     <string name="demographic">Demographic Model</string>
     <string name="general">General Model</string>
+    <string name="add_to_favorite">Add to favorite</string>
+    <string name="remove_from_favorite">Remove from favorite</string>
 </resources>
