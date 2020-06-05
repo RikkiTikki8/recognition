@@ -10,14 +10,14 @@ public class ColorResponse {
     @PrimaryKey
     @NotNull
     protected String image;
-    protected static ColorDataType data;
+    protected ColorDataType data;
     public String getImage() {
         return image;
     }
     public void setImage(String image) {
         this.image = image;
     }
-    public static ColorDataType getData() {
+    public ColorDataType getData() {
         return data;
     }
     public void setData(ColorDataType data) {
