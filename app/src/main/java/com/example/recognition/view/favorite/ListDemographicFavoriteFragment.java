@@ -19,6 +19,7 @@ import com.example.recognition.model.localdata.room.entity.ColorResponse;
 import com.example.recognition.model.localdata.room.entity.DemographicResponse;
 import com.example.recognition.viewmodel.favorites.DemographicFavoriteViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListDemographicFavoriteFragment extends Fragment {
@@ -39,7 +40,7 @@ public class ListDemographicFavoriteFragment extends Fragment {
         return view;
     }
     private void onChangedDemographicFavorites(final List<DemographicResponse> response ) {
-        List<String> list = null;
+        List<String> list = new ArrayList<>();
         for (DemographicResponse demResponse : response){
             list.add(demResponse.getImage());
         }
